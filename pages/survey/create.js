@@ -1,4 +1,5 @@
 import ConnectWallet from "../../components/ConnectWallet"
+import CreateSurvey from "../../components/CreateSurvey"
 
 export default function create(){
 
@@ -6,6 +7,7 @@ export default function create(){
         <div>
             Lets Create a new Survey
             <ConnectWallet />
+            <CreateSurvey />
         </div>
     )
 }
