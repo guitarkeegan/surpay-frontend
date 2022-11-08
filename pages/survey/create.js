@@ -1,5 +1,11 @@
-import Surpay from "../com"
+import ConnectWallet from "../../components/ConnectWallet"
 
-export default function createSurvey(){
+export default function create(){
 
+    return (
+        <div>
+            Lets Create a new Survey
+            <ConnectWallet />
+        </div>
+    )
 }
