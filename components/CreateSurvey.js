@@ -20,7 +20,7 @@ export default function CreateSurvey(){
     const numOfParticipantsDesired = 2
     console.log(totalPayoutAmount.toString());
 
-    const {runContractFunction: createSurvey} = useWeb3Contract({
+    const {runContractFunction: createSurvey, isFetching, isLoading} = useWeb3Contract({
         abi: abi,
         contractAddress: surpayAddress, // get the chainID
         functionName: "createSurvey",
@@ -55,6 +55,7 @@ export default function CreateSurvey(){
     const handleSuccess = async (tx) => {
         await tx.wait(1)
         handleNewNotification(tx)
+        updateUI();
     }
 
     const handleNewNotification = () => {
@@ -68,22 +69,33 @@ export default function CreateSurvey(){
     }
 
     return (
-        <div>
-        hi from survey creation !!
-        {surpayAddress ?
-            (<div>
-            <button onClick={async function(){await createSurvey({
-                onSuccess: handleSuccess,
-                onError: (e) => console.log(e)
-            })}}>Create Survey</button>
-            Creation Fee: {ethers.utils.formatUnits(surveyCreationFee, "ether")} MATIC</div>)
-            :
-            (
-                <div>No surpay address detected</div>
-            )
-
-         }
-            
+        <div className="p-5">
+            <h1 className="py-4 px-4 font-bold text-3xl">Create Survey</h1>
+            {surpayAddress ? (
+                <>
+                    <button
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-auto"
+                        onClick={async () =>
+                            await createSurvey({
+                                // onComplete:
+                                // onError:
+                                onSuccess: handleSuccess,
+                                onError: (error) => console.log(error),
+                            })
+                        }
+                        disabled={isLoading || isFetching}
+                    >
+                        {isLoading || isFetching ? (
+                            <div className="animate-spin spinner-border h-8 w-8 border-b-2 rounded-full"></div>
+                        ) : (
+                            "Create Survey"
+                        )}
+                    </button>
+                    <div>Entrance Fee: {ethers.utils.formatUnits(surveyCreationFee, "ether")} Matic</div>
+                </>
+            ) : (
+                <div>Please connect to a supported chain </div>
+            )}
         </div>
     )
 
