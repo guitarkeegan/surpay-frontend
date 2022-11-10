@@ -2182,7 +2182,7 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==
 
-autoprefixer@^10.4.11, autoprefixer@^10.4.4:
+autoprefixer@^10.4.11, autoprefixer@^10.4.13:
   version "10.4.13"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-10.4.13.tgz#b5136b59930209a321e9fa3dca2e7c4d223e83a8"
   integrity sha512-49vKpMqcZYsJjwotvt4+h/BCjJVnhGwcLpDt5xkcaOG3eLrG/HUYLagrihYsQ+qrIBgIzX1Rw7a6L8I/ZA1Atg==
@@ -5160,7 +5160,24 @@ moment-timezone@^0.5.34:
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
   integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
 
-moralis@^1.8.0, moralis@^1.8.1:
+moralis-v1@^1.12.0:
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/moralis-v1/-/moralis-v1-1.12.0.tgz#a27f3849146771f2e5de19ed0c2d23a1f117a0c0"
+  integrity sha512-TjJsYDm1lRX1/Trzj5TixreL55LBQYgIlzwDuCBdVpZ60saI6Bpv4x2qEldVRHRMedyJ2OpUnwDJtTgKKjJf/A==
+  dependencies:
+    "@babel/runtime" "7.16.7"
+    "@babel/runtime-corejs3" "7.16.8"
+    "@metamask/detect-provider" "^1.2.0"
+    axios "0.26.1"
+    ethers "5.6.0"
+    react-native-crypto-js "1.0.0"
+    uuid "^8.3.2"
+    ws "^8.3.0"
+    xmlhttprequest "1.8.0"
+  optionalDependencies:
+    crypto-js "4.1.1"
+
+moralis@^1.8.1:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/moralis/-/moralis-1.11.0.tgz#aa736cf5acbd3f65ac83d44f2e4e12e0e88566f8"
   integrity sha512-oqoKqP47RuHq+SnztN48+YgWsKLt1YBy7IfeSBOixUW0Tzn9RQDjNKpkSBcKFttNZQ/KzCEes6TCqA9IxSoTPQ==
@@ -5977,7 +5994,7 @@ postcss@8.4.14:
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
-postcss@^8.4.12, postcss@^8.4.18:
+postcss@^8.4.18:
   version "8.4.18"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.18.tgz#6d50046ea7d3d66a85e0e782074e7203bc7fbca2"
   integrity sha512-Wi8mWhncLJm11GATDaQKobXSNEYGUHeQLiQqDFG1qQ5UTDPTEvKw0Xt5NsTpktGTwLps3ByrWsBrG0rB8YQ9oA==
@@ -6240,6 +6257,11 @@ react-router@6.4.3:
   integrity sha512-BT6DoGn6aV1FVP5yfODMOiieakp3z46P1Fk0RNzJMACzE7C339sFuHebfvWtnB4pzBvXXkHP2vscJzWRuUjTtA==
   dependencies:
     "@remix-run/router" "1.0.3"
+
+react-uuid@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-uuid/-/react-uuid-2.0.0.tgz#e3c97e190db9eef53cb9dacfcc7314d913a411fa"
+  integrity sha512-FNUH/8WR/FEtx0Bu6gmt1eONfc413hhvrEXFWUSFGvznUhI4dYoVZA09p7JHoTpnM4WC2D/bG2YSxGKXF4oVLg==
 
 react@18.2.0:
   version "18.2.0"
@@ -6910,7 +6932,7 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-tailwindcss@^3.0.24:
+tailwindcss@^3.2.2:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.2.2.tgz#705f78cec8f4de2feb52abdb7a8a056e67f2d736"
   integrity sha512-c2GtSdqg+harR4QeoTmex0Ngfg8IIHNeLQH5yr2B9uZbZR1Xt1rYbjWOWTcj3YLTZhrmZnPowoQDbSRFyZHQ5Q==
