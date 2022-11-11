@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Company {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String   @db.VarChar(255)
+  email     String   @db.VarChar(255) @unique
+  password  String   @db.VarChar(255)
+  survey    Survey[]    
+}
+
+model Survey {
+  id             Int      @id @default(autoincrement())
+  title          String   @db.VarChar(255)
+  takers         Int      
+  totalPayout    String   @db.VarChar(255)
+  company        Company  @relation(fields: [companyId], references: [id])
+  companyId      Int      @unique
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  question       Question[]
+  user           User[]
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  email     String?   @db.VarChar(255) @unique 
+  address   String    @db.VarChar(255)
+  password  String    @db.VarChar(255)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  survey    Survey[]
+}
+
+model Question {
+  id        Int       @id @default(autoincrement())
+  survey    Survey    @relation(fields: [surveyId], references: [id])
+  surveyId  Int       @unique
+  text      String    @db.Text
+  answer    Answer[]
+}
+
+model Answer {
+  id          Int       @id @default(autoincrement())
+  text        String    @db.Text
+  question    Question  @relation(fields: [questionId], references: [id])
+  questionId  Int       @unique
+  timesChosen Int       @default(0)
+}
+
