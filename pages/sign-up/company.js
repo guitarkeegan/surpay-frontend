@@ -1,6 +1,7 @@
 import {Form} from "web3uikit"
 
 export default function signUpCompany() {
+    
     return (
         <Form
             buttonConfig={{
