@@ -8,6 +8,9 @@ const companyData = [
     }
 ]
 
-const seedCompanies = () => Company.bulkCreate(companyData);
+const seedCompanies = () => Company.bulkCreate(companyData, {
+    individualHooks: true,
+    returning: true,
+});
 
 module.exports = seedCompanies;

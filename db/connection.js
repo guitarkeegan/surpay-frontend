@@ -1,3 +1,5 @@
+require("dotenv").config();
+const { config } = require('dotenv');
 const Sequelize = require('sequelize');
 // setup to run locally or on heroku
 const sequelize = process.env.JAWSDB_URL

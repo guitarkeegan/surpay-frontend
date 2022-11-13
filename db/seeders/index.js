@@ -6,6 +6,7 @@ const seedUsers = require("./user-seeds");
 const seedCompanies = require("./company-seeds");
 
 const sequelize = require('../connection');
+const { resolve } = require("styled-jsx/css");
 
 async function seedAll(){
     await sequelize.sync({force: true});
@@ -26,10 +27,10 @@ async function seedAll(){
 seedAll()
 .then(()=>{
     console.log("Seeds completed!!");
-    exit(0);
+    process.exit(0);
 }   
 )
 .catch((e)=>{
     console.error(e);
-    exit(1);
+    process.exit(1);
 })

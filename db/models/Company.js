@@ -18,11 +18,11 @@ const sequelize = require('../connection');
                 autoIncrement: true,
             },
             name: {
-                type: DataTypes.String,
+                type: DataTypes.STRING,
                 allowNull: false,
             },
             email: {
-                type: DataTypes.String,
+                type: DataTypes.STRING,
                 allowNull: false,
                 unique: true,
                 validate: {
