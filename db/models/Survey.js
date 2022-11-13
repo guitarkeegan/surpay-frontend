@@ -1,6 +1,7 @@
 'use strict';
 
-
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../connection');
 
   class Survey extends Model {
 
