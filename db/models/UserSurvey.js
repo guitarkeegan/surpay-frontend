@@ -1,18 +1,9 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class UserSurvey extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  }
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../connection');
+
+  class UserSurvey extends Model {}
+
   UserSurvey.init({
       id: {
         type: DataTypes.INTEGER,
@@ -20,16 +11,26 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         autoIncrement: true
       },
-      SurveyId: {
+      survey_id: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        references: {
+          model: 'survey',
+          key: 'id'
+        }
+      },
+      user_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'user',
+          key: 'id'
+        }
       },
   }, {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'UserSurvey',
+    modelName: 'user_survey',
   });
-  return UserSurvey;
-};
+
+  module.exports = UserSurvey;
