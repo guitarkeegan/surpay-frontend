@@ -42,3 +42,5 @@ User.belongsToMany(Survey, {
 Survey.belongsToMany(User, {
     through: UserSurvey
 })
+
+module.exports = {Company, User, Survey, Question, Answer, UserSurvey}
