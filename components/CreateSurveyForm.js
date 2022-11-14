@@ -14,10 +14,10 @@ export default function CreateSurveyForm() {
         <div>
         <h1>{surveyTitle ? surveyTitle : "Survey Title?"}</h1>
         <form>
-            <label className="mr-2">Survey Title</label>
-            <input autoComplete="off" onChange={(e) => setSurveyTitle(e.target.value)} className="border-2 p-2 rounded-lg border-slate-500 mr-2" name="survey-title"></input>
+            <label className="">Survey Title</label>
+            <input autoComplete="off" onChange={(e) => setSurveyTitle(e.target.value)} className="" name="survey-title"></input>
             <button
-             className="border-2 p-2 rounded-lg hover:bg-slate-500" type="button"
+             className="" type="button"
             //  onSubmit={}
              >Add Question</button>
         </form>
