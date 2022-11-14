@@ -1,7 +1,12 @@
 import {Form} from "web3uikit"
+// import {Company} from "../../db/models"
+import Companies from "../../components/AllCompanies"
 
 export default function loginCompany() {
+
+ 
     return (
+        <>
         <Form
             buttonConfig={{
                 text: "Login",
@@ -30,5 +35,8 @@ export default function loginCompany() {
             onSubmit={function noRefCheck() {}}
             title="Login"
         />
+        <Companies />
+        </>
     )
 }
+
