@@ -11,8 +11,9 @@ export default async function handler(req, res) {
     const surveyPk = parseInt(urlArr[urlArr.length - 1])
 
     try {
-        /* ------------USE THIS TO MOCK THE USER ID------------- */
         
+        /* ------------USE THIS TO MOCK THE USER ID------------- */
+
         const mockUserId = 2 // get req.session.user.id for userId
 
         // check if user has submitted the survey already
