@@ -9,30 +9,30 @@ const UserSurvey = require("./UserSurvey");
 //define the relationships!
 
 Company.hasMany(Survey, {
-    foreignKey: "survey_id",
+    // foreignKey: "survey_id",
     onDelete: "CASCADE"
 });
 
 Survey.belongsTo(Company, {
-    foreignKey: "company_id"
+    // foreignKey: "company_id"
 });
 
 Survey.hasMany(Question, {
-    foreignKey: "survey_id",
+    // foreignKey: "survey_id",
     onDelete: "CASCADE"
 })
 
 Question.belongsTo(Survey, {
-    foreignKey: "survey_id"
+    // foreignKey: "survey_id"
 });
 
 Question.hasMany(Answer, {
-    foreignKey: "question_id",
+    // foreignKey: "question_id",
     onDelete: "CASCADE"
 })
 
 Answer.belongsTo(Question, {
-    foreignKey: "question_id"
+    // foreignKey: "question_id"
 })
 
 User.belongsToMany(Survey, {
