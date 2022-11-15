@@ -21,6 +21,11 @@ const sequelize = require('../connection');
         type: DataTypes.INTEGER,
         allowNull: false
       },
+      number_of_takers_fullfilled: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        defaultValue: 0
+      },
       total_payout: {
         type: DataTypes.INTEGER,
         allowNull: false

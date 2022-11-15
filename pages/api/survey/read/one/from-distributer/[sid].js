@@ -12,6 +12,10 @@ export default async function handler(req, res){
     console.log(surveyPk)
 
     try{
+
+        // check if req.session.user.id is == the company_id
+        // found in surveyData
+
         //pk method not working
     const surveyData = await Survey.findByPk(surveyPk)
     console.log(surveyData)
