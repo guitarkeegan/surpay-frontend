@@ -16,6 +16,10 @@ const questionData = [
   {
     survey_id: 1,
     question_text: "How likely are you to invest in crypto projects?"
+  },
+  {
+    survey_id: 2,
+    question_text: "What is the answer?"
   }
 ]
 

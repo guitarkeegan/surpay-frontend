@@ -4,9 +4,9 @@ const seedQuestions = require("./question-seeds");
 const seedSurveys = require("./survey-seeds");
 const seedUsers = require("./user-seeds");
 const seedCompanies = require("./company-seeds");
-
+const seedThroughTable = require("./user-survey-seeds");
 const sequelize = require('../connection');
-const { resolve } = require("styled-jsx/css");
+
 
 async function seedAll(){
     await sequelize.sync({force: true});
@@ -21,7 +21,8 @@ async function seedAll(){
     console.log('\n----- ANSWERS SEEDED -----\n');
     await seedUsers();
     console.log('\n----- USERS SEEDED -----\n');
-    
+    await seedThroughTable();
+    console.log('\n----- USER_SURVEY SEEDED -----\n');
 }
 
 seedAll()

@@ -81,6 +81,16 @@ const answerData = [
     answer_text: "Let's put it this way, I don't have a bank account",
     times_selected: 0
   },
+  {
+    question_id: 5,
+    answer_text: "Yes",
+    times_selected: 1
+  },
+  {
+    question_id: 5,
+    answer_text: "No",
+    times_selected: 0
+  }
 ]
 
 const seedAnswers = () => Answer.bulkCreate(answerData);
