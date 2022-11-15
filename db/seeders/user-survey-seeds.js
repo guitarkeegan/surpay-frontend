@@ -2,8 +2,8 @@ const UserSurvey = require("../models/UserSurvey")
 
 const userSurveyData = [
     {
+        survey_id: 2,
         user_id: 1,
-        survey_id: 2
     }
 ]
 
