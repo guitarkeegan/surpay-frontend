@@ -9,7 +9,7 @@ export default function BackgroundImage(){
             <Image 
             src={backgroundImage}
             alt={"techy backgound image"}
-            styles={styles.companyBackground}>
+            className={styles.companyBackground}>
             </Image>
 
 
