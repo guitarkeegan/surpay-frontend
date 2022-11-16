@@ -1,6 +1,7 @@
 .companyBackground {
-    z-index: -2;
+    /* z-index: -2;
     min-height: 100%;
+
     min-width: 1024px;
     max-width: 1600px;
     
@@ -9,7 +10,10 @@
       
     position: fixed;
     top: 0;
-    left: 0;
+    left: 0; */
+    
 }
 
 
+/* min-width: 1024px;
+max-width: 1600px; */
