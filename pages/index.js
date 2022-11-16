@@ -9,9 +9,6 @@ export default function Home() {
         <meta name="description" content="A Survey site that pays users in crypto" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>Surpay</h1>
-    
-
       </div>
   )
 }
