@@ -1,5 +1,7 @@
 import Head from "next/head"
 import Navbar from "../components/Navbar"
+import Hero  from "../components/homepage/Hero"
+import Welcome from "../components/homepage/Welcome"
 
 export default function Home() {
     return (

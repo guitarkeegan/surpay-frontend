@@ -7,24 +7,37 @@ import {useState} from "react"
 import {v4 as uuid4} from "uuid"
 
 
-export default function QuestionCard() {
+export default function QuestionCard({addCard}) {
 
     const [card, setCard] = useState({
 
         question : "",
-        answers: {
-            option1: "",
-            option2: "",
-            option3: "",
-            option4: ""
-          }
+        option1: "",
+        option2: "",
+        option3: "",
+        option4: ""
       })
 
     function handleChange(event){
         const {name, value} = event.target
-        console.log(value, name)
+
+        setCard(prev=>{
+           return { ...prev,
+            [name]: value}
+        })
+
+        console.log(card)
     }
 
+    function handleSubmit(event){
+        event.preventDefault()
+        addCard(card)
+    }
+
+    function handleDelete(event){
+        event.preventDefault()
+        console.log("delete!")
+    }
     return (
         <Form className={styles.questionCard}>
             <Row className="justify-content-center">
@@ -55,7 +68,7 @@ export default function QuestionCard() {
                             size="lg"
                             name="option1"
                             onChange={handleChange}
-                            value={card}
+                            value={card.option1}
                         />
                         <Form.Text className="text-muted"></Form.Text>
                     </Form.Group>
@@ -72,7 +85,7 @@ export default function QuestionCard() {
                             size="lg"
                             name="option2"
                             onChange={handleChange}
-                            value={card}
+                            value={card.option2}
                         />
                         <Form.Text className="text-muted"></Form.Text>
                     </Form.Group>
@@ -89,7 +102,7 @@ export default function QuestionCard() {
                             size="lg"
                             name="option3"
                             onChange={handleChange}
-                            value={card}
+                            value={card.option3}
                         />
                         <Form.Text className="text-muted"></Form.Text>
                     </Form.Group>
@@ -106,21 +119,27 @@ export default function QuestionCard() {
                             size="lg"
                             name="option4"
                             onChange={handleChange}
-                            value={card}
+                            value={card.option4}
                         />
                         <Form.Text className="text-muted"></Form.Text>
                     </Form.Group>
                 </Col>
             </Row>
 
-            <Row className="justify-content-between">
+            <Row className="justify-content-between mb-3">
                 <Col sm md={2} className={styles.addQuestionButton} >
-                    <Button variant="light" type="submit">
+                    <Button
+                    variant="light" 
+                    type="submit"
+                    onClick={handleSubmit}>
                         +
                     </Button>
                 </Col>
                 <Col sm md={2} className={styles.addQuestionButton} >
-                    <Button variant="light" type="submit">
+                    <Button
+                    variant="light"
+                    type="button"
+                    onClick={handleDelete}>
                         X
                     </Button>
                 </Col>

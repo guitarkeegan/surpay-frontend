@@ -5,13 +5,16 @@ import Row from "react-bootstrap/Row"
 import styles from "../../styles/FormStyles.module.css"
 import QuestionCard from './QuestionCard';
 import {useState} from "react"
+import Container from 'react-bootstrap/Container';
 
 export default function NewSurvey(){
 
   const [cards, setCards] = useState([])
 
-    function createNewCard(){
-
+    function createNewCard(newCard){
+      setCards(prev=>{
+        return [...prev, newCard]
+      })
     }
 
     function saveCard(){
@@ -54,19 +57,23 @@ export default function NewSurvey(){
       </Form.Group>
       </Col>
 </Row>
-
-
-
-<Row>
-<Col className='text-center'>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-      </Col>
-      
-      </Row>
     </Form>
-    <QuestionCard />
+
+    
+    <QuestionCard addCard={createNewCard} />
+   {cards.map(card=>{
+      return (<QuestionCard 
+        question={card.question}
+        option1={card.option1}
+        option2={card.option2}
+        option3={card.option3}
+        option4={card.option4}
+        addCard={createNewCard} />
+      )})}
+
+      <Container className="d-flex justify-content-center mt-5">
+      <Button className={styles.completeSurveyButton}>Complete Survey</Button>
+      </Container>
     </>
 
     )
