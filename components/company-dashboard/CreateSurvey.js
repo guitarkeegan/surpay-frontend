@@ -50,7 +50,7 @@ export default function NewSurvey(){
       </Col>
       <Col sm md={4} >
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Funding Amound</Form.Label>
+        <Form.Label>Funding Amount</Form.Label>
         <Form.Control className={styles.inputFields} type="text" placeholder="" size='lg' />
         <Form.Text className="text-muted">
         </Form.Text>
