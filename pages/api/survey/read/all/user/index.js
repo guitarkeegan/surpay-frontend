@@ -3,6 +3,8 @@ import { User, UserSurvey, Survey } from "../../../../../../db/models"
 
 export default async function handler(req, res) {
 
+    
+
     /* ------------USE THIS TO MOCK THE USER ID------------- */
 
     const mockUserId = 1 // get req.session.user.id for userId
@@ -17,6 +19,8 @@ export default async function handler(req, res) {
     for (let obj of surveysTaken.surveys){
             surveysToExclude.push(obj.id)
     }
+
+    //TODO: check if survey has already be complete in general
 
     const [results, metadata] = await sequelize.query(
         `SELECT * FROM Survey WHERE ID NOT IN(${surveysToExclude.join()});`)
