@@ -108,6 +108,18 @@
   margin-left: 0.5rem;
 }
 
+/* Home Page Start */
+.hero-image-div {
+  background-image: url('/heroimage.jpg');
+}
+/* Home Page End*/
+
+/* Welcome Page Start */
+.test {
+  color: blue;
+}
+/* Welcome Page End*/
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
