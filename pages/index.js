@@ -1,14 +1,19 @@
-import Head from 'next/head'
-import Navbar from '../components/Navbar'
+import Head from "next/head"
+import Navbar from "../components/Navbar"
 
 export default function Home() {
-  return (
-    <div>
-      <Head>
-        <title>Surpay</title>
-        <meta name="description" content="A Survey site that pays users in crypto" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      </div>
-  )
+    return (
+        <div>
+            <Head>
+                <title>Surpay</title>
+                <meta name="description" content="A Survey site that pays users in crypto" />
+
+                <link rel="icon" href="/favicon.ico" />
+                <style>
+                    @import
+                    url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap');
+                </style>
+            </Head>
+        </div>
+    )
 }

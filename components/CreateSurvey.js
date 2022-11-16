@@ -69,12 +69,12 @@ export default function CreateSurvey(){
     }
 
     return (
-        <div className="p-5">
-            <h1 className="py-4 px-4 font-bold text-3xl">Create Survey</h1>
+        <div className="">
+            <h1 className="">Create Survey</h1>
             {surpayAddress ? (
                 <>
                     <button
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-auto"
+                        className=""
                         onClick={async () =>
                             await createSurvey({
                                 // onComplete:
