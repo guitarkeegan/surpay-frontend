@@ -3,6 +3,7 @@ import { NotificationProvider } from "web3uikit"
 import { SWRConfig } from "swr"
 import "bootstrap/dist/css/bootstrap.min.css"
 import Layout from "../components/Layout"
+import SSRProvider from "react-bootstrap/SSRProvider"
 
 function MyApp({ Component, pageProps }) {
     return (
@@ -14,13 +15,15 @@ function MyApp({ Component, pageProps }) {
         //         },
         //     }}
         // >
-            <MoralisProvider initializeOnMount={false}>
-                <NotificationProvider>
-                    <Layout>
+        <MoralisProvider initializeOnMount={false}>
+            <NotificationProvider>
+                <Layout>
+                    <SSRProvider>
                         <Component {...pageProps} />
-                    </Layout>
-                </NotificationProvider>
-            </MoralisProvider>
+                    </SSRProvider>
+                </Layout>
+            </NotificationProvider>
+        </MoralisProvider>
         // </SWRConfig>
     )
 }

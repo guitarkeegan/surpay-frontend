@@ -1,14 +1,12 @@
 import styles from  "../styles/Layout.module.css"
 import Navbar from "./Navbar"
-import Hero from "./Hero"
-import Welcome from "./Welcome"
 
-export default function Layout(){
+export default function Layout({children}){
     return (
         <>
-            <Navbar></Navbar>
-            <Hero></Hero>
-            <Welcome></Welcome>
-        </>
+    <Navbar />
+
+    {children}
+    </>
     )
 }

@@ -2,12 +2,13 @@ import Link from 'next/link'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-// import NavDropdown from 'react-bootstrap/NavDropdown';
 import LoginModal from './LoginModal';
+import styles from '../styles/Navbar.module.css'
 
 function MainNav() {
+
   return (
-        <Navbar bg="light" expand="lg">
+        <Navbar className={styles.navStyle} expand="lg">
           <Container>
             <Navbar.Brand href="#home">Surpay</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
