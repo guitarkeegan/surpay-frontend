@@ -1,30 +1,28 @@
-import Link from 'next/link'
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import LoginModal from './LoginModal';
-import styles from '../styles/Navbar.module.css'
+import Link from "next/link"
+import Container from "react-bootstrap/Container"
+import Nav from "react-bootstrap/Nav"
+import Navbar from "react-bootstrap/Navbar"
+import LoginModal from "./LoginModal"
+import styles from "../styles/Navbar.module.css"
+import ConnectWallet from "./ConnectWallet"
 
 function MainNav() {
-
-  return (
+    return (
         <Navbar className={styles.navStyle} expand="lg">
-          <Container>
-            <Navbar.Brand href="#home">Surpay</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="me-auto">
-                <LoginModal />
-              </Nav>
-            </Navbar.Collapse>
-          </Container>
+            <Container>
+                <Nav className="ms-auto">
+                    <ConnectWallet />
+                    <LoginModal />
+                </Nav>
+            </Container>
         </Navbar>
-  );
+    )
 }
 
-export default MainNav;
+export default MainNav
 
-{/* <>
+{
+    /* <>
 <div>
   <ul className='' >
     <li><Link href="/">Home</Link></li>
@@ -39,4 +37,5 @@ export default MainNav;
 <div>
     {children}
 </div>
-</> */}
+</> */
+}

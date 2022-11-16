@@ -1,12 +1,14 @@
 import { ConnectButton } from "web3uikit"
+import styles from "../styles/Navbar.module.css"
 
 export default function ConnectWallet() {
     return (
-        <nav className="p-5 border-b-2 flex flex-row">
-            <h1 className="py-4 px-4 font-bold text-3xl">Survey Creator</h1>
-            <div className="ml-auto py-2 px-4">
-                <ConnectButton moralisAuth={false}/>
-            </div>
-        </nav>
+        <ConnectButton
+            moralisAuth={false}
+            size={"large"}
+            theme="colored"
+            color="blue"
+            
+        />
     )
 }

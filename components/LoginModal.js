@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import styles from '../styles/Navbar.module.css'
 
 function LoginModal() {
   const [show, setShow] = useState(false);
@@ -10,7 +11,7 @@ function LoginModal() {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button className={styles.navButton} onClick={handleShow}>
         Login
       </Button>
 
