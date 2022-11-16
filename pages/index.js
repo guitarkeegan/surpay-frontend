@@ -14,6 +14,8 @@ export default function Home() {
                     url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap');
                 </style>
             </Head>
+            <Hero />
+            <Welcome />
         </div>
     )
 }
