@@ -4,19 +4,22 @@ import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row"
 import styles from "../../styles/FormStyles.module.css"
 import QuestionCard from './QuestionCard';
+import {useState} from "react"
 
 export default function NewSurvey(){
 
-    const inlineStyle = {
-        takersDesired: {
-            marginLeft: "40px"
-        },
-        amountToFund: {
-            marginRight: "40px"
-        }
+  const [cards, setCards] = useState([])
+
+    function createNewCard(){
+
+    }
+
+    function saveCard(){
+
     }
 
     return (
+      <>
         <Form>
         <Row className={"text-center mb-3"}>
     <h2>Create a Survey</h2>
@@ -52,7 +55,7 @@ export default function NewSurvey(){
       </Col>
 </Row>
 
-<QuestionCard />
+
 
 <Row>
 <Col className='text-center'>
@@ -63,6 +66,8 @@ export default function NewSurvey(){
       
       </Row>
     </Form>
+    <QuestionCard />
+    </>
 
     )
 }
