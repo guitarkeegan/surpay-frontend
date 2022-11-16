@@ -4,6 +4,7 @@ import { SWRConfig } from "swr"
 import "bootstrap/dist/css/bootstrap.min.css"
 import Layout from "../components/Layout"
 import SSRProvider from "react-bootstrap/SSRProvider"
+import "../styles/globals.css"
 
 function MyApp({ Component, pageProps }) {
     return (

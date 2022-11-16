@@ -1,6 +1,5 @@
 .companyBackground {
     z-index: -2;
-    filter: brightness(110%);
     min-height: 100%;
     min-width: 1024px;
     max-width: 1600px;
@@ -12,3 +11,5 @@
     top: 0;
     left: 0;
 }
+
+

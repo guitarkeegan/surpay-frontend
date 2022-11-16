@@ -1,0 +1,39 @@
+.greeting {
+    position: absolute;
+    color: white;
+    z-index: 3;
+    position: absolute; 
+    left: 0; 
+    right: 0; 
+    top: 160px;
+    font-weight: 700;
+    font-size: 4rem;
+    margin-left: auto; 
+    margin-right: auto; 
+    width: 600px; /* Need a specific value to work */
+}
+
+.h1Wrapper {
+    text-align: center;
+
+}
+
+.leftSide, .rightside {
+    background-color: white;
+}
+
+.leftSide {
+
+}
+
+.toggleBtns {
+    background-color: rgb(171, 236, 250);
+}
+
+
+@media screen and (max-width: 600px){
+    .greeting {
+        font-size: 2.5rem;
+        width: 200px;
+    }
+}

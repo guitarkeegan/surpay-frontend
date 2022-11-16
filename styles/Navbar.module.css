@@ -1,5 +1,21 @@
 .navStyle {
-    opacity: 70%;
+    opacity: 50%;
     background-color: black;
     padding: 28px 0;
+    position:absolute;
+    z-index: 1;
+    top: 0;
+    width: 100%
 }
+
+.navButton {
+    background-color: rgb(123, 176, 253);
+    border-radius: 40px;
+    padding: 5px 40px;
+    color: black;
+    font-size: 2rem;
+    font-weight: 400;
+    opacity: 100%;
+    z-index: 1;
+}
+
