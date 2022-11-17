@@ -8,6 +8,8 @@ import {useState} from "react"
 import Button from "react-bootstrap/Button"
 import DistAccount from "../../../components/company-dashboard/AccountSettings"
 import NewSurvey from "../../../components/company-dashboard/CreateSurvey"
+import PastSurvey from "../../../components/company-dashboard/PastSurveys"
+import ManageSurvey from "../../../components/company-dashboard/EditSurvey"
 
 export default function CompanyDashboard() {
 
@@ -46,9 +48,9 @@ export default function CompanyDashboard() {
                 <Col sm md={3} className={"leftSide"}>
                 <Stack>
                     <Button onClick={() => setSelection("Create a new survey")} className={styles.toggleBtns}>Create a new survey</Button>
-                    <Button className={styles.toggleBtns}>Launch a past survey</Button>
-                    <Button className={styles.toggleBtns}>Manage a survey</Button>
-                    <Button className={styles.toggleBtns}>Account settings</Button>
+                    <Button onClick={()=>setSelection("Launch a past survey")} className={styles.toggleBtns}>Launch a past survey</Button>
+                    <Button onClick={()=>setSelection("Manage a survey")} className={styles.toggleBtns}>Manage a survey</Button>
+                    <Button onClick={()=>setSelection("Account settings")} className={styles.toggleBtns}>Account settings</Button>
                 </Stack>
                 </Col>
                 <Col sm md={8} className={"rightSide"}>
