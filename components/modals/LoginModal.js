@@ -21,7 +21,14 @@ function LoginModal() {
         </Modal.Header>
         <Modal.Body>Are you a company that will be administering a surveys, or a user taking the survey?</Modal.Body>
         <Modal.Footer>
-          
+        <form>
+        <label>company</label>
+          <input type={'radio'}></input>
+          <label>user</label>
+          <input type={'radio'}></input>
+          <br/>
+          <Button>Submit</Button>
+          </form>
         </Modal.Footer>
       </Modal>
     </>
