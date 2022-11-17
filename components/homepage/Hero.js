@@ -1,5 +1,5 @@
 import Image from "next/image"
-import hero from "../../assets/img/heroImage.jpg"
+import hero from "../../public/assets/img/heroImage.jpg"
 import styles from "../../styles/Hero.module.css"
 
 
