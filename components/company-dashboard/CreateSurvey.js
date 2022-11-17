@@ -5,7 +5,7 @@ import styles from "../../styles/FormStyles.module.css"
 import QuestionCard from './QuestionCard';
 import {useState, useEffect} from "react"
 import Container from 'react-bootstrap/Container';
-import CreateSurveyLogic from '../CreateSurveyLogic';
+import CreateSurveyLogic from './CreateSurveyLogic';
 import {v4 as uuid4} from "uuid"
 
 export default function NewSurvey(){
@@ -33,7 +33,7 @@ export default function NewSurvey(){
     } catch (err){
       console.log(err)
     }
-  }, [cards])
+  }, [surveyDetails])
 
     function createNewCard(newCard){
       setCards(prev=>{
@@ -93,7 +93,7 @@ export default function NewSurvey(){
     </Form>
 
     
-    <QuestionCard addCard={createNewCard} />
+    <QuestionCard key={uuid4()} addCard={createNewCard} />
    {cards.map(card=>{
       return (<QuestionCard 
         key={uuid4()}

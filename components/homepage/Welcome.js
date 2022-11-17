@@ -6,8 +6,8 @@ import styles from "../../styles/Welcome.module.css"
 
 export default function Welcome() {
     return (
-        <sectiion>
-            <body className={styles.welcomeContainer}>
+        <section>
+            <div className={styles.welcomeContainer}>
                 <div className={styles.welcomeSection}>
                     <h1 className={styles.welcomeTitle}>Welcome to Surpay</h1>
                     <h2 className={styles.welcomeStatement}>Take a survey and get paid in crypto</h2>
@@ -43,12 +43,12 @@ export default function Welcome() {
                 </section>
 
                 
-            </body>
+            </div>
                 <footer className={styles.footer}>
                     <h2 className="footerText">Surpay</h2>
                 </footer>
 
-        </sectiion>
+        </section>
     );
   } 
                     // <div className={styles.secondSectionLeft}>

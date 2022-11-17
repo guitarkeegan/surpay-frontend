@@ -1,11 +1,11 @@
-import { abi, contractAddresses } from "../constants"
+import { abi, contractAddresses } from "../../constants"
 import { useMoralis, useWeb3Contract } from "react-moralis"
 import { useEffect, useState } from "react"
 import { ethers } from "ethers"
 import { useNotification } from "web3uikit"
 import Button from 'react-bootstrap/Button';
-import styles from "../styles/FormStyles.module.css"
-import useSWR from 'swr'
+import styles from "../../styles/FormStyles.module.css"
+
 
 export default function CreateSurveyLogic() {
     const { chainId: chainIdHex, isWeb3Enabled, Moralis } = useMoralis()
@@ -56,6 +56,8 @@ export default function CreateSurveyLogic() {
 
     async function updateUI() {
         const surveyCreationFeeFromCall = (await getSurveyCreationFee()).toString()
+        // get total payout from local storage
+        // localStorage.getItem()
         setSurveyCreationFee(surveyCreationFeeFromCall)
     }
 
