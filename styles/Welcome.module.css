@@ -1,5 +1,88 @@
+.welcomeContainer {
+    background-color: rgb(59, 59, 66);
+    border-top: 25px solid;
+    border-color: white;
+}
+
 .welcomeTitle {
-    color: blue;
-    padding: 70px 0;
+    color: white;
+    padding-top: 80px;
     text-align: center;
 }
+
+.welcomeStatement {
+    color: white;
+    text-align: center;
+}
+
+.firstSectionLeft {
+    margin: 50px 100px 50px 100px;
+    padding-top: 20px;
+    height: auto; 
+    width: auto; 
+    max-width: 400px; 
+    max-height: 400px;
+    float: left;
+ 
+}
+
+.firstSectionRight {
+    height: auto; 
+    width: auto; 
+    max-width: 500px; 
+    max-height: 500px;
+    margin-left: 50px;
+}
+
+.secondSectionRight {
+    margin: 400px 100px 50px 100px;
+    padding-top: 20px;
+    /* height: auto; 
+    width: auto;  */
+    max-width: 400px; 
+    max-height: 400px;
+    position: absolute;
+    right: 100px;
+    top: 950px;
+} 
+
+.secondSectionLeft {
+    height: auto; 
+    width: auto; 
+    max-width: 500px; 
+    max-height: 500px;
+    margin-left: 50px;
+}
+
+.surveyTakerImg {
+    height: auto; 
+    width: auto; 
+    max-width: 300px; 
+    max-height: 300px;
+}
+
+/* .firstParagraph 
+.secondParagraph {
+    color: white;
+} */
+
+.btnDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    margin-top: 400px;
+}
+.footer {
+    background-color: white;
+    height: 300px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.footerText {
+    display: inline-block;
+    align-items: center;
+    margin-top: 150px;
+}
+
