@@ -5,23 +5,13 @@ import Row from "react-bootstrap/Row"
 import styles from "../../styles/FormStyles.module.css"
 import {v4 as uuid4} from "uuid"
 
-export default function DistAccount() {
+export default function UserAccount() {
   return (
     
     <Form>
     <Row className={"text-center mb-3"}>
     <h2>Account Settings</h2>
     </Row>
-    <Row className='justify-content-center'>
-    <Col sm md={10} >
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Company Name</Form.Label>
-        <Form.Control className={styles.inputFields} type="email" placeholder="Enter email" size='lg' />
-        <Form.Text className="text-muted">
-        </Form.Text>
-      </Form.Group>
-      </Col>
-</Row>
 <Row className='justify-content-center'>
 <Col sm md={10}>
       <Form.Group className="mb-3" controlId="formBasicPassword">

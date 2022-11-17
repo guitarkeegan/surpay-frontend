@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import styles from '../styles/Navbar.module.css'
+import styles from '../../styles/Navbar.module.css'
+
 
 function LoginModal() {
   const [show, setShow] = useState(false);
@@ -17,16 +18,17 @@ function LoginModal() {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Body>Are you a company that will be administering a surveys, or a user taking the survey?</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
+        <form>
+        <label>company</label>
+          <input type={'radio'}></input>
+          <label>user</label>
+          <input type={'radio'}></input>
+          <br/>
+          <Button>Submit</Button>
+          </form>
         </Modal.Footer>
       </Modal>
     </>
