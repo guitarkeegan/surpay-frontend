@@ -1,4 +1,3 @@
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row"
@@ -6,14 +5,31 @@ import styles from "../../styles/FormStyles.module.css"
 import QuestionCard from './QuestionCard';
 import {useState} from "react"
 import Container from 'react-bootstrap/Container';
+import CreateSurveyLogic from '../CreateSurveyLogic';
 
 export default function NewSurvey(){
+
+  const [surveyDetails, setSurveyDetails] = useState({
+    surveyTitle: "",
+    numOfTakers: "",
+    fundingAmount: ""
+  })
+
 
   const [cards, setCards] = useState([])
 
     function createNewCard(newCard){
       setCards(prev=>{
         return [...prev, newCard]
+      })
+    }
+
+    function handleChange(event){
+      event.preventDefault()
+      const {name, value} = event.target
+
+      setSurveyDetails(prev=>{
+        return {...prev, [name]: value}
       })
     }
 
@@ -32,7 +48,7 @@ export default function NewSurvey(){
     <Col sm md={10} >
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Survey Title</Form.Label>
-        <Form.Control className={styles.inputFields} type="text" placeholder="" size='lg' />
+        <Form.Control value={surveyDetails.surveyTitle} onChange={handleChange} name={"surveyTitle"} className={styles.inputFields} type="text" placeholder="" size='lg' />
         <Form.Text className="text-muted">
         </Form.Text>
       </Form.Group>
@@ -43,7 +59,7 @@ export default function NewSurvey(){
     <Col sm md={4} >
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label></Form.Label>
-        <Form.Control className={styles.inputFields} type="text" placeholder="Number of survey takers" size='lg' />
+        <Form.Control value={surveyDetails.numOfTakers} onChange={handleChange} name={"numOfTakers"} className={styles.inputFields} type="text" placeholder="Number of survey takers" size='lg' />
         <Form.Text className="text-muted">
         </Form.Text>
       </Form.Group>
@@ -51,7 +67,7 @@ export default function NewSurvey(){
       <Col sm md={4} >
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Funding Amount</Form.Label>
-        <Form.Control className={styles.inputFields} type="text" placeholder="" size='lg' />
+        <Form.Control value={surveyDetails.fundingAmount} onChange={handleChange} name={"fundingAmount"} className={styles.inputFields} type="text" placeholder="" size='lg' />
         <Form.Text className="text-muted">
         </Form.Text>
       </Form.Group>
@@ -70,10 +86,13 @@ export default function NewSurvey(){
         option4={card.option4}
         addCard={createNewCard} />
       )})}
-
+      { parseInt(surveyDetails.fundingAmount) > 0 ?
       <Container className="d-flex justify-content-center mt-5">
-      <Button className={styles.completeSurveyButton}>Complete Survey</Button>
+      <CreateSurveyLogic createdSurvey={surveyDetails} qAndA={cards} />
       </Container>
+       :
+      <></>
+      }
     </>
 
     )
