@@ -86,6 +86,23 @@
     padding-bottom: 20px;
 }
 
+.footerLogo {
+    height: auto; 
+    width: auto; 
+    max-width: 200px; 
+    max-height: 200px;
+    /* align-items: flex-start; */
+    justify-content: space-around;
+    /* float: left; */
+}
+
+.middleFooterPolygon,
+.bottomFooterText {
+    text-align: center;
+}
+
+
+
 /* .getStartedBtn {
     justify-content: center;
     align-items: center;

@@ -1,6 +1,7 @@
 import Image from "next/image"
 import surveyTaker from "../../public/assets/img/surveyTakerImage.jpg"
 import ethereumImg from "../../public/assets/img/ethereumImg.jpg"
+import surpayLogoImg from "../../public/assets/img/surpayLogo.png"
 import Button from 'react-bootstrap/Button'
 // import Container from 'react-bootstrap/Container';
 // import Row from 'react-bootstrap/Row';
@@ -48,14 +49,20 @@ export default function Welcome() {
 
             </div>
                 <footer className={styles.footerCon}>
-                    <div>
-                    <h2 className="topFooterText">Surpay</h2>
+                    <div className={styles.footerLogo}>
+                        <Image 
+                        src={surpayLogoImg}
+                        alt={"Surpay Logo"}
+                        className={styles.surpayLogoImg}>
+                        </Image>
+                        <h2 className={styles.followUsFooter}>Follow Us</h2>
+                        <h3 className={styles.legalFooter}>Legal</h3>
                     </div>
                     <div>
-                    <h2 className="middleFooterPolygon">Powered By Polygon</h2>
+                    <h2 className={styles.middleFooterPolygon}>Powered By Polygon</h2>
                     </div>
                     <div>
-                    <h2 className="bottomFooterText">2022 Surpay. All Rights Reserved</h2>
+                    <h2 className={styles.bottomFooterText}>2022 Surpay. All Rights Reserved</h2>
                     </div>
                 </footer>
 
