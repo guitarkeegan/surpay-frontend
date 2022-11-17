@@ -1,4 +1,98 @@
-.welcomeContainer {
+.welcomeCon {
+    background-color: rgb(59, 59, 66);
+    border-top: 25px solid;
+    border-color: white;
+}
+
+
+.welcomeTitle,
+.welcomeStatement,
+.firstParagraph,
+.secondParagraph {
+    color: white
+}
+
+.welcomeTitle {
+    color: white;
+    padding-top: 80px;
+    text-align: center;
+}
+
+.welcomeStatement {
+    color: white;
+    text-align: center;
+}
+
+.topCon {
+    flex-wrap: wrap;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.firstSectionLeft {
+    margin: 0px 70px 50px 70px;
+    padding-top: 20px;
+    height: auto; 
+    width: auto; 
+    max-width: 400px; 
+    max-height: 400px;
+    float: left;
+}
+
+.firstSectionRight {
+    flex-wrap: wrap;
+    margin: 50px 70px 50px 0px;
+    align-items: center;
+}
+
+.secondCon {
+    flex-wrap: wrap;
+    margin-top: 400px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.secondSectionRight {
+    margin: -200px 70px 50px 70px;
+    height: auto; 
+    width: auto; 
+    max-width: 400px; 
+    max-height: 400px;
+    float: right
+}
+
+.secondSectionLeft {
+    align-items: center;
+    margin: 90px 500px 0 70px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btnDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    margin-top: 180px;
+}
+
+
+.footerCon {
+    background-color: white;
+    height: 300px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* .getStartedBtn {
+    justify-content: center;
+    align-items: center;
+} */
+
+
+/* .welcomeCon {
     background-color: rgb(59, 59, 66);
     border-top: 25px solid;
     border-color: white;
@@ -23,7 +117,6 @@
     max-width: 400px; 
     max-height: 400px;
     float: left;
- 
 }
 
 .firstSectionRight {
@@ -37,8 +130,6 @@
 .secondSectionRight {
     margin: 400px 100px 50px 100px;
     padding-top: 20px;
-    /* height: auto; 
-    width: auto;  */
     max-width: 400px; 
     max-height: 400px;
     position: absolute;
@@ -61,11 +152,6 @@
     max-height: 300px;
 }
 
-/* .firstParagraph 
-.secondParagraph {
-    color: white;
-} */
-
 .btnDiv {
     display: flex;
     justify-content: center;
@@ -85,4 +171,4 @@
     align-items: center;
     margin-top: 150px;
 }
-
+ */
