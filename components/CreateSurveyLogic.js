@@ -5,8 +5,9 @@ import { ethers } from "ethers"
 import { useNotification } from "web3uikit"
 import Button from 'react-bootstrap/Button';
 import styles from "../styles/FormStyles.module.css"
+import useSWR from 'swr'
 
-export default function CreateSurveyLogic({createdSurvey, qAndA}) {
+export default function CreateSurveyLogic() {
     const { chainId: chainIdHex, isWeb3Enabled, Moralis } = useMoralis()
     const chainId = parseInt(chainIdHex)
     // console.log(chainId)
@@ -15,9 +16,14 @@ export default function CreateSurveyLogic({createdSurvey, qAndA}) {
 
     const dispach = useNotification()
 
-    
+    /*-------------- MOCK DISTRIBUTER/COMPANY ------------*/
+    const companyId = "1"
+
+    // call api to create new survey
+    // console.log(createdSurvey, qAndA)
+    // fetch("/api/survey/update/distributer", )
+
     const [surveyId, setSurveyId] = useState() // 1
-    const [companyId, setCompanyId] = useState() // 1
     const [totalPayoutAmount, setTotalPaymentAmount] = useState(ethers.utils.parseEther("0.02")) 
     //not more than 0.1 for tests
     const [numOfParticipantsDesired, setNumOfParticipantsDesired] = useState() // use 2

@@ -3,9 +3,10 @@ import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row"
 import styles from "../../styles/FormStyles.module.css"
 import QuestionCard from './QuestionCard';
-import {useState} from "react"
+import {useState, useEffect} from "react"
 import Container from 'react-bootstrap/Container';
 import CreateSurveyLogic from '../CreateSurveyLogic';
+import {v4 as uuid4} from "uuid"
 
 export default function NewSurvey(){
 
@@ -18,6 +19,22 @@ export default function NewSurvey(){
 
   const [cards, setCards] = useState([])
 
+  useEffect(()=>{
+    try{
+    localStorage.setItem("surveyData", JSON.stringify(cards))
+    } catch (err){
+      console.log(err)
+    }
+  }, [cards])
+
+  useEffect(()=>{
+    try{
+    localStorage.setItem("surveyHeader", JSON.stringify(surveyDetails))
+    } catch (err){
+      console.log(err)
+    }
+  }, [cards])
+
     function createNewCard(newCard){
       setCards(prev=>{
         return [...prev, newCard]
@@ -27,15 +44,15 @@ export default function NewSurvey(){
     function handleChange(event){
       event.preventDefault()
       const {name, value} = event.target
-
+      console.log(surveyDetails)
       setSurveyDetails(prev=>{
         return {...prev, [name]: value}
       })
     }
 
-    function saveCard(){
+    // function saveCard(){
 
-    }
+    // }
 
     return (
       <>
@@ -79,6 +96,7 @@ export default function NewSurvey(){
     <QuestionCard addCard={createNewCard} />
    {cards.map(card=>{
       return (<QuestionCard 
+        key={uuid4()}
         question={card.question}
         option1={card.option1}
         option2={card.option2}
@@ -86,9 +104,9 @@ export default function NewSurvey(){
         option4={card.option4}
         addCard={createNewCard} />
       )})}
-      { parseInt(surveyDetails.fundingAmount) > 0 ?
+      { parseFloat(surveyDetails.fundingAmount) > 0 ?
       <Container className="d-flex justify-content-center mt-5">
-      <CreateSurveyLogic createdSurvey={surveyDetails} qAndA={cards} />
+      <CreateSurveyLogic />
       </Container>
        :
       <></>
