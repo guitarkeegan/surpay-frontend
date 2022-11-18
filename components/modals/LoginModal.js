@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import Button from "react-bootstrap/Button"
 import Modal from "react-bootstrap/Modal"
 import styles from "../../styles/Navbar.module.css"
+import ForgotPassword from "./ForgotPasswordModal"
 
 
 function LoginModal() {
@@ -11,18 +12,12 @@ function LoginModal() {
     const handleClose = () => setShow(false)
     const handleShow = () => setShow(true)
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        console.log(event.target)
-        handleClose()
-
-        
-    }
-
     const handleRadio = (selection) => {
         setSelect(selection)
         
     }
+
+    
 
     return (
         <>
@@ -52,9 +47,18 @@ function LoginModal() {
                         </fieldset>
                   
                         <br />
-                        <div className="d-flex justify-content-center mb-2">
-                        <Button className={styles.loginSubmit} onClick={handleSubmit}>Submit</Button>
+                        {
+                            select === "" ?
+                            <div className="d-flex justify-content-center mb-2">
+                        <Button disabled={true} className={styles.loginSubmit}>
+                        Submit</Button>
                         </div>
+                        :
+                        <div className="d-flex justify-content-center mb-2">
+                        <ForgotPassword className={styles.loginSubmit} />
+                        </div>
+                        }
+
                     </form>
                 
             </Modal>

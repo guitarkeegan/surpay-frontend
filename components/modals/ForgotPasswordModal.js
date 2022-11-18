@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import styles from '../../styles/ForgotPasswordModal.css'
+import styles from '../../styles/ForgotPasswordModal.module.css'
 
 export default function ForgotPassword() {
   const [show, setShow] = useState(false);
 
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
 
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
+        Submit
       </Button>
 
       <Modal show={show} onHide={handleClose}>
