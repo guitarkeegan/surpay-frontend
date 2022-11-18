@@ -1,4 +1,4 @@
-import { User, Survey, UserSurvey } from "../../../../../../db/models"
+import { User, Survey, UserSurvey, Question, Answer } from "../../../../../../db/models"
 
 export default async function handler(req, res) {
     // check for 'get' request
@@ -30,7 +30,15 @@ export default async function handler(req, res) {
 
         // found in surveyData
 
-        const surveyData = await Survey.findByPk(surveyPk)
+        const surveyData = await Survey.findByPk(surveyPk, {
+            include: {
+                model: Question,
+                include: {
+                    model: Answer
+                }
+            
+            }
+        })
         console.log(surveyData)
 
         res.status(200).json(surveyData)

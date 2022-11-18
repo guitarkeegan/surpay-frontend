@@ -8,8 +8,9 @@ import styles from "../../styles/Welcome.module.css"
 
 export default function Welcome() {
     return (
-        <sectiion>
 
+        <section>
+        
             <div className={styles.welcomeCon}>
                 <div className={styles.welcomeSection}>
                     <h1 className={styles.welcomeTitle}>Welcome to Surpay</h1>
@@ -65,6 +66,8 @@ export default function Welcome() {
                 </div>
             </footer>
         </sectiion>
+
+
     );
 }
     
