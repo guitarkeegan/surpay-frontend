@@ -1,21 +1,22 @@
 import Image from "next/image"
 import surveyTaker from "../../public/assets/img/surveyTakerImage.jpg"
 import ethereumImg from "../../public/assets/img/ethereumImg.jpg"
+import surpayLogoImg from "../../public/assets/img/surpayLogo.png"
 import Button from 'react-bootstrap/Button'
-// import Container from 'react-bootstrap/Container';
-// import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
 import styles from "../../styles/Welcome.module.css"
 
 
 export default function Welcome() {
     return (
+
         <section>
+        
             <div className={styles.welcomeCon}>
                 <div className={styles.welcomeSection}>
                     <h1 className={styles.welcomeTitle}>Welcome to Surpay</h1>
                     <h2 className={styles.welcomeStatement}>Take a survey and get paid in crypto</h2>
                 </div>
+
                 <section className={styles.topCon}>
                     <div className={styles.firstSectionLeft}>
                         <Image 
@@ -25,14 +26,13 @@ export default function Welcome() {
                         </Image>
                     </div>
                     <div className={styles.firstSectionRight}>
-                        <h2 className={styles.firstParagraph}>lorem ipsum lorem ipsum lore heello jhshsy ksjsus ksushsjs sjsususn snsjsush nsjs sj s</h2>
+                        <h2 className={styles.firstParagraph}>It is as easy as signing up, choosing a survey, completing it, and gettimng paid in crypto. </h2>
                     </div>
-                    
                 </section>
 
                 <section className={styles.secondCon}>
                     <div className={styles.secondSectionLeft}>
-                    <h3 className={styles.secondParagraph}>lorem ipsum hello there how  jshshs jsjhs sj sk sk sj sks js s hsjshisj hsbsjsn</h3>
+                    <h3 className={styles.secondParagraph}>Connecting companies straight to the user while maintaing users privacy. </h3>
                     </div>
                     <div className={styles.secondSectionRight}>
                         <Image 
@@ -47,24 +47,27 @@ export default function Welcome() {
                 </section>
 
             </div>
-                <footer className={styles.footerCon}>
-                    <div>
-                    <h2 className="topFooterText">Surpay</h2>
+            <footer className={styles.footerCon}>
+                <div className={styles.footerLogo}>
+                     <Image 
+                    src={surpayLogoImg}
+                    alt={"Surpay Logo"}
+                    className={styles.surpayLogoImg}>
+                    </Image>
                     </div>
-                    <div>
-                    <h2 className="middleFooterPolygon">Powered By Polygon</h2>
-                    </div>
-                    <div>
-                    <h2 className="bottomFooterText">2022 Surpay. All Rights Reserved</h2>
-                    </div>
-                </footer>
-
+                <div>
+                    <h2 className={styles.topFooterChainlink}>Powered By Chainlink</h2>
+                 </div>
+                <div>
+                    <h2 className={styles.middleFooterPolygon}>Powered By Polygon</h2>
+                </div>
+                <div>
+                    <h2 className={styles.bottomFooterText}>2022 Surpay. All Rights Reserved</h2>
+                </div>
+            </footer>
         </section>
+
+
     );
-  } 
-                    // <div className={styles.secondSectionLeft}>
-                    // <h3 className={styles.secondParagraph}>lorem ipsum hello there how </h3>
-                    // </div>
-                    // <div className={styles.firstSectionRight}>
-                    //     <h2 className={styles.firstParagraph}>lorem ipsum lorem ipsum lore</h2>
-                    // </div>
+}
+    
