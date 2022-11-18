@@ -4,6 +4,7 @@ import ethereumImg from "../../public/assets/img/ethereumImg.jpg"
 import surpayLogoImg from "../../public/assets/img/surpayLogo.png"
 import Button from 'react-bootstrap/Button'
 import styles from "../../styles/Welcome.module.css"
+import LoginModal from "../modals/LoginModal"
 
 
 export default function Welcome() {
@@ -42,7 +43,7 @@ export default function Welcome() {
                         </Image>
                     </div>
                     <div className={styles.btnDiv}>
-                    <Button className={styles.getStartedBtn} variant="primary" size="lg">Get Started</Button>
+                    <LoginModal location={"home"} />
                     </div>
                 </section>
 

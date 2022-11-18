@@ -2,14 +2,17 @@ import React, { useState } from "react"
 import Button from "react-bootstrap/Button"
 import Modal from "react-bootstrap/Modal"
 import styles from "../../styles/Navbar.module.css"
-import ForgotPassword from "./ForgotPasswordModal"
+import AccountLogin from "./UserOrDistributer"
 
 
-function LoginModal() {
+function LoginModal({location}) {
     const [show, setShow] = useState(false)
     const [select, setSelect] = useState("")
 
-    const handleClose = () => setShow(false)
+    const handleClose = () => {
+        setSelect("")
+        setShow(false)
+    }
     const handleShow = () => setShow(true)
 
     const handleRadio = (selection) => {
@@ -21,9 +24,15 @@ function LoginModal() {
 
     return (
         <>
+        { location === "nav"?
             <Button className={styles.navButton} onClick={handleShow}>
                 Login
             </Button>
+            :
+            <Button className={styles.getStartedButton} onClick={handleShow}>
+                Get Started
+            </Button>
+        }
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton></Modal.Header>
@@ -55,7 +64,7 @@ function LoginModal() {
                         </div>
                         :
                         <div className="d-flex justify-content-center mb-2">
-                        <ForgotPassword className={styles.loginSubmit} />
+                        <AccountLogin loginType={select} className={styles.loginSubmit} />
                         </div>
                         }
 

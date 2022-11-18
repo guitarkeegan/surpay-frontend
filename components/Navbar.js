@@ -26,7 +26,7 @@ function MainNav() {
             <div className={"twoNavButtons"}>
                     <ConnectWallet />
                     <Container>
-                    <LoginModal />
+                    <LoginModal location={"nav"} />
                     </Container>
                     </div>              
         </nav>
