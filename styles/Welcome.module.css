@@ -9,7 +9,8 @@
 .welcomeStatement,
 .firstParagraph,
 .secondParagraph {
-    color: white
+    color: white;
+    font-weight: 300;
 }
 
 .welcomeTitle {
@@ -36,13 +37,15 @@
     width: auto; 
     max-width: 400px; 
     max-height: 400px;
-    float: left;
+    float: left;   
 }
 
 .firstSectionRight {
     flex-wrap: wrap;
     margin: 50px 70px 50px 0px;
     align-items: center;
+    font-weight: 300;
+    font-size: 1.5rem;
 }
 
 .secondCon {
@@ -68,6 +71,7 @@
     margin: 90px 500px 0 70px;
     flex-wrap: wrap;
     justify-content: center;
+    font-weight: 300;
 }
 
 .btnDiv {
@@ -81,7 +85,6 @@
 
 .footerCon {
     background-color: white;
-    height: 300px;
     padding-top: 20px;
     padding-bottom: 20px;
 }
@@ -90,12 +93,12 @@
     height: auto; 
     width: auto; 
     max-width: 200px; 
-    max-height: 200px;
-    
+    max-height: 200px;    
 }
 
 .topFooterChainlink,
 .middleFooterPolygon,
 .bottomFooterText {
     text-align: center;
+    font-size:large
 }
