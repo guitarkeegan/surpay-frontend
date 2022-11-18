@@ -12,8 +12,9 @@ function MainNav() {
     return (
         <nav className={styles.navStyle} expand="lg">
                 
-                <Navbar.Brand href="#home">
-                <Container className="">
+                
+                <Container>
+                <Link href={'/'}>
             <Image 
               src={surpayLogoBlueImg}
               width={150}
@@ -21,12 +22,13 @@ function MainNav() {
               className={styles.surpayLogoNav}
               alt={"Surpay Blue Logo"}
             />
+             </Link>   
             </Container>
-            </Navbar.Brand>     
+             
             <div className={"twoNavButtons"}>
                     <ConnectWallet />
                     <Container>
-                    <LoginModal />
+                    <LoginModal location={"nav"} />
                     </Container>
                     </div>              
         </nav>

@@ -4,6 +4,7 @@ import ethereumImg from "../../public/assets/img/ethereumImg.jpg"
 import surpayLogoImg from "../../public/assets/img/surpayLogo.png"
 import Button from 'react-bootstrap/Button'
 import styles from "../../styles/Welcome.module.css"
+import LoginModal from "../modals/LoginModal"
 
 
 export default function Welcome() {
@@ -32,7 +33,7 @@ export default function Welcome() {
 
                 <section className={styles.secondCon}>
                     <div className={styles.secondSectionLeft}>
-                    <h3 className={styles.secondParagraph}>Connecting companies straight to the user while maintaining users privacy. Users can give companies the information they need, while earning crypto, without sacrificing their privacy, and transacting trustlessly.</h3>
+                    <h3 className={styles.secondParagraph}>Connecting companies straight to the user while maintaining user's privacy. Users can give companies the information they need, while earning crypto, without sacrificing their privacy, and transacting trustlessly.</h3>
                     </div>
                     <div className={styles.secondSectionRight}>
                         <Image 
@@ -42,7 +43,7 @@ export default function Welcome() {
                         </Image>
                     </div>
                     <div className={styles.btnDiv}>
-                    <Button className={styles.getStartedBtn} variant="primary" size="lg">Get Started</Button>
+                    <LoginModal location={"home"} />
                     </div>
                 </section>
 
