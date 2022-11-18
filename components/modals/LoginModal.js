@@ -6,9 +6,23 @@ import styles from "../../styles/Navbar.module.css"
 
 function LoginModal() {
     const [show, setShow] = useState(false)
+    const [select, setSelect] = useState("")
 
     const handleClose = () => setShow(false)
     const handleShow = () => setShow(true)
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        console.log(event.target)
+        handleClose()
+
+        
+    }
+
+    const handleRadio = (selection) => {
+        setSelect(selection)
+        
+    }
 
     return (
         <>
@@ -22,22 +36,27 @@ function LoginModal() {
                     Are you a company that will be administering a surveys, or a user taking the
                     survey?
                 </Modal.Body>
-                <Modal.Footer>
+             
                     <form>
-                        <fieldset>
+                   
+                        <fieldset className={styles.radioButtons}>
                             <div>
                                 <label>company</label>
-                                <input className="radioButtons" value={"company"} type={"radio"} name={"person"}></input>
+                                <input onClick={() => handleRadio("company")} className="radioButtons" value={"company"} type={"radio"} name={"person"}></input>
                             </div>
                             <div>
                                 <label>user</label>
-                                <input className="radioButtons" value={"user"} type={"radio"} name={"person"}></input>
+                                <input onClick={() => handleRadio("user")} className="radioButtons" value={"user"} type={"radio"} name={"person"}></input>
                             </div>
+                            
                         </fieldset>
+                  
                         <br />
-                        <Button>Submit</Button>
+                        <div className="d-flex justify-content-center mb-2">
+                        <Button className={styles.loginSubmit} onClick={handleSubmit}>Submit</Button>
+                        </div>
                     </form>
-                </Modal.Footer>
+                
             </Modal>
         </>
     )

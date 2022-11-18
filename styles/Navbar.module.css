@@ -23,6 +23,11 @@
     height: 45px;
 }
 
+.loginSubmit{
+    background-color: rgb(123, 176, 253);
+    border-radius: 40px;
+}
+
 .surpayLogoNavImg {
     float:left;
     width: 150px;
@@ -36,7 +41,9 @@
 }
 
 .radioButtons {
-    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .twoNavButtons {
