@@ -1,10 +1,14 @@
 .navStyle {
     background: rgba(0, 0, 0, .5);
-    padding: 28px 0;
+    padding: 28px 20px;
     position:absolute;
     z-index: 1;
     top: 0;
-    width: 100%
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
 }
 
 .navButton {
@@ -29,4 +33,9 @@
     float:left;
     width: 150px;
     height: 150px;
+}
+
+.twoNavButtons {
+    display: flex;
+    flex-direction: row;
 }
