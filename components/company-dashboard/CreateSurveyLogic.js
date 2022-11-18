@@ -23,10 +23,10 @@ export default function CreateSurveyLogic() {
     // console.log(createdSurvey, qAndA)
     // fetch("/api/survey/update/distributer", )
 
-    const [surveyId, setSurveyId] = useState() // 1
-    const [totalPayoutAmount, setTotalPaymentAmount] = useState(ethers.utils.parseEther("0.02")) 
+    const [surveyId, setSurveyId] = useState("1") // 1
+    const [totalPayoutAmount, setTotalPaymentAmount] = useState(ethers.utils.parseEther("0.1")) 
     //not more than 0.1 for tests
-    const [numOfParticipantsDesired, setNumOfParticipantsDesired] = useState() // use 2
+    const [numOfParticipantsDesired, setNumOfParticipantsDesired] = useState(2) // use 2
     // console.log(totalPayoutAmount.toString())
 
     const {
