@@ -9,13 +9,22 @@ import Image from 'next/image'
 import userLoginImg from '../../public/assets/img/UserLoginImg-2.png'
 import Form from 'react-bootstrap/Form'
 import distLoginImg from '../../public/assets/img/DistLoginImg-2.png'
+import { useRouter } from 'next/router';
 
 export default function AccountLogin({loginType}) {
   const [show, setShow] = useState(false);
 
+  const router = useRouter();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const toDashboard = (event) =>{
+    event.preventDefault()
+    console.log(event.target.name)
+    setShow(false)
+    router.push(`/dashboard/${event.target.name}`)
+  }
 
 
   return (
@@ -48,7 +57,7 @@ export default function AccountLogin({loginType}) {
         <Form.Control type="password" placeholder="Password" />
       </Form.Group>
 
-      <Button variant="primary" type="submit">
+      <Button name="user" onClick={toDashboard} variant="primary" type="submit">
         Submit
       </Button>
     </Form>
@@ -91,7 +100,7 @@ export default function AccountLogin({loginType}) {
         <Form.Control type="password" placeholder="Password" />
       </Form.Group>
 
-      <Button variant="primary" type="submit">
+      <Button name="distributer" onClick={toDashboard} variant="primary" type="submit">
         Submit
       </Button>
     </Form>

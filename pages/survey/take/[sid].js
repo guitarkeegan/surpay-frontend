@@ -6,6 +6,7 @@ import styles from "../../../styles/Survey.module.css"
 import { useState } from "react"
 import Button from "react-bootstrap/Button"
 import useSWR from "swr"
+import SuccessModal from "../../../components/modals/SuccessModal"
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
@@ -43,7 +44,7 @@ export default function UserDashboard() {
            }
            
            <Container className="buttonHolder">
-            <Button>Finish Survey</Button>
+            <SuccessModal />
             </Container>
             </Container>
             

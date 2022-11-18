@@ -1,42 +1,34 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import Image from 'next/Image'
-import captcha from "../../public/assets/img/recaptchaExample.png"
-import {useRouter} from "next/router"
+import {useRouter} from 'next/router'
 
-export default function MockCaptchaModal() {
+export default function SuccessModal() {
   const [show, setShow] = useState(false);
-
   const router = useRouter()
-
   const handleClose = () => {
-    setShow(false);
-    router.push("/survey/take/1")
-}
+    setShow(false)
+    router.push("/dashboard/user")
+};
   const handleShow = () => setShow(true);
 
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
+        Submit
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Captcha</Modal.Title>
+          <Modal.Title>Success!!!</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Please solve this puzzle!
-        <Image
-        src={captcha} />
-        </Modal.Body>
+        <Modal.Body>🎉🎉🎉You've submitted a survey!🎉🎉🎉</Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
-            Got it
+          <Button variant="success" onClick={handleClose}>
+            Back to dashboard
           </Button>
         </Modal.Footer>
       </Modal>
     </>
   );
 }
-
