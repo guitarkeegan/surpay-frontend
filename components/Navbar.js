@@ -5,12 +5,23 @@ import Navbar from "react-bootstrap/Navbar"
 import LoginModal from "../components/modals/LoginModal"
 import styles from "../styles/Navbar.module.css"
 import ConnectWallet from "./ConnectWallet"
+import Image from "next/image"
+import surpayLogoBlueImg from "../public/assets/img/surpayLogoBlue.png"
 
 function MainNav() {
     return (
         <Navbar className={styles.navStyle} expand="lg">
             <Container>
                 <Nav className="ms-auto">
+                <Navbar.Brand href="#home">
+            <Image 
+              src={surpayLogoBlueImg}
+              width={150}
+              height={150}
+              className={styles.surpayLogoNav}
+              alt={"Surpay Blue Logo"}
+            />
+            </Navbar.Brand>                   
                     <ConnectWallet />
                     <LoginModal />
                 </Nav>
@@ -39,3 +50,12 @@ export default MainNav
 </div>
 </> */
 }
+
+               
+                    // <Image 
+                    // src=
+                    // alt={"Surpay Blue Logo"}
+                    // className={styles.surpayLogoBlueImg}
+                    // width={200}
+                    // height={200}>
+                    // </Image> 
