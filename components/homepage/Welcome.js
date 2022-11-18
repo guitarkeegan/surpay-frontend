@@ -65,7 +65,7 @@ export default function Welcome() {
                     <h2 className={styles.bottomFooterText}>2022 Surpay. All Rights Reserved</h2>
                 </div>
             </footer>
-        </sectiion>
+        </section>
 
 
     );

@@ -10,10 +10,10 @@ import surpayLogoBlueImg from "../public/assets/img/surpayLogoBlue.png"
 
 function MainNav() {
     return (
-        <Navbar className={styles.navStyle} expand="lg">
-            <Container>
-                <Nav className="ms-auto">
+        <nav className={styles.navStyle} expand="lg">
+                
                 <Navbar.Brand href="#home">
+                <Container className="">
             <Image 
               src={surpayLogoBlueImg}
               width={150}
@@ -21,12 +21,15 @@ function MainNav() {
               className={styles.surpayLogoNav}
               alt={"Surpay Blue Logo"}
             />
-            </Navbar.Brand>                   
-                    <ConnectWallet />
-                    <LoginModal />
-                </Nav>
             </Container>
-        </Navbar>
+            </Navbar.Brand>     
+            <div className={"twoNavButtons"}>
+                    <ConnectWallet />
+                    <Container>
+                    <LoginModal />
+                    </Container>
+                    </div>              
+        </nav>
     )
 }
 
