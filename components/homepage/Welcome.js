@@ -26,13 +26,13 @@ export default function Welcome() {
                         </Image>
                     </div>
                     <div className={styles.firstSectionRight}>
-                        <h2 className={styles.firstParagraph}>It is as easy as signing up, choosing a survey, completing it, and gettimng paid in crypto. </h2>
+                        <h2 className={styles.firstParagraph}>It is as easy as signing up, choosing a survey, completing it, and getting paid in crypto. Convenience for the company and the user.</h2>
                     </div>
                 </section>
 
                 <section className={styles.secondCon}>
                     <div className={styles.secondSectionLeft}>
-                    <h3 className={styles.secondParagraph}>Connecting companies straight to the user while maintaing users privacy. </h3>
+                    <h3 className={styles.secondParagraph}>Connecting companies straight to the user while maintaining users privacy. Users can give companies the information they need, while earning crypto, without sacrificing their privacy, and transacting trustlessly.</h3>
                     </div>
                     <div className={styles.secondSectionRight}>
                         <Image 
