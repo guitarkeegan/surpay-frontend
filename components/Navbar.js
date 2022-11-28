@@ -1,14 +1,41 @@
 import Link from "next/link"
 import Container from "react-bootstrap/Container"
-import Nav from "react-bootstrap/Nav"
-import Navbar from "react-bootstrap/Navbar"
+import {useEffect, useState} from "react"
 import LoginModal from "../components/modals/LoginModal"
 import styles from "../styles/Navbar.module.css"
+import Button from "react-bootstrap/Button"
 import ConnectWallet from "./ConnectWallet"
 import Image from "next/image"
 import surpayLogoBlueImg from "../public/assets/img/surpayLogoBlue.png"
 
 function MainNav() {
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  async function getUser(){
+    try {
+      const res = await fetch("/api/account/user")
+      const userData = await res.json()
+      setIsLoggedIn(true)
+      console.log(userData)
+      } catch (error) {
+        console.log(error)
+      }
+  }
+
+  useEffect(()=>{
+    getUser()
+  }, [])
+
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/logout")
+      setIsLoggedIn(false)
+    } catch (error){
+      console.log(error)
+    }
+  }
+  
     return (
         <nav className={styles.navStyle} expand="lg">
                 
@@ -28,7 +55,13 @@ function MainNav() {
             <div className={"twoNavButtons"}>
                     <ConnectWallet />
                     <Container>
+                    { isLoggedIn ?
+                      <Button className={styles.navButton} onClick={handleLogout}>
+                Logout
+            </Button>
+                    :
                     <LoginModal location={"nav"} />
+                    }
                     </Container>
                     </div>              
         </nav>
