@@ -1,6 +1,9 @@
-import {User} from "../../../../db/models"
+import {User} from "../../../../db/models";
+import { withSessionRoute } from "../../../../lib/withSession";
 
-export default async function handler(req, res) {
+export default withSessionRoute(loginUser);
+
+async function loginUser(req, res) {
     
     const {address, password} = req.body
     console.log(address)
@@ -36,6 +39,11 @@ export default async function handler(req, res) {
         const userId = userData.id
 
         // save session here
+        req.session.user = {
+          id: userId,
+          address: userData.address,
+        }
+        await req.session.save()
 
         res.status(200).json({ userId })
 

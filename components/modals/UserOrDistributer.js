@@ -13,17 +13,33 @@ import { useRouter } from 'next/router';
 
 export default function AccountLogin({loginType}) {
   const [show, setShow] = useState(false);
+  const [address, setAddress] = useState("")
+  const [userPassword, setUserPassword] = useState("")
 
   const router = useRouter();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const toDashboard = (event) =>{
+  const toDashboard = async (event) =>{
     event.preventDefault()
-    console.log(event.target.name)
     setShow(false)
-    router.push(`/dashboard/${event.target.name}`)
+    try {
+      const res = await fetch("/api/login/user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({address: address,
+          password: userPassword})
+      })
+      console.log(res)
+      const {userId} = await res.json()
+      router.push(`/dashboard/${event.target.name}/${userId}`)
+
+  } catch (err) {
+    console.log(err)
+  }
   }
 
 
@@ -46,7 +62,7 @@ export default function AccountLogin({loginType}) {
         <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         
-        <Form.Control type="text" placeholder="Wallet Address" />
+        <Form.Control onChange={(e)=>setAddress(e.target.value)} type="text" placeholder="Wallet Address" />
         <Form.Text className="text-muted">
           So we can send you crypto!
         </Form.Text>
@@ -54,7 +70,7 @@ export default function AccountLogin({loginType}) {
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         
-        <Form.Control type="password" placeholder="Password" />
+        <Form.Control onChange={(e)=>setUserPassword(e.target.value)} type="password" placeholder="Password" />
       </Form.Group>
 
       <Button name="user" onClick={toDashboard} variant="primary" type="submit">
