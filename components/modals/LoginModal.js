@@ -5,7 +5,7 @@ import styles from "../../styles/Navbar.module.css"
 import AccountLogin from "./UserOrDistributer"
 
 
-function LoginModal({location}) {
+function LoginModal({location, updateUi}) {
     const [show, setShow] = useState(false)
     const [select, setSelect] = useState("")
 
@@ -64,7 +64,7 @@ function LoginModal({location}) {
                         </div>
                         :
                         <div className="d-flex justify-content-center mb-2">
-                        <AccountLogin loginType={select} className={styles.loginSubmit} />
+                        <AccountLogin updateUi={updateUi} loginType={select} className={styles.loginSubmit} />
                         </div>
                         }
 

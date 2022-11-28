@@ -11,7 +11,7 @@ import Form from 'react-bootstrap/Form'
 import distLoginImg from '../../public/assets/img/DistLoginImg-2.png'
 import { useRouter } from 'next/router';
 
-export default function AccountLogin({loginType}) {
+export default function AccountLogin({loginType, updateUi}) {
   const [show, setShow] = useState(false);
   const [address, setAddress] = useState("")
   const [userPassword, setUserPassword] = useState("")
@@ -35,6 +35,7 @@ export default function AccountLogin({loginType}) {
       })
       console.log(res)
       const {userId} = await res.json()
+      updateUi(true)
       router.push(`/dashboard/${event.target.name}/${userId}`)
 
   } catch (err) {
