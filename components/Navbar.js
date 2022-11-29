@@ -44,32 +44,27 @@ function MainNav() {
     }
 
     return (
-        <nav className={styles.navStyle} expand="lg">
-            <Container>
-                <Link href={"/"}>
-                    <Image
-                        src={surpayLogoBlueImg}
-                        width={150}
-                        height={150}
-                        className={styles.surpayLogoNav}
-                        alt={"Surpay Blue Logo"}
-                    />
-                </Link>
-            </Container>
-
-            <div className={"twoNavButtons"}>
-                <ConnectWallet />
-                <Container>
-                    {isLoggedIn ? (
-                        <Button className={styles.navButton} onClick={handleLogout}>
-                            Logout
-                        </Button>
-                    ) : (
-                        <LoginModal updateUi={setIsLoggedIn} location={"nav"} />
-                    )}
-                </Container>
-            </div>
-        </nav>
+        
+            <nav className={styles.navStyle}>
+                <div  className={styles.logo}>
+                    <Image src={surpayLogoBlueImg} alt="logo" />
+                </div>
+                <div className={styles.navBtns}>
+                    <div className={styles.walletBtn}>
+                        <ConnectWallet />
+                    </div>
+                    <div className={styles.logoutBtn}>
+                        {isLoggedIn ? (
+                            <btn className={styles.navLinks} onClick={handleLogout}>
+                                Logout
+                            </btn>
+                        ) : (
+                            <LoginModal updateUi={setIsLoggedIn} location={"nav"} />
+                        )}
+                    </div>
+                </div>
+            </nav>
+        
     )
 }
 

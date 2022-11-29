@@ -8,7 +8,7 @@ export default function ConnectWallet() {
             size={"large"}
             theme="colored"
             color="blue"
-            
+            className={styles.navLinks}
         />
     )
 }

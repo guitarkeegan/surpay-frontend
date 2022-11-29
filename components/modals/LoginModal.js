@@ -25,9 +25,9 @@ function LoginModal({location, updateUi}) {
     return (
         <>
         { location === "nav"?
-            <Button className={styles.navButton} onClick={handleShow}>
+            <btn className={styles.navLinks} onClick={handleShow}>
                 Login
-            </Button>
+            </btn>
             :
             <Button className={styles.getStartedButton} onClick={handleShow}>
                 Get Started
