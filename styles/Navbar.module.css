@@ -1,4 +1,4 @@
-/* .navStyle {
+.navStyle {
     background: rgba(0, 0, 0, .5);
     padding: 28px 20px;
     position:absolute;
@@ -9,7 +9,7 @@
     justify-content: space-between;
     align-items: center;
     height:120px
-} */
+}
 
 /* .navButton {
     background-color: white;
