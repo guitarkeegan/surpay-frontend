@@ -1,7 +1,14 @@
 import { Survey, UserSurvey, Answer } from "../../../../../db/models"
 import sequelize from "../../../../../db/connection"
 import { Op } from "sequelize"
-export default async function handler(req, res) {
+import { withSessionRoute } from "../../../../../lib/withSession"
+
+export default withSessionRoute(submitSurveyRoute);
+
+async function submitSurveyRoute(req, res) {
+    if (req.method !== "PUT"){
+        return res.status(400).json({message: "Must be a PUT request"})
+    }
     /* ---------------- MOCK USER ------------------*/
     const mockUserId = 1 // req.session.user.id
     const mockUserOneAddress = "0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199"
@@ -18,7 +25,7 @@ export default async function handler(req, res) {
             }
         )
         console.log(surveyData)
-        // update times_selected in answer
+        // update times_selected an answer
         const answerData = await Answer.update(
             {
                 times_selected: sequelize.literal("times_selected + 1"),
@@ -36,7 +43,7 @@ export default async function handler(req, res) {
         // update UserSurvey table
         const userSurveyData = await UserSurvey.create({
             survey_id: survey_id,
-            user_id: mockUserId
+            user_id: req.session.user.id
         })
         console.log(userSurveyData)
 

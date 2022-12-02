@@ -4,13 +4,13 @@ import { useEffect, useState } from "react"
 import Image from "next/image"
 import useSWR from "swr"
 import SuccessModal from "../../../components/modals/SuccessModal"
+import {removeDuplicates, getAnswerIds} from "../../../utils/helpers"
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 export default function UserDashboard() {
     // save answer responses in state.
     const [answers, setAnswers] = useState([])
-    const [currentAnswers, setCurrentAnswers] = useState([])
 
     
 
@@ -27,12 +27,29 @@ export default function UserDashboard() {
         
     }
 
-    const handleSubmit = (e) =>{
-        e.preventDefault()
-        console.log(e.target.value)
+    const handleSubmit = async () =>{
+        const submittedAnswers = removeDuplicates(answers)
+        const answerIdsArr = getAnswerIds(submittedAnswers)
+        const urlArr = (window.location.href).split("/")
+        const surveyId = urlArr[urlArr.length - 1]
+        console.log(`surveyId: ${surveyId}`)
+        console.log("answerIds array: " + answerIdsArr)
+        const data = {survey_id: surveyId, answers: answerIdsArr}
+        console.log(data)
+        try {
+            const res = await fetch("/api/survey/update/user", {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data),
+            })
+        } catch (error){
+            console.log(error)
+        }
     }
 
-    // update the answers in database by incrementing the # of times selected
+    
     // update the survey history for the user
     // update the suvey model with number of takers fullfilled
 
@@ -43,7 +60,6 @@ export default function UserDashboard() {
     if (!data) return <div>Loading...</div>
 
     const questions = data.questions.map((question) => question)
-    // console.log(questions.map((question) => question.id))
 
     return (
         <>

@@ -9,10 +9,12 @@ export default function SuccessModal({submitAnswers}) {
   const router = useRouter()
   const handleClose = () => {
     setShow(false)
-    router.push("/dashboard/user")
+    // hardcoded
+    router.push("/dashboard/user/1")
 };
   const handleShow = (e) => {
-    submitAnswers(e)
+    e.preventDefault()
+    submitAnswers()
     setShow(true)
   }
 
