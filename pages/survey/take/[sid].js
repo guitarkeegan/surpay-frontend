@@ -1,6 +1,6 @@
 import backgroundDiv from "../../../public/assets/img/SUserDashBkgrnd.png"
 import styles from "../../../styles/TakeSurvey.module.css"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import useSWR from "swr"
 import SuccessModal from "../../../components/modals/SuccessModal"
@@ -12,14 +12,19 @@ export default function UserDashboard() {
     const [answers, setAnswers] = useState([])
     const [currentAnswers, setCurrentAnswers] = useState([])
 
+    
+
     const handleUpdate = (event) => {
         event.preventDefault()
-        if (!currentAnswers.includes(event.target.value) && event.target.value){
-        setCurrentAnswers(prevAnswers=>[
-            ...prevAnswers,
-            event.target.value
-        ])}
-        console.log(currentAnswers)
+        const questionId = parseInt(event.target.id)
+        const answerId = parseInt(event.target.value)
+        console.log(questionId, answerId)
+        if (answerId !== 0){
+            setAnswers([...answers, {questionId: questionId, answerId: answerId}])
+        }
+        
+        console.log(answers)
+        
     }
 
     const handleSubmit = (e) =>{
@@ -38,7 +43,7 @@ export default function UserDashboard() {
     if (!data) return <div>Loading...</div>
 
     const questions = data.questions.map((question) => question)
-    console.log(questions.map((question) => question.id))
+    // console.log(questions.map((question) => question.id))
 
     return (
         <>
@@ -71,7 +76,8 @@ export default function UserDashboard() {
                                             {questions &&
                                                 question.answers.map((answer) => {
                                                     return (
-                                                        <option key={answer.id} value={answer.id}>
+                                                        <option key={answer.id} value={answer.id}
+                                                        id={answer.question_id}>
                                                             {answer.answer_text}
                                                         </option>
                                                     )
@@ -83,7 +89,9 @@ export default function UserDashboard() {
                         ) : (
                             <p>no data!</p>
                         )}
-                        <SuccessModal />
+                        { answers.length >= questions.length &&
+                        <SuccessModal submitAnswers={handleSubmit} />
+                        }
                     </form>
                 </div>
             </div>

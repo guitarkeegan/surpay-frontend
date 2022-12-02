@@ -4,16 +4,16 @@ import Modal from 'react-bootstrap/Modal';
 import {useRouter} from 'next/router';
 import styles from '../../styles/TakeSurvey.module.css'
 
-export default function SuccessModal() {
+export default function SuccessModal({submitAnswers}) {
   const [show, setShow] = useState(false);
   const router = useRouter()
   const handleClose = () => {
     setShow(false)
     router.push("/dashboard/user")
 };
-  const handleShow = () => {
+  const handleShow = (e) => {
+    submitAnswers(e)
     setShow(true)
-
   }
 
   return (
