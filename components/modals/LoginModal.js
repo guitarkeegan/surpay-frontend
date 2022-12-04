@@ -59,7 +59,7 @@ function LoginModal({location, updateUi}) {
                         {
                             select === "" ?
                             <div className="d-flex justify-content-center mb-2">
-                        <Button disabled={true} className={styles.loginSubmit}>
+                        <Button className={styles.loginSubmit}>
                         Submit</Button>
                         </div>
                         :

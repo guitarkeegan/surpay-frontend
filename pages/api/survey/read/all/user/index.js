@@ -7,10 +7,6 @@ export default withSessionRoute(allUntakenSurveys);
 
 async function allUntakenSurveys(req, res) {
 
-    
-
-    /* ------------USE THIS TO MOCK THE USER ID------------- */
-
     const userId = req.session.user.id // get the user Id for the logged-in user
     console.log(`user id is ${userId}`)
 

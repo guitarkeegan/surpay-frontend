@@ -47,10 +47,11 @@
     background-color: rgba(255, 255, 255, 0.7);
     gap: 5px;
     margin-bottom: 200px;
-
+    margin-top: 60px;
 }
 
 .titleDiv {
+    margin-top: 202px;
     color: white;
     display: flex;
     justify-content: center;
