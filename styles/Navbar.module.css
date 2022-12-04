@@ -1,14 +1,14 @@
 .navStyle {
-    background: rgba(0, 0, 0, .5);
-    padding: 28px 20px;
-    position:absolute;
-    z-index: 1;
-    top: 0;
     width: 100%;
+    top: 0;
+    z-index: 1;
+    position:absolute;
+    background-color: rgba(0, 0, 0, .6);
+    color: white;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    height:120px
+    justify-content: space-between;
+    padding: 0 5px 62px;
 }
 
 /* .navButton {
@@ -59,13 +59,7 @@
     flex-direction: row;
 } */
 
-.navStyle {
-    background-color: rgba(0, 0, 0, .6);
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 5px 40px;
-}
+
 
 .aStyle {
     color: white;
@@ -98,4 +92,9 @@
         flex-direction: column;
         gap: 30px;
     }
+    .logo {
+        height: 100px;
+        width: 142px;
+    }
+
 }
