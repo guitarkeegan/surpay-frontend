@@ -8,7 +8,7 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 export default function PastSurveys() {
 
-  const { data, error } = useSWR('/api/survey/read/all/user', fetcher)
+  const { data, error } = useSWR('/api/survey/read/all/user/taken', fetcher)
 
   if (error) return <div>Failed to load</div>
   if (!data) return <div>Loading...</div>
@@ -17,7 +17,7 @@ export default function PastSurveys() {
 
   return (
     <div>
-    <h1>Launch a Past Survey</h1>
+    <h1>View Past Surveys</h1>
      {data ? 
      data.map((item=>{
         return (<Container className='mb-3'>

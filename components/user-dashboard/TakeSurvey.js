@@ -24,7 +24,7 @@ console.log(data)
             </Row>
             <Row className="justify-content-center">
                 <Col sm md={10}>
-                    <label for="survey-select">Choose a survey:</label>
+                    <label htmlFor="survey-select">Choose a survey:</label>
 
                     <select name="survey" id="survey-select">
                         <option value="">--Please choose a survey--</option>

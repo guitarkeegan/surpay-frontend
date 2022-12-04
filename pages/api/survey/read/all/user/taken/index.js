@@ -1,15 +1,12 @@
-import sequelize from "../../../../../../db/connection"
-import { User, UserSurvey, Survey } from "../../../../../../db/models"
+import sequelize from "../../../../../../../db/connection"
+import { User, UserSurvey, Survey } from "../../../../../../../db/models"
 
-import { withSessionRoute } from "../../../../../../lib/withSession"
+import { withSessionRoute } from "../../../../../../../lib/withSession"
 
-export default withSessionRoute(allUntakenSurveys);
+export default withSessionRoute(allCompletedSurveys);
 
-async function allUntakenSurveys(req, res) {
+async function allCompletedSurveys(req, res) {
 
-    
-
-    /* ------------USE THIS TO MOCK THE USER ID------------- */
 
     const userId = req.session.user.id // get the user Id for the logged-in user
     console.log(`user id is ${userId}`)
@@ -20,15 +17,15 @@ async function allUntakenSurveys(req, res) {
         include: [{model: Survey, attributes: ["id"]}]
     })
     // find which suveys the user has already taken
-    const surveysToExclude = []
+    const surveysToInclude = []
     for (let obj of surveysTaken.surveys){
-            surveysToExclude.push(obj.id)
+            surveysToInclude.push(obj.id)
     }
 
     //TODO: check if survey has already be complete in general
 
     const [results, metadata] = await sequelize.query(
-        `SELECT * FROM Survey WHERE ID NOT IN(${surveysToExclude.join()});`)
+        `SELECT * FROM Survey WHERE ID IN(${surveysToInclude.join()});`)
         console.log(results)
 
     res.status(200).json(results)
