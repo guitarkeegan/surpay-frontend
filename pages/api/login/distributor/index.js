@@ -1,6 +1,9 @@
 import {Company} from "../../../../db/models"
+import { withSessionRoute } from "../../../../lib/withSession";
 
-export default async function handler(req, res) {
+export default withSessionRoute(loginDistributorRoute);
+
+async function loginDistributorRoute(req, res) {
     
     const {email, password} = req.body
     
@@ -33,11 +36,17 @@ export default async function handler(req, res) {
           return;
         }
 
-        const companyId = companyData.id
+        const {id, name} = companyData
 
         // save session here
+        req.session.distributor = {
+          id: id,
+          name: name
+        }
 
-        res.status(200).json({ companyId })
+        await req.session.save()
+
+        res.status(200).json({ id })
 
       } catch (err) {
         console.log(err);

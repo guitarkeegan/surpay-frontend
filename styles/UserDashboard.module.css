@@ -1,0 +1,142 @@
+
+.backgroundDiv {
+    z-index: -1;
+    position: fixed;
+    width: 100vw;
+    /* min-width: 1920; */
+    top: 0;
+    overflow: hidden;
+}
+
+/* .backgroundImage {
+    position: fixed;
+    z-index: -1;
+    top: 0;
+} */
+
+.errorText{
+    font-size: 1.5rem;
+    color: red;
+}
+
+.successText {
+    font-size: 1.5rem;
+    color: green;
+}
+
+.h1Style{
+    font-size: 4rem;
+}
+
+.formDiv {
+    top: 200px;
+    position: absolute;
+    
+}
+
+.formStyle {
+    display: flex;
+    flex-direction: column;
+    font-size: 2rem;
+}
+
+
+
+.mainStyle {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.7);
+    gap: 5px;
+    margin-bottom: 200px;
+    margin-top: 60px;
+}
+
+.titleDiv {
+    margin-top: 202px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 40px 0;
+}
+
+.leftMain {
+    display: flex;
+    flex-direction: column;
+    padding: 60px 40px;
+    gap: 60px;
+    border-right: 1px black solid;
+}
+
+.accountSubmit {
+    color: black;
+    padding: 20px 0;
+    background-color: rgb(123, 176, 253);
+    border-radius: 10px;
+    margin-top: 80px;
+    font-size: 1.6rem;
+}
+
+.deleteBtn{
+    background-color: transparent;
+    border: none;
+    color: rgb(123, 176, 253);
+    font-size: 1.5rem;
+    margin-top: 10px;
+    font-weight: bold;
+
+}
+
+.leftMain button {
+    height: 80px;
+    width: 260px;
+    background-color: rgb(171, 236, 250);
+    border-radius: 10px;
+    border: none;
+    box-shadow: 1px 2px 10px gray;
+    font-size: 1.5rem;
+}
+
+.h2Style {
+    font-size: 3rem;
+}
+
+.rightMain {
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.inputStyle {
+    height: 2rem;
+    border-radius: 2px;
+    border: none;
+    box-shadow: 1px 3px 10px grey;
+}
+
+@media screen and (max-width: 900px){
+    .mainStyle{
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .leftMain{
+        border: none;
+    }
+    .rightMain{
+        flex-grow: 1;
+        
+    }
+}
+
+
+@media screen and (max-width: 460px){
+    .navBtns{
+        flex-direction: column;
+        gap: 30px;
+    }
+    .rightMain{
+        justify-content: center;
+    }
+}

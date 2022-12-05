@@ -1,18 +1,17 @@
 .navStyle {
-    background: rgba(0, 0, 0, .5);
-    padding: 28px 20px;
-    position:absolute;
-    z-index: 1;
-    top: 0;
     width: 100%;
+    top: 0;
+    z-index: 1;
+    position:absolute;
+    background-color: rgba(0, 0, 0, .6);
+    color: white;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    height:120px
-
+    justify-content: space-between;
+    padding: 0 10px 62px;
 }
 
-.navButton {
+/* .navButton {
     background-color: white;
     border-radius: 40px;
     padding: 5px 40px;
@@ -30,24 +29,24 @@
     font-family: 'Open Sans',sans-serif;
     font-size: 16px;
     font-style: normal;
-}
+} */
 
 .loginSubmit{
     background-color: rgb(123, 176, 253);
     border-radius: 40px;
 }
 
-.surpayLogoNavImg {
+/* .surpayLogoNavImg {
     float:left;
     width: 150px;
     height: 150px;
-}
+} */
 
-.surpayLogoNav {
+/* .surpayLogoNav {
     float:left;
     width: 150px;
     height: 150px;
-}
+} */
 
 .radioButtons {
     display: flex;
@@ -55,7 +54,48 @@
     justify-content: space-evenly;
 }
 
-.twoNavButtons {
+/* .twoNavButtons {
     display: flex;
     flex-direction: row;
+} */
+
+
+
+.aStyle {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.logo {
+    height: 140px;
+    width: 200px;
+    object-fit: cover;
+}
+
+.navBtns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.navLinks {
+    color: white;
+    padding: 10px 20px;
+    background-color: rgb(123, 176, 253);
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 460px){
+    .navBtns{
+        flex-direction: column;
+        gap: 30px;
+    }
+    .logo {
+        height: 100px;
+        width: 142px;
+    }
+
 }

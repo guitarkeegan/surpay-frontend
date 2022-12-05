@@ -5,7 +5,7 @@ import styles from "../../styles/Navbar.module.css"
 import AccountLogin from "./UserOrDistributer"
 
 
-function LoginModal({location}) {
+function LoginModal({location, updateUi}) {
     const [show, setShow] = useState(false)
     const [select, setSelect] = useState("")
 
@@ -25,9 +25,9 @@ function LoginModal({location}) {
     return (
         <>
         { location === "nav"?
-            <Button className={styles.navButton} onClick={handleShow}>
+            <btn className={styles.navLinks} onClick={handleShow}>
                 Login
-            </Button>
+            </btn>
             :
             <Button className={styles.getStartedButton} onClick={handleShow}>
                 Get Started
@@ -59,12 +59,12 @@ function LoginModal({location}) {
                         {
                             select === "" ?
                             <div className="d-flex justify-content-center mb-2">
-                        <Button disabled={true} className={styles.loginSubmit}>
+                        <Button className={styles.loginSubmit}>
                         Submit</Button>
                         </div>
                         :
                         <div className="d-flex justify-content-center mb-2">
-                        <AccountLogin loginType={select} className={styles.loginSubmit} />
+                        <AccountLogin updateUi={updateUi} loginType={select} className={styles.loginSubmit} />
                         </div>
                         }
 

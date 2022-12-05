@@ -1,22 +1,28 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import {useRouter} from 'next/router'
+import {useRouter} from 'next/router';
+import styles from '../../styles/TakeSurvey.module.css'
 
-export default function SuccessModal() {
+export default function SuccessModal({submitAnswers}) {
   const [show, setShow] = useState(false);
   const router = useRouter()
   const handleClose = () => {
     setShow(false)
-    router.push("/dashboard/user")
+    // hardcoded
+    router.push("/dashboard/user/1")
 };
-  const handleShow = () => setShow(true);
+  const handleShow = (e) => {
+    e.preventDefault()
+    submitAnswers()
+    setShow(true)
+  }
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <button className={styles.submitSurveyBtn} onClick={handleShow}>
         Submit
-      </Button>
+      </button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
