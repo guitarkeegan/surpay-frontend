@@ -10,8 +10,16 @@ import DistAccount from "../../../components/company-dashboard/AccountSettings"
 import NewSurvey from "../../../components/company-dashboard/CreateSurvey"
 import PastSurvey from "../../../components/company-dashboard/PastSurveys"
 import ManageSurvey from "../../../components/company-dashboard/EditSurvey"
+import { withSessionSsr } from "../../../lib/withSession"
+import { useRouter } from "next/router"
 
-export default function CompanyDashboard() {
+export default function CompanyDashboard({distributor}) {
+
+  const router = useRouter()
+
+    if (!distributor) {
+        router.push("/")
+    }
 
     const [selection, setSelection] = useState("Account settings");
 
@@ -41,7 +49,7 @@ export default function CompanyDashboard() {
     return (
         <div className={styles.outerWrapper}>
             <div className="h1Wrapper">
-                <h1 className={styles.greeting}>Welcome to Surpay</h1>
+                <h1 className={styles.greeting}>Welcome {distributor.name}</h1>
             </div>
             <Container fluid className={styles.dashboardWrapper}>
             <Row>
@@ -63,3 +71,22 @@ export default function CompanyDashboard() {
         </div>
     )
 }
+
+export const getServerSideProps = withSessionSsr(async function getServerSideProps({ req }) {
+  const distributor = req.session.distributor
+
+  const urlArray = req.url.split("/")
+  const requestedId = parseInt(urlArray[urlArray.length - 1])
+
+  if (requestedId !== distributor?.id) {
+      return {
+          notFound: true,
+      }
+  }
+
+  return {
+      props: {
+          distributor: distributor,
+      },
+  }
+})

@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row"
 import Button from "react-bootstrap/Button"
 import styles from "../../styles/PreviousSurveys.module.css"
 
+// wrapper for fetch
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 export default function PastSurveys() {
