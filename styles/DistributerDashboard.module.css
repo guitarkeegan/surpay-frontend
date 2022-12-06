@@ -5,7 +5,7 @@
     position: absolute; 
     left: 0; 
     right: 0; 
-    top: 160px;
+    top: 260px;
     font-weight: 700;
     font-size: 4rem;
     margin-left: auto; 
@@ -13,25 +13,59 @@
     width: 600px; /* Need a specific value to work */
 }
 
-
-
-/* .outerWrapper {
-    padding-bottom: 120px;
-} */
-
-.dashboardWrapper {
-    z-index: 3;
-    position: absolute;
-    top: 320px;
-    
-    background: rgba(255, 255, 255, .8);
-    padding: 80px 40px 120px 40px;
-    
+.mainStyle {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.7);
+    gap: 5px;
+    margin-bottom: 200px;
+    margin-top: 60px;
 }
 
-.h1Wrapper {
-    text-align: center;
+.leftMain {
+    display: flex;
+    flex-direction: column;
+    padding: 60px 40px;
+    gap: 60px;
+    border-right: 1px black solid;
+}
 
+.leftMain button {
+    height: 80px;
+    width: 260px;
+    background-color: rgb(171, 236, 250);
+    border-radius: 10px;
+    border: none;
+    box-shadow: 1px 2px 10px gray;
+    font-size: 1.5rem;
+}
+
+.rightMain {
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.h1Style{
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.titleDiv {
+    margin-top: 202px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 40px 0;
+}
+
+.inputStyle {
+    height: 2rem;
+    border-radius: 2px;
+    border: none;
+    box-shadow: 1px 3px 10px grey;
 }
 
 
@@ -51,9 +85,28 @@
 }
 
 
-@media screen and (max-width: 600px){
-    .greeting {
-        font-size: 2.5rem;
-        width: 200px;
+@media screen and (max-width: 900px){
+    .mainStyle{
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .leftMain{
+        border: none;
+    }
+    .rightMain{
+        flex-grow: 1;
+        
+    }
+}
+
+
+@media screen and (max-width: 460px){
+    .navBtns{
+        flex-direction: column;
+        gap: 30px;
+    }
+    .rightMain{
+        justify-content: center;
     }
 }

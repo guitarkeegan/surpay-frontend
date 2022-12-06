@@ -20,12 +20,23 @@ export default function BackgroundImage() {
     // }
 
     return (
-      
+        <div
+            style={{
+                zIndex: -1,
+                position: "fixed",
+                width: "100vw",
+                height: "100vh",
+                top: 0,
+                overflow: "hidden",
+            }}
+        >
             <Image
                 src={backgroundImage}
-                alt={"techy backgound image"}
+                alt={"Colorful lines over black canvas"}
+                layout="fill"
+                objectFit="cover"
             ></Image>
- 
+        </div>
     )
 }
 // height={"1920px"}
