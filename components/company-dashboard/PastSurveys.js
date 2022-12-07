@@ -2,6 +2,7 @@ import useSWR from "swr"
 import Container from "react-bootstrap/Container"
 import styles from "../../styles/PastSurveysDistributor.module.css"
 import { v4 as uuid4 } from "uuid"
+import { IoTrashBinSharp } from "react-icons/io5"
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
@@ -47,10 +48,12 @@ export default function PastSurvey() {
                             </div>
                             <div className={styles.cardButtonsWrapper}>
                                 <div>
-                                    <button className={styles.launchSurveyBtn}>Launch Survey</button>
+                                    <button className={styles.launchSurveyBtn}>
+                                        Launch Survey
+                                    </button>
                                 </div>
-                                <div>
-                                    <button>Delete</button>
+                                <div className={styles.deleteBtnWrapper}>
+                                    <IoTrashBinSharp />
                                 </div>
                             </div>
                         </div>
