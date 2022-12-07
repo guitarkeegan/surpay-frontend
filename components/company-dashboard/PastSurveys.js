@@ -1,36 +1,66 @@
-import useSWR from 'swr'
-import Container from 'react-bootstrap/Container'
-import Col from "react-bootstrap/Col"
-import Row from "react-bootstrap/Row"
-import Button from 'react-bootstrap/Button'
+import useSWR from "swr"
+import Container from "react-bootstrap/Container"
+import styles from "../../styles/PastSurveysDistributor.module.css"
+import { v4 as uuid4 } from "uuid"
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 export default function PastSurvey() {
+    const { data, error } = useSWR("/api/survey/read/all/distributer", fetcher)
 
-  const { data, error } = useSWR('/api/survey/read/all/distributer', fetcher)
+    if (error) return <div>Failed to load</div>
+    if (!data) return <div>Loading...</div>
 
-  if (error) return <div>Failed to load</div>
-  if (!data) return <div>Loading...</div>
+    console.log(data)
 
-  console.log(data)
+    return (
+        <div>
+            <h1>Launch a Past Survey</h1>
+            {data ? (
+                data.map((item) => {
+                    return (
+                        <div className={styles.cardWrapper}>
+                            <div>
+                                <div className={styles.cardTitle}>
+                                    <h2>{item.name}</h2>
+                                </div>
+                            </div>
+                            <div>
+                                <div className={styles.cardTitle}>
+                                    <h2>Survey Link</h2>
+                                </div>
+                            </div>
+                            <div className={styles.takersAmountWrapper}>
+                                <div className={styles.numOfTakersDiv}>
+                                    <h4>Number of Survey Takers</h4>
+                                </div>
+                                <div className={styles.takers}>
+                                    <h3>{item.number_of_takers_desired}</h3>
+                                </div>
 
-  return (
-    <div>
-    <h1>Launch a Past Survey</h1>
-     {data ? 
-     data.map((item=>{
-        return (<Container className='mb-3'>
-        <Row>
-        <Col><div><h2>{item.name}</h2></div></Col>
-        </Row>
-        <Row><Col><div>{"(survey link)"}</div></Col></Row>
-        <Row className='justify-content-between'><Col><div><p>{`Number of Survey Takers: ${item.number_of_takers_desired}`}</p></div></Col><Col><div><p>{`Funding Amount: ${item.total_payout} MATIC`}</p></div></Col></Row>
-        <Row><Col sm md={3}><Button variant='primary'>Launch Survey</Button></Col><Col sm md={3}><Button variant='danger'>Delete</Button></Col></Row>
-     </Container>)}))
-     :
-     <Container><h2>{"No surveys found"}</h2></Container>
-     }
-    </div>
-  )
+                                <div>
+                                    <h4>Funding Amount: MATIC</h4>
+                                </div>
+                                <div className={styles.payout}>
+                                    <h3>{item.total_payout}</h3>
+                                </div>
+                            </div>
+                            <div className={styles.cardButtonsWrapper}>
+                                <div>
+                                    <button className={styles.launchSurveyBtn}>Launch Survey</button>
+                                </div>
+                                <div>
+                                    <button>Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                })
+            ) : (
+                <Container>
+                    <h2>{"No surveys found"}</h2>
+                </Container>
+            )}
+        </div>
+    )
 }
