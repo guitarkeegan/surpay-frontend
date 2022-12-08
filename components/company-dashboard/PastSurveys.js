@@ -16,7 +16,9 @@ export default function PastSurvey() {
 
     return (
         <div>
+        <div className={styles.panelTitleWrapper}>
             <h1>Launch a Past Survey</h1>
+            </div>
             {data ? (
                 data.map((item) => {
                     return (

@@ -51,3 +51,13 @@
     height: 40px;
     width: 40px;
 }
+
+.editIconWrapper svg{
+    height: 40px;
+    width: 40px;
+}
+
+.panelTitleWrapper {
+    display: flex;
+    justify-content: center;
+}
