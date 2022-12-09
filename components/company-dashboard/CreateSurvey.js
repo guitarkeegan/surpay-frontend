@@ -1,53 +1,55 @@
-import Form from 'react-bootstrap/Form';
-import Col from "react-bootstrap/Col"
-import Row from "react-bootstrap/Row"
+import Form from "react-bootstrap/Form"
 import styles from "../../styles/FormStyles.module.css"
-import QuestionCard from './QuestionCard';
-import {useState, useEffect} from "react"
-import Container from 'react-bootstrap/Container';
-import CreateSurveyLogic from './CreateSurveyLogic';
-import {v4 as uuid4} from "uuid"
-
-export default function NewSurvey(){
-
-  const [surveyDetails, setSurveyDetails] = useState({
-    surveyTitle: "",
-    numOfTakers: "",
-    fundingAmount: ""
-  })
+import QuestionCard from "./QuestionCard"
+import QuestionCardCreated from "./QuestionCardCreated"
+import { useState, useEffect } from "react"
+import Container from "react-bootstrap/Container"
+import CreateSurveyLogic from "./CreateSurveyLogic"
+import { v4 as uuid4 } from "uuid"
 
 
-  const [cards, setCards] = useState([])
+export default function NewSurvey() {
+    const [surveyDetails, setSurveyDetails] = useState({
+        surveyTitle: "",
+        numOfTakers: "",
+        fundingAmount: "",
+    })
 
-  useEffect(()=>{
-    try{
-    localStorage.setItem("surveyData", JSON.stringify(cards))
-    } catch (err){
-      console.log(err)
+    const [cards, setCards] = useState([])
+
+    useEffect(() => {
+        try {
+            localStorage.setItem("surveyData", JSON.stringify(cards))
+        } catch (err) {
+            console.log(err)
+        }
+    }, [cards])
+
+    useEffect(() => {
+        try {
+            localStorage.setItem("surveyHeader", JSON.stringify(surveyDetails))
+        } catch (err) {
+            console.log(err)
+        }
+    }, [surveyDetails])
+
+    function createNewCard(newCard) {
+        setCards((prev) => {
+            return [...prev, newCard]
+        })
     }
-  }, [cards])
 
-  useEffect(()=>{
-    try{
-    localStorage.setItem("surveyHeader", JSON.stringify(surveyDetails))
-    } catch (err){
-      console.log(err)
-    }
-  }, [surveyDetails])
-
-    function createNewCard(newCard){
-      setCards(prev=>{
-        return [...prev, newCard]
-      })
+    function handleChange(event) {
+        event.preventDefault()
+        const { name, value } = event.target
+        console.log(surveyDetails)
+        setSurveyDetails((prev) => {
+            return { ...prev, [name]: value }
+        })
     }
 
-    function handleChange(event){
-      event.preventDefault()
-      const {name, value} = event.target
-      console.log(surveyDetails)
-      setSurveyDetails(prev=>{
-        return {...prev, [name]: value}
-      })
+    const handleDelete = () => {
+      console.log("delete card!")
     }
 
     // function saveCard(){
@@ -55,63 +57,74 @@ export default function NewSurvey(){
     // }
 
     return (
-      <>
-        <Form>
-        <Row className={"text-center mb-3"}>
-    <h2>Create a Survey</h2>
-    </Row>
+        <>
+            <div className={styles.createSurveyWrapper}>
+                <h2>Create a Survey</h2>
+            </div>
 
-    <Row className='justify-content-center'>
-    <Col sm md={10} >
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Survey Title</Form.Label>
-        <Form.Control value={surveyDetails.surveyTitle} onChange={handleChange} name={"surveyTitle"} className={styles.inputFields} type="text" placeholder="" size='lg' />
-        <Form.Text className="text-muted">
-        </Form.Text>
-      </Form.Group>
-      </Col>
-</Row>
+            <Form>
+                <div className={styles.surveyTitleWrapper}>
+                    <Form.Group className="mb-4" controlId="formBasicEmail">
+                        <Form.Label>Survey Title</Form.Label>
+                        <Form.Control
+                            value={surveyDetails.surveyTitle}
+                            onChange={handleChange}
+                            name={"surveyTitle"}
+                            className={styles.inputFields}
+                            autoComplete="off"
+                            type="text"
+                            placeholder=""
+                            size="lg"
+                        />
+                        <Form.Text className="text-muted"></Form.Text>
+                    </Form.Group>
+                </div>
 
-<Row className='justify-content-between'>
-    <Col sm md={4} >
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label></Form.Label>
-        <Form.Control value={surveyDetails.numOfTakers} onChange={handleChange} name={"numOfTakers"} className={styles.inputFields} type="text" placeholder="Number of survey takers" size='lg' />
-        <Form.Text className="text-muted">
-        </Form.Text>
-      </Form.Group>
-      </Col>
-      <Col sm md={4} >
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Funding Amount</Form.Label>
-        <Form.Control value={surveyDetails.fundingAmount} onChange={handleChange} name={"fundingAmount"} className={styles.inputFields} type="text" placeholder="" size='lg' />
-        <Form.Text className="text-muted">
-        </Form.Text>
-      </Form.Group>
-      </Col>
-</Row>
-    </Form>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Control
+                        value={surveyDetails.numOfTakers}
+                        onChange={handleChange}
+                        name={"numOfTakers"}
+                        className={styles.inputFields}
+                        autoComplete="off"
+                        type="text"
+                        placeholder="Number of survey takers"
+                        size="lg"
+                    />
+                    <Form.Text className="text-muted"></Form.Text>
+                </Form.Group>
 
-    
-    <QuestionCard key={uuid4()} addCard={createNewCard} />
-   {cards.map(card=>{
-      return (<QuestionCard 
-        key={uuid4()}
-        question={card.question}
-        option1={card.option1}
-        option2={card.option2}
-        option3={card.option3}
-        option4={card.option4}
-        addCard={createNewCard} />
-      )})}
-      { parseFloat(surveyDetails.fundingAmount) > 0 ?
-      <Container className="d-flex justify-content-center mt-5">
-      <CreateSurveyLogic />
-      </Container>
-       :
-      <></>
-      }
-    </>
+                <Form.Group className="mb-5" controlId="formBasicEmail">
+                    <Form.Control
+                        value={surveyDetails.fundingAmount}
+                        onChange={handleChange}
+                        name={"fundingAmount"}
+                        className={styles.inputFields}
+                        autoComplete="off"
+                        type="text"
+                        placeholder="Funding Amount"
+                        size="lg"
+                    />
+                    <Form.Text className="text-muted"></Form.Text>
+                </Form.Group>
+            </Form>
 
+            <QuestionCard addCard={createNewCard} />
+            {cards.map((card) => {
+                return (
+                    <QuestionCardCreated
+                        latestCard={card && card[card.length - 1]}
+                        deleteCard={handleDelete}
+                    />
+                )
+            })}
+            {parseFloat(surveyDetails.fundingAmount) > 0 ? (
+                <Container className="d-flex justify-content-center mt-5">
+                    <CreateSurveyLogic />
+                </Container>
+            ) : (
+                <></>
+            )}
+        </>
     )
 }
