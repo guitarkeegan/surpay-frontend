@@ -35,19 +35,23 @@ export default function UserDashboard({ user }) {
 
     return (
         <>
-        <div style={{
-                  zIndex: -1,
-                  position: "fixed",
-                  width: "100vw",
-                  height: "100vh",
-                  top: 0,
-                  overflow: "hidden",
-            }}>
-                <Image src={backgroundImage} alt={"Colorful lines over black canvas"}
-                layout="fill"
-                objectFit="cover"
-                // objectPosition="fixed"
-                 />
+            <div
+                style={{
+                    zIndex: -1,
+                    position: "fixed",
+                    width: "100vw",
+                    height: "100vh",
+                    top: 0,
+                    overflow: "hidden",
+                }}
+            >
+                <Image
+                    src={backgroundImage}
+                    alt={"Colorful lines over black canvas"}
+                    layout="fill"
+                    objectFit="cover"
+                    // objectPosition="fixed"
+                />
             </div>
             <div className={styles.titleDiv}>
                 <h1 className={styles.h1Style}>Welcome User {user.id}</h1>
@@ -66,7 +70,6 @@ export default function UserDashboard({ user }) {
                 </div>
                 <div className={styles.rightMain}>{renderScreen()}</div>
             </div>
-            
         </>
     )
 }

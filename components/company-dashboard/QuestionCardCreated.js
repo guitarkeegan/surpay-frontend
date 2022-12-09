@@ -7,20 +7,13 @@ import {v4 as uuid4} from "uuid"
 import {MdOutlineLibraryAdd} from "react-icons/md"
 import { IoTrashBinSharp } from "react-icons/io5"
 
-export default function QuestionCard({addCard}) {
+export default function QuestionCardCreated({latestCard}) {
 
-    const [card, setCard] = useState({
-
-        question : "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: ""
-      })
+    console.log(latestCard)
 
     function handleChange(event){
         const {name, value} = event.target
-        console.log(name)
+
         setCard(prev=>{
            return { ...prev,
             [name]: value}

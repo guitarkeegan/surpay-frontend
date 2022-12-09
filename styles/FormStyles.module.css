@@ -6,6 +6,8 @@
 .questionCard {
     background-color: gray;
     padding: 40px 0;
+    width: 60vw;
+    border-radius: 5px;
 }
 
 .answerFields {
@@ -25,4 +27,26 @@
     font-size: 1.7rem;
     font-weight: 400;
     z-index: 2;
+}
+
+.createSurveyWrapper h2{
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+}
+
+.surveyTitleWrapper{
+    width: 60vw;
+}
+
+.formButtonsWrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.addBtnWrapper svg, .deleteBtnWrapper svg{
+    color: white;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
 }

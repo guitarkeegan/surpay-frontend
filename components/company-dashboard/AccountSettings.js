@@ -1,50 +1,65 @@
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Col from "react-bootstrap/Col"
-import Row from "react-bootstrap/Row"
-import styles from "../../styles/FormStyles.module.css"
-import {v4 as uuid4} from "uuid"
+import styles from "../../styles/DistributorDashboard.module.css"
+import { v4 as uuid4 } from "uuid"
+import {useState} from "react"
 
-export default function DistAccount() {
-  return (
-    
-    <Form>
-    <Row className={"text-center mb-3"}>
-    <h2>Account Settings</h2>
-    </Row>
-    <Row className='justify-content-center'>
-    <Col sm md={10} >
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Company Name</Form.Label>
-        <Form.Control className={styles.inputFields} type="email" placeholder="Enter email" size='lg' />
-        <Form.Text className="text-muted">
-        </Form.Text>
-      </Form.Group>
-      </Col>
-</Row>
-<Row className='justify-content-center'>
-<Col sm md={10}>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label >Password</Form.Label>
-        <Form.Control className={styles.inputFields} type="password" placeholder="Password" size='lg' />
-      </Form.Group>
-</Col>
-      </Row>
-      <Row className='justify-content-center'>
-<Col sm md={10}>
-      <Form.Group className="mb-3" controlId="formBasicAddress">
-        <Form.Label>Wallet</Form.Label>
-        <Form.Control className={styles.inputFields} type="text-muted" placeholder="address" size='lg' />
-      </Form.Group>
-</Col>
-      </Row>
-      <Row className='justify-content-center text-center mt-3'>
-<Col>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-</Col>
-      </Row>
-    </Form>
-  );
+// form for user to update their account information
+export default function UserAccount() {
+
+    const [password, setPassword] = useState("");
+    const [passwordAgain, setPasswordAgain] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+    const [successMessage, setSuccessMessage] = useState("")
+
+    const handleUpdateAccount = async (event) => {
+        event.preventDefault();
+        if (!password || !passwordAgain){
+            setSuccessMessage("");
+            setErrorMessage("Feilds cannot be empty.");
+        } else if (password !== passwordAgain){
+            setSuccessMessage("");
+            setErrorMessage("Password fields do not match.");
+        } else {
+            setErrorMessage("");
+            try {
+                const res = await fetch("/api/update/distributor", {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({password: passwordAgain})
+                });
+                const {message} = await res.json()
+                if (message === "Password not long enough"){
+                    setErrorMessage(message);
+                    setSuccessMessage("")
+                }
+                if (res.status === 200){
+                    setErrorMessage("")
+                    setSuccessMessage("Password has been changed!")
+                }
+                
+                console.log(message)
+            } catch (err){
+                
+                console.log(err);
+            }
+        }
+    }
+    // TODO: screen responsive to 350. Need to reside Update Account Button size
+    return (
+        <form className={styles.formStyle}>
+        {errorMessage &&
+        <p className={styles.errorText}>{errorMessage}</p>
+        }
+        {successMessage && 
+            <p className={styles.successText}>{successMessage}</p>
+        }
+            <label>Password</label>
+            <input onChange={(e) => setPassword(e.target.value)} className={styles.inputStyle} type="password" name="password" id=""></input>
+            <label>Password Again</label>
+            <input onChange={(e) => setPasswordAgain(e.target.value)} className={styles.inputStyle} type="password" name="passwordAgain" id=""></input>
+            <button onClick={handleUpdateAccount} className={styles.accountSubmit}>Update Changes</button>
+            <button className={styles.deleteBtn}>Delete Account</button>
+        </form>
+    )
 }
