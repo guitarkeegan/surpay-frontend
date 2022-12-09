@@ -39,22 +39,22 @@ export default function NewSurvey() {
         })
     }
 
-    function handleChange(event) {
+    const handleChange = (event)=> {
         event.preventDefault()
         const { name, value } = event.target
-        console.log(surveyDetails)
+        console.log(name, value)
         setSurveyDetails((prev) => {
             return { ...prev, [name]: value }
         })
     }
 
-    const handleDelete = () => {
+    const handleDelete = (event) => {
       console.log("delete card!")
+      event.preventDefault()
+      const objId = event.currentTarget.id
+      // delete question with the passed id
+      setCards(cards.filter(obj => obj.question !== objId))
     }
-
-    // function saveCard(){
-
-    // }
 
     return (
         <>
@@ -108,13 +108,17 @@ export default function NewSurvey() {
                     <Form.Text className="text-muted"></Form.Text>
                 </Form.Group>
             </Form>
-
+           
             <QuestionCard addCard={createNewCard} />
             {cards.map((card) => {
                 return (
                     <QuestionCardCreated
-                        latestCard={card && card[card.length - 1]}
-                        deleteCard={handleDelete}
+                    question={card.question}
+                    option1={card.option1}
+                    option2={card.option2}
+                    option3={card.option3}
+                    option4={card.option4}
+                    deleteCard={handleDelete}
                     />
                 )
             })}

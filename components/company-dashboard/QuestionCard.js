@@ -10,7 +10,6 @@ import { IoTrashBinSharp } from "react-icons/io5"
 export default function QuestionCard({addCard}) {
 
     const [card, setCard] = useState({
-
         question : "",
         option1: "",
         option2: "",
@@ -18,9 +17,10 @@ export default function QuestionCard({addCard}) {
         option4: ""
       })
 
-    function handleChange(event){
+    const handleChange = (event) => {
+        event.preventDefault()
         const {name, value} = event.target
-        console.log(name)
+        console.log(name, value)
         setCard(prev=>{
            return { ...prev,
             [name]: value}
@@ -32,14 +32,17 @@ export default function QuestionCard({addCard}) {
     function handleSubmit(event){
         event.preventDefault()
         addCard(card)
+        setCard({
+            question : "",
+            option1: "",
+            option2: "",
+            option3: "",
+            option4: ""
+          })
     }
 
-    function handleDelete(event){
-        event.preventDefault()
-        console.log("delete!")
-    }
     return (
-        <Form key={uuid4()} className={styles.questionCard}>
+        <Form className={styles.questionCard}>
             <Row className="justify-content-center">
                 <Col sm md={10}>
                     <Form.Group className="mb-3" controlId={uuid4()}>
@@ -136,12 +139,7 @@ export default function QuestionCard({addCard}) {
                         <MdOutlineLibraryAdd />
                         </div>
                 </Col>
-                <Col sm md={2} className={styles.addQuestionButton} >
-                <div onClick={handleDelete}
-                 className={styles.deleteBtnWrapper}>
-                 <IoTrashBinSharp />
-                    </div>
-                </Col>
+                
             </Row>
         </Form>
     )
