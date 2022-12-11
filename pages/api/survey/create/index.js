@@ -1,24 +1,26 @@
 import { Company, Survey, Question, Answer } from "../../../../db/models"
 import { bulkCreate, count } from "../../../../db/models/Company"
+import { withSessionRoute } from "../../../../lib/withSession";
 
-export default async function handler(req, res) {
+export default withSessionRoute(createSurveyRoute);
+
+async function createSurveyRoute(req, res) {
     // only accept a post route
     if (req.method !== "POST") {
         res.status(400).json({ message: "Must be a post request" })
     }
     // pass in the new survey data from form
-    const { name, number_of_takers_desired, total_payout, company_id, survey_is_funded, qa } =
+    const { surveyTitle, number_of_takers_desired, total_payout, survey_is_funded, qa } =
         req.body
 
-    // check if company is logged in
-    // req.session.company_id
+    const { id, name } = req.session.distributor
     try {
         // add the survey to the database
         const surveyData = await Survey.create({
-            name,
+            name: surveyTitle,
             number_of_takers_desired,
             total_payout,
-            company_id,
+            company_id: id,
             survey_is_funded,
         })
         console.log("New survey created! sid is:" + surveyData.id)

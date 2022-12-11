@@ -3,11 +3,11 @@ import { useMoralis, useWeb3Contract } from "react-moralis"
 import { useEffect, useState } from "react"
 import { ethers } from "ethers"
 import { useNotification } from "web3uikit"
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button"
 import styles from "../../styles/FormStyles.module.css"
 
 
-export default function CreateSurveyLogic() {
+export default function CreateSurveyLogic({ distributor, surveyDetails, cards }) {
     const { chainId: chainIdHex, isWeb3Enabled, Moralis } = useMoralis()
     const chainId = parseInt(chainIdHex)
     // console.log(chainId)
@@ -16,18 +16,45 @@ export default function CreateSurveyLogic() {
 
     const dispach = useNotification()
 
-    /*-------------- MOCK DISTRIBUTER/COMPANY ------------*/
-    const companyId = "1"
-
+    const { id, name } = distributor
+    console.log(id, name)
     // call api to create new survey
     // console.log(createdSurvey, qAndA)
     // fetch("/api/survey/update/distributer", )
 
-    const [surveyId, setSurveyId] = useState("1") // 1
-    const [totalPayoutAmount, setTotalPaymentAmount] = useState(ethers.utils.parseEther("0.1")) 
+    const [surveyId, setSurveyId] = useState("") // 1
+    const [totalPayoutAmount, setTotalPaymentAmount] = useState(ethers.utils.parseEther("0.1"))
     //not more than 0.1 for tests
     const [numOfParticipantsDesired, setNumOfParticipantsDesired] = useState(2) // use 2
     // console.log(totalPayoutAmount.toString())
+
+    const handleCreateSurvey = async function () {
+        const { surveyTitle, numOfTakers, fundingAmount } = surveyDetails
+
+        setTotalPaymentAmount(ethers.utils.parseEther(fundingAmount.toString()))
+        setNumOfParticipantsDesired(numOfTakers)
+        // TODO: make call to DB and create new survey and get survey ID
+        try {
+            const surveyId = await fetch("/api/survey/create", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    surveyTitle: surveyTitle,
+                    number_of_takers_desired: numOfTakers,
+                    total_payout: fundingAmount,
+                    company_id: id,
+                    survey_is_funded: true,
+                    qa: cards,
+                }),
+            })
+            setSurveyId(surveyId.toString())
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
 
     const {
         runContractFunction: createSurvey,
@@ -37,10 +64,10 @@ export default function CreateSurveyLogic() {
         abi: abi,
         contractAddress: surpayAddress, // get the chainID
         functionName: "createSurvey",
-        
+
         params: {
             _surveyId: surveyId,
-            _companyId: companyId,
+            _companyId: id,
             _totalPayoutAmount: totalPayoutAmount,
             _numOfParticipantsDesired: numOfParticipantsDesired,
         },
@@ -89,8 +116,8 @@ export default function CreateSurveyLogic() {
                 <>
                     <Button
                         onClick={async () =>
-                            await createSurvey({
-                                // onComplete:
+                            await handleCreateSurvey({
+                                onComplete: async () => createSurvey,
                                 // onError:
                                 onSuccess: handleSuccess,
                                 onError: (error) => console.log(error),

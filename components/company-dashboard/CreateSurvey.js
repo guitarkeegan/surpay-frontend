@@ -8,7 +8,7 @@ import CreateSurveyLogic from "./CreateSurveyLogic"
 import { v4 as uuid4 } from "uuid"
 
 
-export default function NewSurvey() {
+export default function NewSurvey({distributor}) {
     const [surveyDetails, setSurveyDetails] = useState({
         surveyTitle: "",
         numOfTakers: "",
@@ -124,7 +124,11 @@ export default function NewSurvey() {
             })}
             {parseFloat(surveyDetails.fundingAmount) > 0 ? (
                 <Container className="d-flex justify-content-center mt-5">
-                    <CreateSurveyLogic />
+                    <CreateSurveyLogic
+                     distributor={distributor}
+                     surveyDetails={surveyDetails}
+                     cards={cards}
+                    />
                 </Container>
             ) : (
                 <></>
