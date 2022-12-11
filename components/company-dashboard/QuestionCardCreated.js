@@ -3,7 +3,6 @@ import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row"
 import styles from "../../styles/FormStyles.module.css"
 import {v4 as uuid4} from "uuid"
-import {MdOutlineLibraryAdd} from "react-icons/md"
 import { IoTrashBinSharp } from "react-icons/io5"
 
 export default function QuestionCardCreated(props) {

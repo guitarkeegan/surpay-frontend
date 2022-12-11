@@ -46,10 +46,11 @@ export default function CreateSurveyLogic({ distributor, surveyDetails, cards })
                     total_payout: fundingAmount,
                     company_id: id,
                     survey_is_funded: true,
-                    qa: cards,
+                    rawQa: cards,
                 }),
             })
             setSurveyId(surveyId.toString())
+            
         } catch (error) {
             console.log(error)
         }

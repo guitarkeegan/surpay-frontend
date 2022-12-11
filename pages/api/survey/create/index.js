@@ -10,7 +10,7 @@ async function createSurveyRoute(req, res) {
         res.status(400).json({ message: "Must be a post request" })
     }
     // pass in the new survey data from form
-    const { surveyTitle, number_of_takers_desired, total_payout, survey_is_funded, qa } =
+    const { surveyTitle, number_of_takers_desired, total_payout, survey_is_funded, rawQa } =
         req.body
 
     const { id, name } = req.session.distributor
@@ -23,7 +23,21 @@ async function createSurveyRoute(req, res) {
             company_id: id,
             survey_is_funded,
         })
-        console.log("New survey created! sid is:" + surveyData.id)
+        console.log("New survey created! sid is: " + surveyData.id)
+
+        // refactor question objects
+        const qa = []
+        for (let rawQ of rawQa){
+            const qaFormatted = {
+                [rawQ.question]: [
+                    rawQ.option1,
+                    rawQ.option2,
+                    rawQ.option3,
+                    rawQ.option4
+                ]
+            }
+            qa.push(qaFormatted)
+        }
 
         // question ids will be populated after the Questions are added
         // to the db
