@@ -6,13 +6,11 @@ import { IoTrashBinSharp } from "react-icons/io5"
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
-export default function PastSurvey() {
+export default function LaunchSurvey() {
     const { data, error } = useSWR("/api/survey/read/all/distributer", fetcher)
 
     if (error) return <div>Failed to load</div>
     if (!data) return <div>Loading...</div>
-
-    console.log(data)
 
     return (
         <div>

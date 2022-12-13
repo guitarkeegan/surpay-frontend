@@ -5,6 +5,7 @@ import { ethers } from "ethers"
 import { useNotification } from "web3uikit"
 import Button from "react-bootstrap/Button"
 import styles from "../../styles/FormStyles.module.css"
+import SaveSurvey from "./SaveSurvey"
 
 
 export default function CreateSurveyLogic({ distributor, surveyDetails, cards }) {
@@ -13,49 +14,19 @@ export default function CreateSurveyLogic({ distributor, surveyDetails, cards })
     // console.log(chainId)
     const surpayAddress = chainId in contractAddresses ? contractAddresses[chainId][0] : null
     const [surveyCreationFee, setSurveyCreationFee] = useState("0")
-
+    const [surveySaved, setSurveySaved] = useState(false)
     const dispach = useNotification()
 
     const { id, name } = distributor
-    console.log(id, name)
-    // call api to create new survey
-    // console.log(createdSurvey, qAndA)
-    // fetch("/api/survey/update/distributer", )
+    const distributorId = id
 
     const [surveyId, setSurveyId] = useState("") // 1
     const [totalPayoutAmount, setTotalPaymentAmount] = useState(ethers.utils.parseEther("0.1"))
     //not more than 0.1 for tests
-    const [numOfParticipantsDesired, setNumOfParticipantsDesired] = useState(2) // use 2
-    // console.log(totalPayoutAmount.toString())
+    const [numOfParticipantsDesired, setNumOfParticipantsDesired] = useState(0)
+    
 
-    const handleCreateSurvey = async function () {
-        const { surveyTitle, numOfTakers, fundingAmount } = surveyDetails
-
-        setTotalPaymentAmount(ethers.utils.parseEther(fundingAmount.toString()))
-        setNumOfParticipantsDesired(numOfTakers)
-        // TODO: make call to DB and create new survey and get survey ID
-        try {
-            const surveyId = await fetch("/api/survey/create", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    surveyTitle: surveyTitle,
-                    number_of_takers_desired: numOfTakers,
-                    total_payout: fundingAmount,
-                    company_id: id,
-                    survey_is_funded: true,
-                    rawQa: cards,
-                }),
-            })
-            setSurveyId(surveyId.toString())
-            
-        } catch (error) {
-            console.log(error)
-        }
-
-    }
+    
 
     const {
         runContractFunction: createSurvey,
@@ -68,7 +39,7 @@ export default function CreateSurveyLogic({ distributor, surveyDetails, cards })
 
         params: {
             _surveyId: surveyId,
-            _companyId: id,
+            _companyId: distributorId,
             _totalPayoutAmount: totalPayoutAmount,
             _numOfParticipantsDesired: numOfParticipantsDesired,
         },
@@ -84,8 +55,6 @@ export default function CreateSurveyLogic({ distributor, surveyDetails, cards })
 
     async function updateUI() {
         const surveyCreationFeeFromCall = (await getSurveyCreationFee()).toString()
-        // get total payout from local storage
-        // localStorage.getItem()
         setSurveyCreationFee(surveyCreationFeeFromCall)
     }
 
@@ -95,7 +64,12 @@ export default function CreateSurveyLogic({ distributor, surveyDetails, cards })
         }
     }, [isWeb3Enabled])
 
+    const handleSaveSuccess = () => {
+        setSurveySaved(true)
+    }
+
     const handleSuccess = async (tx) => {
+        await createSurvey()
         await tx.wait(1)
         handleNewNotification(tx)
         updateUI()
@@ -113,16 +87,30 @@ export default function CreateSurveyLogic({ distributor, surveyDetails, cards })
 
     return (
         <div className="">
-            {surpayAddress ? (
+            {!surveySaved ? (
+                <>
+                    <SaveSurvey
+                      handleSaveSuccess={handleSaveSuccess}
+                      surveyDetails={surveyDetails}
+                      cards={cards}
+                      distributorId={distributorId}
+                      setSurveyId={setSurveyId}
+                      setTotalPaymentAmount={setTotalPaymentAmount}
+                      setNumOfParticipantsDesired={setNumOfParticipantsDesired}
+                      setSurveySaved={setSurveySaved}
+                       />
+                </> )
+                : surpayAddress ?  (
                 <>
                     <Button
-                        onClick={async () =>
-                            await handleCreateSurvey({
-                                onComplete: async () => createSurvey,
+                        onClick={async () =>{
+                            await createSurvey({
+                                // onComplete: async () => createSurvey,
                                 // onError:
                                 onSuccess: handleSuccess,
                                 onError: (error) => console.log(error),
                             })
+                        }
                         }
                         className={styles.completeSurveyButton}
                         disabled={isLoading || isFetching}

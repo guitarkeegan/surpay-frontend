@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
 import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row"
-import useSWR from 'swr'
+import useSWR from "swr"
 import { useState } from "react"
 import styles from "../../styles/TakeSurvey.module.css"
 import { v4 as uuid4 } from "uuid"
@@ -10,13 +10,21 @@ import MockCaptchaModal from "../modals/CaptchaModal"
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
-export default function TakeSurvey() {
+export default function TakeSurvey({user}) {
 
-    const { data, error } = useSWR('/api/survey/read/all/user', fetcher)
+    const [selectedSurveyId, setSelectedSurveyId] = useState(0)
 
-  if (error) return <div>Failed to load</div>
-  if (!data) return <div>Loading...</div>
-console.log(data)
+    const handleChange = (event) => {
+        event.preventDefault()
+        console.log(event.target.value)
+        setSelectedSurveyId(event.target.value)
+    }
+
+    const { data, error } = useSWR("/api/survey/read/all/user", fetcher)
+
+    if (error) return <div>Failed to load</div>
+    if (!data) return <div>Loading...</div>
+    console.log(data)
     return (
         <Form>
             <Row className={"text-center mb-3"}>
@@ -26,22 +34,31 @@ console.log(data)
                 <Col sm md={10}>
                     <label htmlFor="survey-select">Choose a survey:</label>
 
-                    <select name="survey" id="survey-select">
+                    <select onChange={handleChange} name="survey" id="survey-select">
                         <option value="">--Please choose a survey--</option>
-                        { data ? data.map(item=>{
-                           return <option value={item.id}>{item.name}</option>
-                        }):
-                        <option value="no survey to load">no survey to load</option>
-                        }
+                        {data ? (
+                            data.map((item) => {
+                                return <option value={item.id}>{item.name}</option>
+                            })
+                        ) : (
+                            <option value="no survey to load">no survey to load</option>
+                        )}
                     </select>
                 </Col>
             </Row>
-
-            <Row className="justify-content-center text-center mt-3">
+            {selectedSurveyId === 0 ? 
+                <Row className="justify-content-center text-center mt-3">
                 <Col>
-                    <MockCaptchaModal />
+                    <p>Please select a survey</p>
                 </Col>
             </Row>
+            :
+            <Row className="justify-content-center text-center mt-3">
+                <Col>
+                    <MockCaptchaModal selectedSurveyId={selectedSurveyId} user={user} />
+                </Col>
+            </Row>
+            }
         </Form>
     )
 }

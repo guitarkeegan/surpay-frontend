@@ -21,8 +21,8 @@ async function allCompletedSurveys(req, res) {
     for (let obj of surveysTaken.surveys){
             surveysToInclude.push(obj.id)
     }
-
-    //TODO: check if survey has already be complete in general
+    console.log(surveysToInclude)
+    //TODO: check if survey has already been completed in general
 
     const [results, metadata] = await sequelize.query(
         `SELECT * FROM Survey WHERE ID IN(${surveysToInclude.join()});`)
