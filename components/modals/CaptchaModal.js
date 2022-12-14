@@ -5,14 +5,14 @@ import Image from 'next/Image'
 import captcha from "../../public/assets/img/recaptchaExample.png"
 import {useRouter} from "next/router"
 
-export default function MockCaptchaModal() {
+export default function MockCaptchaModal({user, selectedSurveyId}) {
   const [show, setShow] = useState(false);
 
   const router = useRouter()
 
   const handleClose = () => {
     setShow(false);
-    router.push("/survey/take/1")
+    router.push(`/survey/take/${selectedSurveyId}`)
 }
   const handleShow = () => setShow(true);
 

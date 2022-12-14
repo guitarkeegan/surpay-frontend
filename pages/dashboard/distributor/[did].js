@@ -23,14 +23,11 @@ export default function CompanyDashboard({distributor}) {
 
     const [selection, setSelection] = useState("Account settings");
 
-
-
-
     const renderScreen = () => {
 
         switch (selection) {
           case "Create a new survey":
-            return <NewSurvey />
+            return <NewSurvey distributor={distributor} />
             break;
           case "Launch a past survey":
             return <PastSurvey />

@@ -20,13 +20,13 @@ export default function UserDashboard({ user }) {
     const renderScreen = () => {
         switch (selection) {
             case "Take a new survey":
-                return <TakeSurvey />
+                return <TakeSurvey user={user} />
                 break
             case "Launch a past survey":
-                return <PastSurveys />
+                return <PastSurveys user={user} />
                 break
             case "Account settings":
-                return <UserAccount />
+                return <UserAccount user={user} />
                 break
             default:
                 return <UserAccount />

@@ -2,35 +2,11 @@ import Form from "react-bootstrap/Form"
 import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row"
 import styles from "../../styles/FormStyles.module.css"
-import {useState} from "react"
 import {v4 as uuid4} from "uuid"
-import {MdOutlineLibraryAdd} from "react-icons/md"
 import { IoTrashBinSharp } from "react-icons/io5"
 
-export default function QuestionCardCreated({latestCard}) {
+export default function QuestionCardCreated(props) {
 
-    console.log(latestCard)
-
-    function handleChange(event){
-        const {name, value} = event.target
-
-        setCard(prev=>{
-           return { ...prev,
-            [name]: value}
-        })
-
-        console.log(card)
-    }
-
-    function handleSubmit(event){
-        event.preventDefault()
-        addCard(card)
-    }
-
-    function handleDelete(event){
-        event.preventDefault()
-        console.log("delete!")
-    }
     return (
         <Form key={uuid4()} className={styles.questionCard}>
             <Row className="justify-content-center">
@@ -42,9 +18,9 @@ export default function QuestionCardCreated({latestCard}) {
                             placeholder="Question"
                             autoComplete="off"
                             size="lg"
+                            disabled="true"
                             name="question"
-                            onChange={handleChange}
-                            value={card.question}
+                            value={props.question}
                         />
                         <Form.Text className="text-muted"></Form.Text>
                     </Form.Group>
@@ -60,9 +36,9 @@ export default function QuestionCardCreated({latestCard}) {
                             placeholder="Option 1"
                             autoComplete="off"
                             size="lg"
+                            disabled="true"
                             name="option1"
-                            onChange={handleChange}
-                            value={card.option1}
+                            value={props.option1}
                         />
                         <Form.Text className="text-muted"></Form.Text>
                     </Form.Group>
@@ -78,9 +54,9 @@ export default function QuestionCardCreated({latestCard}) {
                             placeholder="Option 2"
                             autoComplete="off"
                             size="lg"
+                            disabled="true"
                             name="option2"
-                            onChange={handleChange}
-                            value={card.option2}
+                            value={props.option2}
                         />
                         <Form.Text className="text-muted"></Form.Text>
                     </Form.Group>
@@ -96,9 +72,9 @@ export default function QuestionCardCreated({latestCard}) {
                             placeholder="Option 3"
                             autoComplete="off"
                             size="lg"
+                            disabled="true"
                             name="option3"
-                            onChange={handleChange}
-                            value={card.option3}
+                            value={props.option3}
                         />
                         <Form.Text className="text-muted"></Form.Text>
                     </Form.Group>
@@ -115,8 +91,8 @@ export default function QuestionCardCreated({latestCard}) {
                             autoComplete="off"
                             size="lg"
                             name="option4"
-                            onChange={handleChange}
-                            value={card.option4}
+                            disabled="true"
+                            value={props.option4}
                         />
                         <Form.Text className="text-muted"></Form.Text>
                     </Form.Group>
@@ -125,12 +101,7 @@ export default function QuestionCardCreated({latestCard}) {
 
             <Row className={styles.formButtonsWrapper}>
                 <Col sm md={2} className={styles.addQuestionButton} >
-                <div className={styles.addBtnWrapper} onClick={handleSubmit}>
-                        <MdOutlineLibraryAdd />
-                        </div>
-                </Col>
-                <Col sm md={2} className={styles.addQuestionButton} >
-                <div onClick={handleDelete}
+                <div id={props.question} onClick={props.deleteCard}
                  className={styles.deleteBtnWrapper}>
                  <IoTrashBinSharp />
                     </div>

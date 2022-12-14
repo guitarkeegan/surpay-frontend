@@ -10,12 +10,10 @@ import LoginModal from "../modals/LoginModal"
 export default function Welcome() {
     return (
 
-        <section>
-        
+        <section className={styles.bottomHalf}>
             <div className={styles.welcomeCon}>
                 <div className={styles.welcomeSection}>
-                    <h1 className={styles.welcomeTitle}>Welcome to Surpay</h1>
-                    <h2 className={styles.welcomeStatement}>Take a survey and get paid in crypto</h2>
+                    <h1 className={styles.welcomeTitle}>Welcome to Surpay, Take a survey and get paid in crypto</h1>
                 </div>
 
                 <section className={styles.topCon}>
@@ -42,10 +40,10 @@ export default function Welcome() {
                         className={styles.surveyTakerImg}>
                         </Image>
                     </div>
-                    <div className={styles.btnDiv}>
+                </section>
+                <div className={styles.btnDiv}>
                     <LoginModal location={"home"} />
                     </div>
-                </section>
 
             </div>
             <footer className={styles.footerCon}>

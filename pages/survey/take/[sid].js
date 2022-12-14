@@ -5,14 +5,13 @@ import Image from "next/image"
 import useSWR from "swr"
 import SuccessModal from "../../../components/modals/SuccessModal"
 import {removeDuplicates, getAnswerIds} from "../../../utils/helpers"
+import {useRouter} from "next/router"
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
-export default function UserDashboard() {
+export default function TakeSurvey() {
     // save answer responses in state.
     const [answers, setAnswers] = useState([])
-
-    
 
     const handleUpdate = (event) => {
         event.preventDefault()
@@ -44,6 +43,7 @@ export default function UserDashboard() {
                 },
                 body: JSON.stringify(data),
             })
+            console.log(JSON.stringify(res))
         } catch (error){
             console.log(error)
         }
@@ -53,8 +53,12 @@ export default function UserDashboard() {
     // update the survey history for the user
     // update the suvey model with number of takers fullfilled
 
-    // hard coded api call for surveyId 1
-    const { data, error } = useSWR("/api/survey/read/one/from-user/1", fetcher)
+    
+    const surveyId = window.location.href.split("/").pop()
+    
+    const { data, error } = useSWR(`/api/survey/read/one/from-user/${surveyId}`, fetcher)
+
+    console.log("data: " + JSON.stringify(data))
 
     if (error) return <div>Failed to load</div>
     if (!data) return <div>Loading...</div>
