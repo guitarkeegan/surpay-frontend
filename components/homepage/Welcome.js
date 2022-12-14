@@ -40,10 +40,10 @@ export default function Welcome() {
                         className={styles.surveyTakerImg}>
                         </Image>
                     </div>
-                    <div className={styles.btnDiv}>
+                </section>
+                <div className={styles.btnDiv}>
                     <LoginModal location={"home"} />
                     </div>
-                </section>
 
             </div>
             <footer className={styles.footerCon}>
