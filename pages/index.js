@@ -16,7 +16,18 @@ export default function Home() {
                     url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap');
                 </style>
             </Head>
-            <Hero />
+            <div style={{
+                zIndex: 0,
+                position: "absolute",
+                width: "100vw",
+                height: "100vh",
+                top: 0,
+                overflow: "hidden",
+                boxShadow: "0 7px 7px gray",
+            }}
+        >
+        <Hero />
+            </div>
             <Welcome />
         </div>
     )

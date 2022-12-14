@@ -1,11 +1,22 @@
+.bottomHalf{
+    position: relative;
+    top: 760px;
+}
+
 .welcomeCon {
     background-color: rgb(59, 59, 66);
-    border-top: 25px solid;
-    border-color: white;
+}
+
+.welcomeSection {
+    padding: 120px 20px 0;
 }
 
 
-.welcomeTitle,
+.welcomeTitle {
+    color: white;
+    font-weight: 500;
+}
+
 .welcomeStatement,
 .firstParagraph,
 .secondParagraph {
@@ -15,7 +26,7 @@
 
 .welcomeTitle {
     color: white;
-    padding-top: 80px;
+    /* padding-top: 80px; */
     text-align: center;
 }
 
@@ -25,7 +36,9 @@
 }
 
 .topCon {
-    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    /* flex-wrap: wrap; */
     margin-left: 100px;
     margin-right: 100px;
 }
@@ -45,7 +58,7 @@
     margin: 50px 70px 50px 0px;
     align-items: center;
     font-weight: 300;
-    font-size: 1.5rem;
+    font-size: 24px;
 }
 
 .secondCon {
@@ -101,4 +114,19 @@
 .bottomFooterText {
     text-align: center;
     font-size:large
+}
+
+@media screen and (max-width: 1100px){
+    .topCon {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0 20px;
+    }
+    .firstSectionRight {
+        text-align: center;
+        margin: 0;
+        padding: 20px;
+    }
 }
