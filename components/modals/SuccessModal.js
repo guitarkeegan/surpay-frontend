@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
+import { abi, contractAddresses } from "../../constants"
+import { useMoralis, useWeb3Contract } from "react-moralis"
+import { ethers } from "ethers"
+import { useNotification } from "web3uikit"
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {useRouter} from 'next/router';
 import styles from '../../styles/TakeSurvey.module.css'
 
 export default function SuccessModal({submitAnswers}) {
+
+  
+
   const [show, setShow] = useState(false);
   const router = useRouter()
   const handleClose = () => {

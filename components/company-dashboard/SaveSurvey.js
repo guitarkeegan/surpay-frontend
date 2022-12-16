@@ -21,7 +21,7 @@ export default function SaveSurvey({surveyDetails, cards, distributorId, setSurv
                     number_of_takers_desired: numOfTakers,
                     total_payout: fundingAmount,
                     company_id: distributorId,
-                    survey_is_funded: false,
+                    survey_is_funded: true,
                     rawQa: cards,
                 }),
             })

@@ -22,10 +22,11 @@ async function takeSurveyRoute(req, res) {
         const userSurveyData = await UserSurvey.findOne({
             where: {
                 user_id: userId,
+                survey_id: sid
             },
         })
         if (userSurveyData) {
-            res.status(200).json({ message: "Survey already submitted" })
+            res.status(400).json({ message: "Survey already submitted" })
             return
         }
 
