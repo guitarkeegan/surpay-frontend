@@ -55,6 +55,11 @@
 .editIconWrapper svg{
     height: 40px;
     width: 40px;
+    cursor: pointer;
+}
+
+.editIconWrapper svg:hover{
+    transform: scale(1.1);
 }
 
 .panelTitleWrapper {

@@ -15,6 +15,10 @@ export default function EditSurvey() {
 
     console.log(data)
 
+    const handleEdit = (e) => {
+        console.log(e.currentTarget.id)
+    }
+
     return (
         <div>
         <div className={styles.panelTitleWrapper}>
@@ -50,7 +54,7 @@ export default function EditSurvey() {
                                 </div>
                             </div>
                             <div className={styles.cardButtonsWrapper}>
-                                <div className={styles.editIconWrapper}>
+                                <div id={item.id} onClick={handleEdit} className={styles.editIconWrapper}>
                                 <MdModeEdit />
                                 </div>
                                 <div className={styles.deleteBtnWrapper}>
