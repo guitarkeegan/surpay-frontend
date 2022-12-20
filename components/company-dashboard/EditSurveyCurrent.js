@@ -6,9 +6,20 @@ import { useState, useEffect } from "react"
 import Container from "react-bootstrap/Container"
 import CreateSurveyLogic from "./CreateSurveyLogic"
 import { v4 as uuid4 } from "uuid"
+import useSWR from "swr"
 
+const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 export default function EditSurveyCurrent({distributor}) {
+
+    const { data, error } = useSWR("/api/survey/read/one/from-distributor", fetcher)
+
+    if (error) return <div>Failed to load</div>
+    if (!data) return <div>Loading...</div>
+
+    console.log(data)
+
+
     const [surveyDetails, setSurveyDetails] = useState({
         surveyTitle: "",
         numOfTakers: "",

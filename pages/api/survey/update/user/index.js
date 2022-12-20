@@ -2,10 +2,10 @@ import { Survey, UserSurvey, Answer } from "../../../../../db/models"
 import sequelize from "../../../../../db/connection"
 import { Op } from "sequelize"
 import { withSessionRoute } from "../../../../../lib/withSession"
-import Moralis  from 'moralis';
-import { EvmChain } from '@moralisweb3/evm-utils';
-import {abi, contractAddresses} from "../../../../../lib/contract"
-import { ethers } from "ethers"
+// import Moralis  from 'moralis';
+// import { EvmChain } from '@moralisweb3/evm-utils';
+// import {abi, contractAddresses} from "../../../../../lib/contract"
+// import { ethers } from "ethers"
 
 export default withSessionRoute(submitSurveyRoute);
 
@@ -58,7 +58,7 @@ async function submitSurveyRoute(req, res) {
         //TODO: send transaction to contract
 
 
-        res.status(200).json({ message: "working" })
+        res.status(200).json({ userId: req.session.user.id })
     } catch (e) {
         console.error(e)
         res.status(400).json({ message: "Update user survey failed" })

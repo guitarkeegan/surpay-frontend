@@ -10,7 +10,7 @@ import {useRouter} from "next/router"
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
-export default function TakeSurvey({user}) {
+export default function TakeSurvey() {
     // save answer responses in state.
     const [answers, setAnswers] = useState([])
 
@@ -57,7 +57,7 @@ export default function TakeSurvey({user}) {
     
     const surveyId = window.location.href.split("/").pop()
     
-    const { data, error } = useSWR(`/api/survey/read/one/from-user/${surveyId}`, fetcher)
+    const { data, error } = useSWR(`/api/survey/read/one/from-distributor/${surveyId}`, fetcher)
 
     console.log("data: " + JSON.stringify(data))
 
@@ -115,9 +115,7 @@ export default function TakeSurvey({user}) {
                             <p>no data!</p>
                         )}
                         { answers.length > 0 &&
-                        <SuccessModal
-                         submitAnswers={handleSubmit}
-                         user={user} />
+                        <SuccessModal submitAnswers={handleSubmit} />
                         }
                     </form>
                 </div>

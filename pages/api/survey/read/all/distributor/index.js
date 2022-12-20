@@ -1,16 +1,19 @@
 import {Company, Survey} from "../../../../../../db/models"
 import { Op } from "sequelize"
-export default async function handler(req, res){
+import { withSessionRoute } from "../../../../../../lib/withSession"
 
-    /* ------------ MOCK COMPANY ID ---------------*/
-    const mockCompanyId = 1
+export default withSessionRoute(readAllSurveysRoute)
+
+async function readAllSurveysRoute(req, res){
+
+    const distributorId = req.session.distributor.id
 
     try {
         // will only return surveys that were created by the company
     const distributerSurveys = await Survey.findAll({
         where: {
             company_id: {
-                [Op.eq]: mockCompanyId
+                [Op.eq]: distributorId
             }
         }
     })

@@ -12,6 +12,7 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 export default function TakeSurvey({user}) {
 
+    console.log(user)
     const [selectedSurveyId, setSelectedSurveyId] = useState(0)
 
     const handleChange = (event) => {
@@ -55,7 +56,7 @@ export default function TakeSurvey({user}) {
             :
             <Row className="justify-content-center text-center mt-3">
                 <Col>
-                    <MockCaptchaModal selectedSurveyId={selectedSurveyId} user={user} />
+                    <MockCaptchaModal selectedSurveyId={selectedSurveyId} userId={user} />
                 </Col>
             </Row>
             }
