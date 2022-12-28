@@ -29,12 +29,12 @@ export default function CompanyDashboard({distributor}) {
           case "Create a new survey":
             return <NewSurvey distributor={distributor} />
             break;
-          case "Launch a past survey":
+          case "View Past Surveys":
             return <PastSurvey />
             break;
-          case "Manage a survey":
-            return <ManageSurvey />;
-            break;
+          // case "Manage a survey":
+          //   return <ManageSurvey />;
+          //   break;
           case "Account settings":
             return <DistAccount />;
             break;
@@ -54,8 +54,8 @@ export default function CompanyDashboard({distributor}) {
                 <div className={styles.leftMain}>
              
                     <button onClick={() => setSelection("Create a new survey")} className={styles.toggleBtns}>Create a new survey</button>
-                    <button onClick={()=>setSelection("Launch a past survey")} className={styles.toggleBtns}>Launch a past survey</button>
-                    <button onClick={()=>setSelection("Manage a survey")} className={styles.toggleBtns}>Manage a survey</button>
+                    <button onClick={()=>setSelection("View Past Surveys")} className={styles.toggleBtns}>View Past Surveys</button>
+                    {/* <button onClick={()=>setSelection("Manage a survey")} className={styles.toggleBtns}>Manage a survey</button> */}
                     <button onClick={()=>setSelection("Account settings")} className={styles.toggleBtns}>Account settings</button>
                 
                 </div>

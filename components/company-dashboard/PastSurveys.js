@@ -36,7 +36,7 @@ export default function LaunchSurvey() {
                                     <h4>Number of Survey Takers</h4>
                                 </div>
                                 <div className={styles.takers}>
-                                    <h3>{item.number_of_takers_desired}</h3>
+                                    <h3>{item.number_of_takers_fullfilled}/{item.number_of_takers_desired}</h3>
                                 </div>
 
                                 <div>
@@ -46,7 +46,7 @@ export default function LaunchSurvey() {
                                     <h3>{item.total_payout}</h3>
                                 </div>
                             </div>
-                            <div className={styles.cardButtonsWrapper}>
+                            {/* <div className={styles.cardButtonsWrapper}>
                                 <div>
                                     <button className={styles.launchSurveyBtn}>
                                         Launch Survey
@@ -55,7 +55,7 @@ export default function LaunchSurvey() {
                                 <div className={styles.deleteBtnWrapper}>
                                     <IoTrashBinSharp />
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     )
                 })
