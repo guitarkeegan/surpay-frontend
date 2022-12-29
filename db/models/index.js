@@ -10,7 +10,8 @@ const UserSurvey = require("./UserSurvey");
 
 Company.hasMany(Survey, {
     // foreignKey: "survey_id",
-    onDelete: "CASCADE"
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE"
 });
 
 Survey.belongsTo(Company, {
@@ -19,11 +20,15 @@ Survey.belongsTo(Company, {
 
 Survey.hasMany(Question, {
     // foreignKey: "survey_id",
-    onDelete: "CASCADE"
+    // constraints: false,
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE"
+    // hooks: true
 })
 
 Question.belongsTo(Survey, {
     // foreignKey: "survey_id"
+    onDelete: "SET NULL"
 });
 
 Question.hasMany(Answer, {
@@ -33,14 +38,17 @@ Question.hasMany(Answer, {
 
 Answer.belongsTo(Question, {
     // foreignKey: "question_id"
+    onDelete: "SET NULL"
 })
 
 User.belongsToMany(Survey, {
-    through: UserSurvey
+    through: UserSurvey,
+    // onDelete: "SET NULL"
 });
 
 Survey.belongsToMany(User, {
-    through: UserSurvey
+    through: UserSurvey,
+    // onDelete: "SET NULL"
 })
 
 module.exports = {Company, User, Survey, Question, Answer, UserSurvey}

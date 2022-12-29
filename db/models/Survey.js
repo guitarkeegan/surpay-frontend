@@ -48,6 +48,8 @@ const sequelize = require('../connection');
     freezeTableName: true,
     underscored: true,
     modelName: 'survey',
+    // onDelete: "CASCADE",
+    // hooks: true
   });
 
   module.exports = Survey;
