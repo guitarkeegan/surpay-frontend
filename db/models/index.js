@@ -11,44 +11,55 @@ const UserSurvey = require("./UserSurvey");
 Company.hasMany(Survey, {
     // foreignKey: "survey_id",
     onDelete: "CASCADE",
-    onUpdate: "CASCADE"
+    onUpdate: "CASCADE",
+    
 });
 
 Survey.belongsTo(Company, {
     // foreignKey: "company_id"
+    onDelete: 'SET NULL',
+    
 });
 
 Survey.hasMany(Question, {
     // foreignKey: "survey_id",
     // constraints: false,
     onDelete: "CASCADE",
-    onUpdate: "CASCADE"
+    onUpdate: "CASCADE",
+    constraints: false
     // hooks: true
 })
 
 Question.belongsTo(Survey, {
     // foreignKey: "survey_id"
-    onDelete: "SET NULL"
+    onDelete: "SET NULL",
+    
 });
 
 Question.hasMany(Answer, {
     // foreignKey: "question_id",
-    onDelete: "CASCADE"
+    onDelete: "CASCADE",
+    
 })
 
 Answer.belongsTo(Question, {
     // foreignKey: "question_id"
-    onDelete: "SET NULL"
+    onDelete: "SET NULL",
+    
 })
 
 User.belongsToMany(Survey, {
     through: UserSurvey,
     // onDelete: "SET NULL"
+    onDelete: 'SET NULL',
+    
 });
 
 Survey.belongsToMany(User, {
     through: UserSurvey,
     // onDelete: "SET NULL"
+    onDelete: 'SET NULL',
+    
 })
 
 module.exports = {Company, User, Survey, Question, Answer, UserSurvey}

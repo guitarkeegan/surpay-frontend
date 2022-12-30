@@ -17,7 +17,8 @@ const sequelize = require('../connection');
         references: {
           model: 'survey',
           key: 'id',
-        }
+        },
+        onDelete: "CASCADE"
       },
       question_text: {
         type: DataTypes.TEXT,

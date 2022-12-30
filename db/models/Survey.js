@@ -47,8 +47,9 @@ const sequelize = require('../connection');
     timestamps: false,
     freezeTableName: true,
     underscored: true,
+    onDelete: "CASCADE",
     modelName: 'survey',
-    // onDelete: "CASCADE",
+    
     // hooks: true
   });
 

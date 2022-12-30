@@ -19,6 +19,6 @@ const surveyData = [
     }
 ]
 
-const seedSurveys = () => Survey.bulkCreate(surveyData);
+const seedSurveys = () => Survey.bulkCreate(surveyData, {onDelete: "CASCADE"});
 
 module.exports = seedSurveys;
