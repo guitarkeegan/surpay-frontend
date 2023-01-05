@@ -19,7 +19,7 @@ export default function MockCaptchaModal({user, selectedSurveyId}) {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
+        Take me to the survey
       </Button>
 
       <Modal show={show} onHide={handleClose}>

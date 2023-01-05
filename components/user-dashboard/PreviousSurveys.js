@@ -21,7 +21,7 @@ export default function PastSurveys() {
         <div className="text-center mb-5">
             <h1>Previous Surveys Taken</h1>
             </div>
-            {data ? (
+            {!data.message ? (
                 data.map((item) => {
                     return (
                         <Container className={styles.cardWrapper}>

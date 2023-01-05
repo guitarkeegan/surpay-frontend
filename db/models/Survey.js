@@ -47,7 +47,10 @@ const sequelize = require('../connection');
     timestamps: false,
     freezeTableName: true,
     underscored: true,
+    onDelete: "CASCADE",
     modelName: 'survey',
+    
+    // hooks: true
   });
 
   module.exports = Survey;

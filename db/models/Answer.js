@@ -20,6 +20,7 @@ Answer.init(
                 model: "question",
                 key: "id",
             },
+            onDelete: "CASCADE"
         },
         answer_text: {
             type: DataTypes.TEXT,

@@ -4,16 +4,28 @@ import styles from "../../styles/PastSurveysDistributor.module.css"
 import { v4 as uuid4 } from "uuid"
 import { IoTrashBinSharp } from "react-icons/io5"
 import { MdModeEdit } from "react-icons/md"
+import {useState} from "react"
+import { useRouter } from "next/router"
+
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 export default function EditSurvey() {
-    const { data, error } = useSWR("/api/survey/read/all/distributer", fetcher)
+    const { data, error } = useSWR("/api/survey/read/all/distributor", fetcher)
+
+    const router = useRouter()
+
+    const [editPage, setEditPage] = useState(0)
 
     if (error) return <div>Failed to load</div>
     if (!data) return <div>Loading...</div>
 
     console.log(data)
+
+    const handleEdit = (e) => {
+        console.log(e.currentTarget.id)
+        router.push(`/survey/update/${e.currentTarget.id}`)
+    }
 
     return (
         <div>
@@ -50,7 +62,7 @@ export default function EditSurvey() {
                                 </div>
                             </div>
                             <div className={styles.cardButtonsWrapper}>
-                                <div className={styles.editIconWrapper}>
+                                <div id={item.id} onClick={handleEdit} className={styles.editIconWrapper}>
                                 <MdModeEdit />
                                 </div>
                                 <div className={styles.deleteBtnWrapper}>

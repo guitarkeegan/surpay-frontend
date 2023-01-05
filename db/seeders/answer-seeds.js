@@ -13,7 +13,7 @@ const answerData = [
   },
   {
     question_id: 1,
-    answer_text: "If got made a Chainlink Hackathon project...",
+    answer_text: "If God made a Chainlink Hackathon project...",
     times_selected: 0
   },
   {

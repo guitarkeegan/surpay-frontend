@@ -7,9 +7,10 @@ import SuccessModal from "../../../components/modals/SuccessModal"
 import {removeDuplicates, getAnswerIds} from "../../../utils/helpers"
 import {useRouter} from "next/router"
 
+
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
-export default function TakeSurvey() {
+export default function TakeSurvey({user}) {
     // save answer responses in state.
     const [answers, setAnswers] = useState([])
 
@@ -63,8 +64,12 @@ export default function TakeSurvey() {
     if (error) return <div>Failed to load</div>
     if (!data) return <div>Loading...</div>
 
-    const questions = data.questions.map((question) => question)
-
+    let questions;
+    if (data.questions) {
+        questions = data.questions.map((question) => question)
+    }
+    
+   
     return (
         <>
             <div className={styles.titleDiv}>
@@ -77,7 +82,7 @@ export default function TakeSurvey() {
 
                     <form className={styles.surveyForm}
                     onSubmit={handleSubmit}>
-                        {questions ? (
+                        {!data.message ? (
                             questions.map((question) => {
                                 return (
                                     <>
@@ -109,8 +114,10 @@ export default function TakeSurvey() {
                         ) : (
                             <p>no data!</p>
                         )}
-                        { answers.length >= questions.length &&
-                        <SuccessModal submitAnswers={handleSubmit} />
+                        { answers.length > 0 &&
+                        <SuccessModal
+                         submitAnswers={handleSubmit}
+                         user={user} />
                         }
                     </form>
                 </div>

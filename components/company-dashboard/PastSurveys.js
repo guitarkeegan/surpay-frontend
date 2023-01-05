@@ -3,14 +3,40 @@ import Container from "react-bootstrap/Container"
 import styles from "../../styles/PastSurveysDistributor.module.css"
 import { v4 as uuid4 } from "uuid"
 import { IoTrashBinSharp } from "react-icons/io5"
+import { useState } from "react"
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 export default function LaunchSurvey() {
-    const { data, error } = useSWR("/api/survey/read/all/distributer", fetcher)
+
+    const [sid, setSid] = useState()
+
+    const { data, error } = useSWR("/api/survey/read/all/distributor", fetcher)
 
     if (error) return <div>Failed to load</div>
     if (!data) return <div>Loading...</div>
+
+    const handleDelete = async (event) => {
+        event.preventDefault()
+        console.log("delete this!")
+        console.log(event.currentTarget)
+        setSid(event.currentTarget.id)
+        console.log(sid)
+
+        try {
+        const response = await fetch("/api/survey/delete", {
+            method: "DELETE",
+            body: JSON.stringify({surveyId: sid}),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        console.log(response)
+        
+    } catch (e){
+        console.log(e)
+    }
+    }
 
     return (
         <div>
@@ -20,7 +46,7 @@ export default function LaunchSurvey() {
             {data ? (
                 data.map((item) => {
                     return (
-                        <div className={styles.cardWrapper}>
+                        <div key={item.id} className={styles.cardWrapper}>
                             <div>
                                 <div className={styles.cardTitle}>
                                     <h2>{item.name}</h2>
@@ -36,7 +62,7 @@ export default function LaunchSurvey() {
                                     <h4>Number of Survey Takers</h4>
                                 </div>
                                 <div className={styles.takers}>
-                                    <h3>{item.number_of_takers_desired}</h3>
+                                    <h3>{item.number_of_takers_fullfilled}/{item.number_of_takers_desired}</h3>
                                 </div>
 
                                 <div>
@@ -47,12 +73,12 @@ export default function LaunchSurvey() {
                                 </div>
                             </div>
                             <div className={styles.cardButtonsWrapper}>
-                                <div>
+                                {/* <div>
                                     <button className={styles.launchSurveyBtn}>
                                         Launch Survey
                                     </button>
-                                </div>
-                                <div className={styles.deleteBtnWrapper}>
+                                </div> */}
+                                <div id={item.id} onClick={handleDelete} className={styles.deleteBtnWrapper}>
                                     <IoTrashBinSharp />
                                 </div>
                             </div>

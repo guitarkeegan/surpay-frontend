@@ -12,7 +12,7 @@ async function allCompletedSurveys(req, res) {
     console.log(`user id is ${userId}`)
 
     try {
-    // check if which surveys the user has already taken
+    // check which surveys the user has already taken
     const surveysTaken = await User.findByPk(userId, {
         include: [{model: Survey, attributes: ["id"]}]
     })
@@ -21,9 +21,14 @@ async function allCompletedSurveys(req, res) {
     for (let obj of surveysTaken.surveys){
             surveysToInclude.push(obj.id)
     }
-    console.log(surveysToInclude)
-    //TODO: check if survey has already been completed in general
 
+    console.log("surveys to include... ", surveysToInclude)
+    //TODO: check if survey has already been completed in general
+    if (surveysToInclude.length === 0){
+        console.log("no surveys to include")
+        res.status(200).json({message: "No surveys have been taken"})
+        return
+    }
     const [results, metadata] = await sequelize.query(
         `SELECT * FROM Survey WHERE ID IN(${surveysToInclude.join()});`)
         console.log(results)
