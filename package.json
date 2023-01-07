@@ -9,6 +9,7 @@
     "lint": "next lint",
     "seed": "node db/seeders/index.js"
   },
+  "cacheDirectories": [".next/cache"],
   "dependencies": {
     "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",

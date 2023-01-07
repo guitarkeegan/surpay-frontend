@@ -31,7 +31,7 @@ export default function Welcome() {
 
                 <section className={styles.secondCon}>
                     <div className={styles.secondSectionLeft}>
-                    <h3 className={styles.secondParagraph}>Connecting companies straight to the user while maintaining user's privacy. Users can give companies the information they need, while earning crypto, without sacrificing their privacy, and transacting trustlessly.</h3>
+                    <h3 className={styles.secondParagraph}>Connecting companies straight to the user while maintaining user&apos;s privacy. Users can give companies the information they need, while earning crypto, without sacrificing their privacy, and transacting trustlessly.</h3>
                     </div>
                     <div className={styles.secondSectionRight}>
                         <Image 

@@ -113,6 +113,7 @@ export default function NewSurvey({distributor}) {
             {cards.map((card) => {
                 return (
                     <QuestionCardCreated
+                    key={card.id}
                     question={card.question}
                     option1={card.option1}
                     option2={card.option2}

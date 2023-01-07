@@ -45,7 +45,7 @@ export default function SuccessModal({submitAnswers}) {
         <Modal.Header closeButton>
           <Modal.Title>Success!!!</Modal.Title>
         </Modal.Header>
-        <Modal.Body>🎉🎉🎉You've submitted a survey!🎉🎉🎉</Modal.Body>
+        <Modal.Body>🎉🎉🎉You&apos;ve submitted a survey!🎉🎉🎉</Modal.Body>
         <Modal.Footer>
           <Button variant="success" onClick={handleClose}>
             Back to dashboard

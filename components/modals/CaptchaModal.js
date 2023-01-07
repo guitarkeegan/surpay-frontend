@@ -28,6 +28,7 @@ export default function MockCaptchaModal({user, selectedSurveyId}) {
         </Modal.Header>
         <Modal.Body>Please solve this puzzle!
         <Image
+        alt="mock captcha"
         src={captcha} />
         </Modal.Body>
         <Modal.Footer>

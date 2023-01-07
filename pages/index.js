@@ -13,7 +13,7 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
                 <style>
                     @import
-                    url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap');
+                    url(&apos;https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap&apos;);
                 </style>
             </Head>
             <div style={{

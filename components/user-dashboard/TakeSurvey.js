@@ -39,7 +39,7 @@ export default function TakeSurvey({user}) {
                         <option value="">--Please choose a survey--</option>
                         {data ? (
                             data.map((item) => {
-                                return <option value={item.id}>{item.name}</option>
+                                return <option key={item.id} value={item.id}>{item.name}</option>
                             })
                         ) : (
                             <option value="no survey to load">no survey to load</option>
