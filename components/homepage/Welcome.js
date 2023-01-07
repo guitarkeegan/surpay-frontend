@@ -56,8 +56,8 @@ export default function Welcome() {
                     src="/assets/img/surpayLogo.png"
                     alt={"Surpay Logo"}
                     className={styles.surpayLogoImg}
-                    height={200}
-                    width={200}>
+                    height={300}
+                    width={300}>
                     </Image>
                     </div>
                 <div>
