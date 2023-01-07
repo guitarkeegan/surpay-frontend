@@ -19,24 +19,44 @@ function MainNav() {
             const res = await fetch("/api/account/user")
             const userData = await res.json()
             if (userData.id === undefined) {
-                setIsLoggedIn(false)
+                console.log(false)
+                return false
             } else {
-                setIsLoggedIn(true)
-                console.log(userData)
+                return true
             }
         } catch (error) {
+            console.log("something wrong with getUser")
             console.log(error)
         }
     }
 
+    const updateUi = (bool) => {
+        console.log(bool)
+        setIsLoggedIn(bool)
+        if (bool){
+            console.log("is logged in")
+            localStorage.setItem("loggedIn", "true")
+        } else {
+            console.log("remove logged in")
+            localStorage.removeItem("loggedIn")
+        }
+    }
+
+    const loggedIn = () =>{
+        if (localStorage.getItem("loggedIn")){
+            setIsLoggedIn(true)
+        }
+    }
+
     useEffect(() => {
-        getUser()
+        loggedIn()
     }, [])
 
     const handleLogout = async () => {
         try {
             await fetch("/api/logout")
             setIsLoggedIn(false)
+            localStorage.removeItem("loggedIn")
             router.push("/")
         } catch (error) {
             console.log(error)
@@ -55,11 +75,11 @@ function MainNav() {
                     </div>
                     <div className={styles.logoutBtn}>
                         {isLoggedIn ? (
-                            <btn className={styles.navLinks} onClick={handleLogout}>
+                            <button className={styles.navLinks} onClick={handleLogout}>
                                 Logout
-                            </btn>
+                            </button>
                         ) : (
-                            <LoginModal updateUi={setIsLoggedIn} location={"nav"} />
+                            <LoginModal updateUi={updateUi} location={"nav"} />
                         )}
                     </div>
                 </div>
