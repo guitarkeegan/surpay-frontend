@@ -52,13 +52,13 @@ export default function Welcome() {
             </div>
             <footer className={styles.footerCon}>
                 <div className={styles.footerLogo}>
-                     <Image 
+                     <img 
                     src="/assets/img/surpayLogo.png"
-                    alt={"Surpay Logo"}
+                    alt="Surpay Logo"
                     className={styles.surpayLogoImg}
-                    height={300}
-                    width={300}>
-                    </Image>
+                    width="200px"
+                    height="200px"
+                    />
                     </div>
                 <div>
                     <h2 className={styles.topFooterChainlink}>Powered By Chainlink</h2>
