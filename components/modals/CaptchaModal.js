@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import Image from 'next/Image'
-import captcha from "../../public/assets/img/recaptchaExample.png"
+import Image from 'next/image'
+// import captcha from "/assets/img/recaptchaExample.png"
 import {useRouter} from "next/router"
 
 export default function MockCaptchaModal({user, selectedSurveyId}) {
@@ -28,7 +28,10 @@ export default function MockCaptchaModal({user, selectedSurveyId}) {
         </Modal.Header>
         <Modal.Body>Please solve this puzzle!
         <Image
-        src={captcha} />
+        alt="mock captcha"
+        src="/assets/img/recaptchaExample.png"
+        height={600}
+        width={400} />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={handleClose}>

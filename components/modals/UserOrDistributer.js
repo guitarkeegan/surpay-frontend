@@ -6,9 +6,9 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Image from 'next/image'
-import userLoginImg from '../../public/assets/img/UserLoginImg-2.png'
+// import userLoginImg from '/assets/img/UserLoginImg-2.png'
 import Form from 'react-bootstrap/Form'
-import distLoginImg from '../../public/assets/img/DistLoginImg-2.png'
+// import distLoginImg from "/assets/img/DistLoginImg-2.png"
 import { useRouter } from 'next/router';
 
 export default function AccountLogin({loginType, updateUi}) {
@@ -113,8 +113,10 @@ export default function AccountLogin({loginType, updateUi}) {
         <Col className='p-0'>
         <Image
         className={styles.userLoginImg}
-        src={userLoginImg}
+        src="/assets/img/UserLoginImg-2.png"
         alt={"Image of laptop on a desk"}
+        height={400}
+        width={570}
         />
         </Col>
         </Row>
@@ -154,8 +156,10 @@ export default function AccountLogin({loginType, updateUi}) {
         <Col className='p-0'>
         <Image
         className={styles.userLoginImg}
-        src={distLoginImg}
+        src="/assets/img/DistLoginImg-2.png"
         alt={"Image of person holding a tablet"}
+        height={400}
+        width={550}
         />
         </Col>
         </Row>

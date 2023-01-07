@@ -1,7 +1,7 @@
-import {Company, Survey} from "../../../../../db/models"
-import {withSession} from "../../../../../lib/session"
+import { Company, Survey } from "../../../../../db/models"
+import { withSessionRoute } from "../../../../../lib/withSession"
 
-export default withSession(updateSurveyRoute)
+export default withSessionRoute(updateSurveyRoute)
 
 async function updateSurveyRoute (req, res){
 

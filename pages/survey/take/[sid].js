@@ -6,7 +6,7 @@ import useSWR from "swr"
 import SuccessModal from "../../../components/modals/SuccessModal"
 import {removeDuplicates, getAnswerIds} from "../../../utils/helpers"
 import {useRouter} from "next/router"
-
+import { withSessionSsr } from "../../../lib/withSession"
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
@@ -133,8 +133,27 @@ export default function TakeSurvey({user}) {
                     overflow: "hidden",
                 }}
             >
-                <Image src={backgroundDiv} layout="fill" objectFit="cover" />
+                <Image alt="decorative background" src={backgroundDiv} layout="fill" objectFit="cover" />
             </div>
         </>
     )
 }
+
+export const getServerSideProps = withSessionSsr(async function getServerSideProps({ req }) {
+    const user = req.session.user
+
+    const urlArray = req.url.split("/")
+    const requestedId = parseInt(urlArray[urlArray.length - 1])
+
+    if (requestedId !== user?.id) {
+        return {
+            notFound: true,
+        }
+    }
+
+    return {
+        props: {
+            user: user,
+        },
+    }
+})

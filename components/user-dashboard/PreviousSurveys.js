@@ -24,7 +24,7 @@ export default function PastSurveys() {
             {!data.message ? (
                 data.map((item) => {
                     return (
-                        <Container className={styles.cardWrapper}>
+                        <Container key={item.id} className={styles.cardWrapper}>
                             <Row>
                                 <Col>
                                     <div>

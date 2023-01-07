@@ -35,7 +35,7 @@ export default function EditSurvey() {
             {data ? (
                 data.map((item) => {
                     return (
-                        <div className={styles.cardWrapper}>
+                        <div key={item.id} className={styles.cardWrapper}>
                             <div>
                                 <div className={styles.cardTitle}>
                                     <h2>{item.name}</h2>
