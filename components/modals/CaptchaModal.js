@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import Image from 'next/Image'
+import Image from 'next/image'
 // import captcha from "/assets/img/recaptchaExample.png"
 import {useRouter} from "next/router"
 
