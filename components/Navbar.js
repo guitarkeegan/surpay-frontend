@@ -6,7 +6,7 @@ import styles from "../styles/Navbar.module.css"
 import Button from "react-bootstrap/Button"
 import ConnectWallet from "./ConnectWallet"
 import Image from "next/image"
-import surpayLogoBlueImg from "../public/assets/img/surpayLogoBlue.png"
+import surpayLogoBlueImg from "/assets/img/surpayLogoBlue.png"
 import { useRouter } from "next/router"
 
 function MainNav() {

@@ -1,4 +1,4 @@
-import backgroundImage from "../../../public/assets/img/SUserDashBkgrnd.png"
+import backgroundImage from "/assets/img/SUserDashBkgrnd.png"
 import styles from "../../../styles/UserDashboard.module.css"
 import { useState } from "react"
 import UserAccount from "../../../components/user-dashboard/Account"

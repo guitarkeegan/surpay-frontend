@@ -1,6 +1,6 @@
 import styles from "../../styles/BackgroundImage.module.css"
 import Image from "next/image"
-import backgroundImage from "../../public/assets/img/SDistDashBkgrnd.png"
+import backgroundImage from "/assets/img/SDistDashBkgrnd.png"
 
 export default function BackgroundImage() {
     // const styles = {

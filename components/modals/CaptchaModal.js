@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Image from 'next/Image'
-import captcha from "../../public/assets/img/recaptchaExample.png"
+import captcha from "/assets/img/recaptchaExample.png"
 import {useRouter} from "next/router"
 
 export default function MockCaptchaModal({user, selectedSurveyId}) {

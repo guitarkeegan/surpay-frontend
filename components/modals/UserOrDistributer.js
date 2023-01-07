@@ -6,9 +6,9 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Image from 'next/image'
-import userLoginImg from '../../public/assets/img/UserLoginImg-2.png'
+import userLoginImg from '/assets/img/UserLoginImg-2.png'
 import Form from 'react-bootstrap/Form'
-import distLoginImg from '../../public/assets/img/DistLoginImg-2.png'
+import distLoginImg from '/assets/img/DistLoginImg-2.png'
 import { useRouter } from 'next/router';
 
 export default function AccountLogin({loginType, updateUi}) {
