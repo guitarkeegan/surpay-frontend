@@ -1,7 +1,7 @@
 import Image from "next/image"
-import surveyTaker from "/assets/img/surveyTakerImage.jpg"
-import ethereumImg from "/assets/img/ethereumImg.jpg"
-import surpayLogoImg from "/assets/img/surpayLogo.png"
+// import surveyTaker from "/assets/img/surveyTakerImage.jpg"
+// import ethereumImg from "/assets/img/ethereumImg.jpg"
+// import surpayLogoImg from "/assets/img/surpayLogo.png"
 import Button from 'react-bootstrap/Button'
 import styles from "../../styles/Welcome.module.css"
 import LoginModal from "../modals/LoginModal"
@@ -19,9 +19,11 @@ export default function Welcome() {
                 <section className={styles.topCon}>
                     <div className={styles.firstSectionLeft}>
                         <Image 
-                        src={surveyTaker}
+                        src="/assets/img/surveyTakerImage.jpg"
                         alt={"survey taker image"}
-                        className={styles.surveyTakerImg}>
+                        className={styles.surveyTakerImg}
+                        height={600}
+                        width={800}>
                         </Image>
                     </div>
                     <div className={styles.firstSectionRight}>
@@ -35,9 +37,11 @@ export default function Welcome() {
                     </div>
                     <div className={styles.secondSectionRight}>
                         <Image 
-                        src={ethereumImg}
+                        src="/assets/img/ethereumImg.jpg"
                         alt={"ethereum image"}
-                        className={styles.surveyTakerImg}>
+                        className={styles.surveyTakerImg}
+                        height={400}
+                        width={600}>
                         </Image>
                     </div>
                 </section>
@@ -49,9 +53,11 @@ export default function Welcome() {
             <footer className={styles.footerCon}>
                 <div className={styles.footerLogo}>
                      <Image 
-                    src={surpayLogoImg}
+                    src="/assets/img/surpayLogo.png"
                     alt={"Surpay Logo"}
-                    className={styles.surpayLogoImg}>
+                    className={styles.surpayLogoImg}
+                    height={200}
+                    width={200}>
                     </Image>
                     </div>
                 <div>
