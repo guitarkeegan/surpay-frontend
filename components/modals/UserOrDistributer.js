@@ -88,7 +88,7 @@ export default function AccountLogin({loginType, updateUi}) {
         <Modal.Body>
         <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        
+        <Form.Text className='text-muted'>use: chain.link.io </Form.Text>
         <Form.Control onChange={(e)=>setAddress(e.target.value)} type="text" placeholder="Wallet Address" />
         <Form.Text className="text-muted">
           So we can send you crypto!
@@ -96,7 +96,7 @@ export default function AccountLogin({loginType, updateUi}) {
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
-        
+        <Form.Text className='muted'>use: password123</Form.Text>
         <Form.Control onChange={(e)=>setUserPassword(e.target.value)} type="password" placeholder="Password" />
       </Form.Group>
 
