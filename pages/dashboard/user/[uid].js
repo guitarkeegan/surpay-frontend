@@ -1,4 +1,4 @@
-import backgroundImage from "/assets/img/SUserDashBkgrnd.png"
+// import backgroundImage from "/assets/img/SUserDashBkgrnd.png"
 import styles from "../../../styles/UserDashboard.module.css"
 import { useState } from "react"
 import UserAccount from "../../../components/user-dashboard/Account"
@@ -46,7 +46,7 @@ export default function UserDashboard({ user }) {
                 }}
             >
                 <Image
-                    src={backgroundImage}
+                    src="/assets/img/SUserDashBkgrnd.png"
                     alt={"Colorful lines over black canvas"}
                     layout="fill"
                     objectFit="cover"

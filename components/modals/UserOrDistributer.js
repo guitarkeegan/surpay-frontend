@@ -115,6 +115,8 @@ export default function AccountLogin({loginType, updateUi}) {
         className={styles.userLoginImg}
         src="/assets/img/UserLoginImg-2.png"
         alt={"Image of laptop on a desk"}
+        height={400}
+        width={570}
         />
         </Col>
         </Row>
@@ -156,6 +158,8 @@ export default function AccountLogin({loginType, updateUi}) {
         className={styles.userLoginImg}
         src="/assets/img/DistLoginImg-2.png"
         alt={"Image of person holding a tablet"}
+        height={400}
+        width={550}
         />
         </Col>
         </Row>

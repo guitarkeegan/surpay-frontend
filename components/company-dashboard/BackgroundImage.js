@@ -1,6 +1,6 @@
 import styles from "../../styles/BackgroundImage.module.css"
 import Image from "next/image"
-import backgroundImage from "/assets/img/SDistDashBkgrnd.png"
+// import backgroundImage from "/assets/img/SDistDashBkgrnd.png"
 
 export default function BackgroundImage() {
     // const styles = {
@@ -31,7 +31,7 @@ export default function BackgroundImage() {
             }}
         >
             <Image
-                src={backgroundImage}
+                src="/assets/img/SDistDashBkgrnd.png"
                 alt={"Colorful lines over black canvas"}
                 layout="fill"
                 objectFit="cover"
