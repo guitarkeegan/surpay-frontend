@@ -2,6 +2,10 @@
   "name": "surpay-frontend",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "v16.15.1"
+  },
+  "cacheDirectories": [".next/cache"],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,7 +13,6 @@
     "lint": "next lint",
     "seed": "node db/seeders/index.js"
   },
-  "cacheDirectories": [".next/cache"],
   "dependencies": {
     "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
