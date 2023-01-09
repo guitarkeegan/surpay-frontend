@@ -1,6 +1,7 @@
 import styles from "../../styles/DistributorDashboard.module.css"
 import { v4 as uuid4 } from "uuid"
 import {useState} from "react"
+import uuid from "react-uuid";
 
 // form for user to update their account information
 export default function UserAccount() {
@@ -55,9 +56,9 @@ export default function UserAccount() {
             <p className={styles.successText}>{successMessage}</p>
         }
             <label>Password</label>
-            <input onChange={(e) => setPassword(e.target.value)} className={styles.inputStyle} type="password" name="password" id=""></input>
+            <input key={uuid()} onChange={(e) => setPassword(e.target.value)} className={styles.inputStyle} type="password" name="password" id={uuid()}></input>
             <label>Password Again</label>
-            <input onChange={(e) => setPasswordAgain(e.target.value)} className={styles.inputStyle} type="password" name="passwordAgain" id=""></input>
+            <input key={uuid()} onChange={(e) => setPasswordAgain(e.target.value)} className={styles.inputStyle} type="password" name="passwordAgain" id={uuid()}></input>
             <button onClick={handleUpdateAccount} className={styles.accountSubmit}>Update Changes</button>
             <button className={styles.deleteBtn}>Delete Account</button>
         </form>

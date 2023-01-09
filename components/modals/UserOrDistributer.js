@@ -17,15 +17,18 @@ export default function AccountLogin({loginType, updateUi}) {
   const [userPassword, setUserPassword] = useState("");
   const [companyEmail, setCompanyEmail] = useState("");
   const [companyPassword, setCompanyPassword] = useState("");
+  const [error, setError] = useState("")
 
   const router = useRouter();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  
+
   const toDashboard = async (event) =>{
     event.preventDefault()
-    setShow(false)
+    
     try {
       const res = await fetch("/api/login/user", {
         method: "POST",
@@ -35,19 +38,27 @@ export default function AccountLogin({loginType, updateUi}) {
         body: JSON.stringify({address: address,
           password: userPassword})
       })
-      console.log(res)
-      const {userId} = await res.json()
-      updateUi(true)
-      router.push(`/dashboard/${event.target.name}/${userId}`)
+      if (res.status === 400){
+        setError("Username or password was incorrect")
+
+      } else {
+        console.log(res)
+        const {userId} = await res.json()
+        setShow(false)
+        updateUi(true)
+        router.push(`/dashboard/${event.target.name}/${userId}`)
+      }
+
 
   } catch (err) {
     console.log(err)
+    setError("Username or password was incorrect")
   }
   }
 
   const toCompanyDashboard = async (e) => {
     e.preventDefault()
-    setShow(false)
+    
     try {
       const res = await fetch("/api/login/distributor", {
         method: "POST",
@@ -59,12 +70,20 @@ export default function AccountLogin({loginType, updateUi}) {
           password: companyPassword
         })
       })
-      console.log(res)
-      const {id} = await res.json()
-      updateUi(true)
-      router.push(`/dashboard/distributor/${id}`)
+      if (res.status === 400){
+        setError("Username or password was incorrect")
+
+      } else {
+        console.log(res)
+        setShow(false)
+        const {id} = await res.json()
+        updateUi(true)
+        router.push(`/dashboard/distributor/${id}`)
+      }
+    
 
   } catch (err) {
+    
     console.log(err)
   }
   }
@@ -88,6 +107,7 @@ export default function AccountLogin({loginType, updateUi}) {
         <Modal.Body>
         <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form.Text style={{color: "red"}}>{error}</Form.Text>
         <Form.Text className='text-muted'>use: 0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199 or </Form.Text>
         <Form.Text className='text-muted'>use: 0xbDA5747bFD65F08deb54cb465eB87D40e51B197E </Form.Text>
         <Form.Control onChange={(e)=>setAddress(e.target.value)} type="text" placeholder="Wallet Address" />
@@ -134,6 +154,7 @@ export default function AccountLogin({loginType, updateUi}) {
         <Modal.Body>
         <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form.Text style={{color: "red"}}>{error}</Form.Text>
       <Form.Text className='text-muted'>use: chain.link.io </Form.Text>
         <Form.Control onChange={(e)=>setCompanyEmail(e.target.value)} type="email" placeholder="Company Email" />
         <Form.Text className="text-muted">

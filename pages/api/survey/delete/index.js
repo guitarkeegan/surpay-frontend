@@ -29,7 +29,10 @@ async function deleteSurveyRoute(req, res) {
             }
         })
 
-        res.status(200).json({ message: "recieved!" })
+        res.status(200).json({
+             message: "Survey was Deleted!",
+             distributorId: distributorId
+            })
 
     } catch (e) {
         console.log(e)
