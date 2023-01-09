@@ -67,7 +67,12 @@ function MainNav() {
         
             <nav className={styles.navStyle}>
                 <div  className={styles.logo}>
-                    <img src="/assets/img/surpayLogoBlue.png" alt="Surpay Logo" height="200px" width="200px" />
+                    <Image
+                    src="/assets/img/surpayLogoBlue.png"
+                    alt="Surpay Logo"
+                    height={200}
+                    width={200}>
+                    </Image>
                 </div>
                 <div className={styles.navBtns}>
                     <div className={styles.walletBtn}>
