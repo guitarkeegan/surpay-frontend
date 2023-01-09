@@ -1,1 +1,12 @@
 
+.imageCol {
+    padding: 0;
+
+}
+
+@media screen and (max-width: 500px){
+    .imageCol {
+        display: none;
+    
+    }
+}
