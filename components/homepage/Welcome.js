@@ -18,7 +18,7 @@ export default function Welcome() {
 
                 <section className={styles.topCon}>
                     <div className={styles.firstSectionLeft}>
-                        <Image 
+                        <Image
                         src="/assets/img/surveyTakerImage.jpg"
                         alt={"survey taker image"}
                         className={styles.surveyTakerImg}
@@ -52,13 +52,13 @@ export default function Welcome() {
             </div>
             <footer className={styles.footerCon}>
                 <div className={styles.footerLogo}>
-                     <img 
-                    src="/assets/img/surpayLogo.png"
+                     <Image
+                    src="/assets/img/SurpayLogo.png"
                     alt="Surpay Logo"
                     className={styles.surpayLogoImg}
-                    width="200px"
-                    height="200px"
-                    />
+                    width={200}
+                    height={200}>
+                    </Image>
                     </div>
                 <div>
                     <h2 className={styles.topFooterChainlink}>Powered By Chainlink</h2>
