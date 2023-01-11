@@ -147,6 +147,10 @@
     font-size: 1.5rem;
 }
 
+.takeASurvey{
+    font-size: 32px;
+}
+
 @media screen and (max-width: 900px){
     .main{
         flex-direction: column;

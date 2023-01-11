@@ -43,7 +43,7 @@ export default function QuestionCard({addCard}) {
 
     return (
         <Form className={styles.questionCard}>
-            <Row className="justify-content-center">
+            <Row className={styles.questionRow}>
                 <Col sm md={10}>
                     <Form.Group className="mb-3" controlId={uuid4()}>
                         <Form.Control

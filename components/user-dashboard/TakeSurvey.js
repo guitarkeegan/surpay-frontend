@@ -29,12 +29,12 @@ export default function TakeSurvey({user}) {
     return (
         <Form>
             <Row className={"text-center mb-3"}>
-                <h2>Take a Survey</h2>
+                <h2 className={styles.takeASurvey}>Take a Survey</h2>
             </Row>
             <Row className="justify-content-center">
                 <Col sm md={10}>
                     <label htmlFor="survey-select">Choose a survey:</label>
-
+                    <br />
                     <select onChange={handleChange} name="survey" id="survey-select">
                         <option value="">--Please choose a survey--</option>
                         {data ? (
