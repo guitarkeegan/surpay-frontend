@@ -71,3 +71,29 @@
     display: flex;
     justify-content: center;
 }
+
+@media screen and (max-width: 1071px){
+    .cardWrapper{
+        width: 60vw;
+        border-radius: 5px;
+        padding: 20px 15px 15px 10px;
+        margin-bottom: 30px;
+    }
+    .takers, .payout{
+        padding: 5px 20px 0;
+        margin-right: 10px;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .cardWrapper{
+        width: 90vw;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .cardWrapper{
+        width: 98vw;
+
+    }
+}
