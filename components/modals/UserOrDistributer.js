@@ -108,8 +108,6 @@ export default function AccountLogin({loginType, updateUi}) {
         <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail">
       <Form.Text style={{color: "red"}}>{error}</Form.Text>
-        <Form.Text className='text-muted'>use: 0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199 or </Form.Text>
-        <Form.Text className='text-muted'></Form.Text>
         <Form.Text className='text-muted'>use: 0xbDA5747bFD65F08deb54cb465eB87D40e51B197E </Form.Text>
         <Form.Control onChange={(e)=>setAddress(e.target.value)} type="text" placeholder="Wallet Address" />
         <Form.Text className="text-muted">
@@ -156,7 +154,7 @@ export default function AccountLogin({loginType, updateUi}) {
         <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail">
       <Form.Text style={{color: "red"}}>{error}</Form.Text>
-      <Form.Text className='text-muted'>use: chain.link.io </Form.Text>
+      <Form.Text className='text-muted'>use: chain@link.io </Form.Text>
         <Form.Control onChange={(e)=>setCompanyEmail(e.target.value)} type="email" placeholder="Company Email" />
         <Form.Text className="text-muted">
           
