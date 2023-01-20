@@ -145,12 +145,6 @@ export const getServerSideProps = withSessionSsr(async function getServerSidePro
     const urlArray = req.url.split("/")
     const requestedId = parseInt(urlArray[urlArray.length - 1])
 
-    if (requestedId !== user?.id) {
-        return {
-            notFound: true,
-        }
-    }
-
     return {
         props: {
             user: user,
