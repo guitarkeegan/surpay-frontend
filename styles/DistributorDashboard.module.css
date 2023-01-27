@@ -39,6 +39,10 @@
     font-size: 1.5rem;
 }
 
+.leftMain button:active{
+    transform: translateY(10%);
+}
+
 .rightMain {
     flex-grow: 2;
     display: flex;
@@ -48,6 +52,7 @@
 }
 
 .h1Style{
+    margin-top: 60px;
     font-size: 4rem;
     font-weight: 700;
     text-align: center;

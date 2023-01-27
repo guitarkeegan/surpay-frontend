@@ -25,6 +25,7 @@
 }
 
 .h1Style{
+    margin-top: 60px;
     font-size: 4rem;
 }
 
@@ -66,6 +67,10 @@
     padding: 60px 40px;
     gap: 60px;
     border-right: 1px black solid;
+}
+
+.leftMain button:active{
+    transform: translateY(10%);
 }
 
 .accountSubmit {
