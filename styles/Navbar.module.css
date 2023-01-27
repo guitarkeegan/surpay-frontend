@@ -68,9 +68,10 @@
 }
 
 .logo {
-    height: 140px;
+    max-width: 200px;
+    /* height: 140px;
     width: 200px;
-    object-fit: cover;
+    object-fit: cover; */
 }
 
 .navBtns {

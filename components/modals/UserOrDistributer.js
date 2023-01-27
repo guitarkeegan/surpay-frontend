@@ -108,10 +108,10 @@ export default function AccountLogin({loginType, updateUi}) {
         <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail">
       <Form.Text style={{color: "red"}}>{error}</Form.Text>
-        <Form.Text className='text-muted'>try: 0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199 or </Form.Text>
+        <Form.Text className='text-muted' style={{overflowWrap: 'anywhere'}}>try: 0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199 or </Form.Text>
         <Form.Text className='text-muted'></Form.Text>
-        <Form.Text className='text-muted'> 0xbDA5747bFD65F08deb54cb465eB87D40e51B197E </Form.Text>
-        <Form.Control onChange={(e)=>setAddress(e.target.value)} type="text" placeholder="Wallet Address" />
+        <Form.Text className='text-muted' style={{overflowWrap: 'anywhere'}}> 0xbDA5747bFD65F08deb54cb465eB87D40e51B197E </Form.Text>
+        <Form.Control onChange={(e)=>setAddress(e.target.value)} type="text" placeholder="Wallet Address" style={{width: '65%'}} />
         <Form.Text className="text-muted">
           So we can send you crypto!
         </Form.Text>
@@ -119,7 +119,7 @@ export default function AccountLogin({loginType, updateUi}) {
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Text className='muted'>use: password123</Form.Text>
-        <Form.Control onChange={(e)=>setUserPassword(e.target.value)} type="password" placeholder="Password" />
+        <Form.Control onChange={(e)=>setUserPassword(e.target.value)} type="password" placeholder="Password" style={{width: '65%'}} />
       </Form.Group>
 
       <Button name="user" onClick={toDashboard} variant="primary" type="submit">

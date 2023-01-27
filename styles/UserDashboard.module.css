@@ -89,7 +89,8 @@
 
 .leftMain button {
     height: 80px;
-    width: 260px;
+    /* width: 200px; */
+    min-width: 200px;
     background-color: rgb(171, 236, 250);
     border-radius: 10px;
     border: none;
@@ -110,6 +111,8 @@
 }
 
 .inputStyle {
+    /* width: 232px; */
+    max-width: 232px;
     height: 2rem;
     border-radius: 2px;
     border: none;

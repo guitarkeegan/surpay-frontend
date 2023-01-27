@@ -71,7 +71,9 @@ function MainNav() {
                     src="/assets/img/SurpayLogoBlue.png"
                     alt="Surpay Logo"
                     height={200}
-                    width={200}>
+                    width={200}
+                    >
+                    
                     </Image>
                 </div>
                 <div className={styles.navBtns}>
