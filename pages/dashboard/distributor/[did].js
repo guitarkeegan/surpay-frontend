@@ -53,7 +53,8 @@ export default function CompanyDashboard({distributor}) {
           
                 <div className={styles.leftMain}>
              
-                    <button onClick={() => setSelection("Create a new survey")} className={styles.toggleBtns}>Create a new survey</button>
+                    <button onClick={() => setSelection("Create a new survey")} className={styles.toggleBtns}
+                    style={{paddingBottom: '90px'}}>Create a new survey</button>
                     <button onClick={()=>setSelection("View Past Surveys")} className={styles.toggleBtns}>View Past Surveys</button>
                     {/* <button onClick={()=>setSelection("Manage a survey")} className={styles.toggleBtns}>Manage a survey</button> */}
                     <button onClick={()=>setSelection("Account settings")} className={styles.toggleBtns}>Account settings</button>

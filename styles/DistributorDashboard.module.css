@@ -31,7 +31,7 @@
 
 .leftMain button {
     height: 80px;
-    width: 260px;
+    max-width: 220px;
     background-color: rgb(171, 236, 250);
     border-radius: 10px;
     border: none;
@@ -67,6 +67,7 @@
     border-radius: 2px;
     border: none;
     box-shadow: 1px 3px 10px grey;
+    max-width: 270px;
 }
 
 
