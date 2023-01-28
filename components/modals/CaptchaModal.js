@@ -1,19 +1,67 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import Image from 'next/image'
+import axios from "axios";
+import Loader from '../loader/Loader';
+
+
 // import captcha from "/assets/img/recaptchaExample.png"
 import {useRouter} from "next/router"
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { ModalBody } from 'react-bootstrap';
 
 export default function MockCaptchaModal({user, selectedSurveyId}) {
   const [show, setShow] = useState(false);
+  const [isBtnDisabled, setBtnDisabled] = useState(false);
+  const [response, setResponse] = useState(null);
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const router = useRouter()
 
-  const handleClose = () => {
-    setShow(false);
-    router.push(`/survey/take/${selectedSurveyId}`)
-}
+  const handleSubmit = async () => {
+
+    setBtnDisabled(true);
+
+    if (!executeRecaptcha) {
+      return;
+    }
+
+    try {
+      const token = await executeRecaptcha();
+      if (!token) {
+        setResponse({ message: "Failed to Send!!!", status: "Failed" });
+        return;
+      }
+
+      const result = await axios.post("/api/captcha", {
+        token
+      });
+      console.log(result);
+
+      if (result.data) {
+        setResponse({
+          message: result.data.message,
+          status: result.data.status,
+        });
+      }
+      setBtnDisabled(false);
+
+      router.push(`/survey/take/${selectedSurveyId}`)
+
+    } catch (error) {
+      console.log(error);
+      setResponse({ message: "Failed to Send!!!", status: "Failed" });
+      setBtnDisabled(false);
+    }
+  
+
+
+
+    
+
+  }
+
+  const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   return (
@@ -26,16 +74,13 @@ export default function MockCaptchaModal({user, selectedSurveyId}) {
         <Modal.Header closeButton>
           <Modal.Title>Captcha</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Please solve this puzzle!
-        <Image
-        alt="mock captcha"
-        src="/assets/img/recaptchaExample.png"
-        height={600}
-        width={400} />
-        </Modal.Body>
+        <Modal.ModalBody>
+          {response.status === "Failed" && response.message}
+        </Modal.ModalBody>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
-            Got it
+          <Button disabled={isBtnDisabled} variant="primary" onClick={handleSubmit}>
+          <span>Submit{isBtnDisabled && "ting"}</span>
+          {isBtnDisabled && <Loader />}
           </Button>
         </Modal.Footer>
       </Modal>
