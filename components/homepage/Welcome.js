@@ -45,9 +45,9 @@ export default function Welcome() {
                         </Image>
                     </div>
                 </section>
-                <div className={styles.btnDiv}>
+                {/* <div className={styles.btnDiv}>
                     <LoginModal location={"home"} />
-                    </div>
+                    </div> */}
 
             </div>
             <footer className={styles.footerCon}>
